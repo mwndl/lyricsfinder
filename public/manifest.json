@@ -1,0 +1,22 @@
+{
+    "name": "LyricsFinder",
+    "short_name": "LyricsFinder",
+    "description": "A free service for finding data on your favorite songs",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#181818",
+    "theme_color": "#181818",
+    "icons": [
+      {
+        "src": "/images/favicon_round/android-chrome-192x192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "/images/favicon_round/android-chrome-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ]
+  }
+  
