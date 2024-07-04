@@ -7,8 +7,10 @@ const translations = {
         "portugueseName": "Português",
         "spanishName": "Espanhol",
 
-        "pageTitle": "LyricsFinder | Encontre letras para suas faixas favoritas",
-        "topTitle": "LyricsFinder",
+        "pageTitle": "Songmatch | Encontre letras para suas faixas favoritas",
+        "topTitle": "Songmatch",
+
+        "searchPlaceholder": "Pesquisar...",
 
         "developedByLabel": "Desenvolvido por ",
         "developerNameLabel": "Marcos Wiendl",
@@ -45,8 +47,10 @@ const translations = {
         "portugueseName": "Portuguese",
         "spanishName": "Spanish",
 
-        "pageTitle": "LyricsFinder | Find lyrics to your favorite songs",
-        "topTitle": "LyricsFinder",
+        "pageTitle": "Songmatch | Find lyrics to your favorite songs",
+        "topTitle": "Songmatch",
+
+        "searchPlaceholder": "Search...",
 
         "developedByLabel": "Developed by ",
         "developerNameLabel": "Marcos Wiendl",
@@ -82,8 +86,10 @@ const translations = {
         "portugueseName": "Portugués",
         "spanishName": "Español",
 
-        "pageTitle": "LyricsFinder | Encuentra letras de tus canciones favoritas",
-        "topTitle": "LyricsFinder",
+        "pageTitle": "Songmatch | Encuentra letras de tus canciones favoritas",
+        "topTitle": "Songmatch",
+
+        "searchPlaceholder": "Buscar...",
 
         "developedByLabel": "Desarrollado por ",
         "developerNameLabel": "Marcos Wiendl",
@@ -118,8 +124,10 @@ const translations = {
         "portugueseName": "Portugais",
         "spanishName": "Espagnol",
 
-        "pageTitle": "LyricsFinder | Trouvez les paroles de vos chansons préférées",
-        "topTitle": "LyricsFinder",
+        "pageTitle": "Songmatch | Trouvez les paroles de vos chansons préférées",
+        "topTitle": "Songmatch",
+
+        "searchPlaceholder": "Rechercher...",
 
         "developedByLabel": "Développé par ",
         "developerNameLabel": "Marcos Wiendl",

@@ -116,6 +116,7 @@ function setElementContent(selectedLanguage) {
     document.getElementById('developerNameLabel').title = translations[selectedLanguage]['developerNameTitle'];
     document.getElementById('bmac2Label').title = translations[selectedLanguage]['bmac2LabelTitle'];
     document.getElementById('github_icon').title = translations[selectedLanguage]['githubIconTitle'];
+    document.getElementById('search_bar_content').placeholder = translations[selectedLanguage]['searchPlaceholder'];
 }
 
 function copyUrl() {
@@ -243,7 +244,7 @@ function searchSpotifyId(id) {
     console.log('Pesquisar Spotify ID:', id);
 
     // URL da API com o ID dinâmico
-    const url = `https://datamatch-backend.onrender.com/new-lyricsfinder/search?track_id=${id}&token=${publicToken}&background_mode=1&mxm_data=1`;
+    const url = `https://datamatch-backend.onrender.com/songmatch/search?track_id=${id}&token=${publicToken}&background_mode=1&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
@@ -262,7 +263,7 @@ function searchByIsrc(isrc) {
     console.log('Pesquisar ISRC:', isrc);
 
     // URL da API com o ID dinâmico
-    const url = `https://datamatch-backend.onrender.com/new-lyricsfinder/search?track_isrc=${isrc}&token=${publicToken}&background_mode=1&mxm_data=1`;
+    const url = `https://datamatch-backend.onrender.com/songmatch/search?track_isrc=${isrc}&token=${publicToken}&background_mode=1&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
@@ -281,7 +282,7 @@ function searchByAbstrack(abstrack) {
     console.log('Pesquisar Abstrack:', abstrack);
 
         // URL da API com o ID dinâmico
-        const url = `https://datamatch-backend.onrender.com/new-lyricsfinder/search?abstrack=${abstrack}&token=${publicToken}&background_mode=1&mxm_data=1`;
+        const url = `https://datamatch-backend.onrender.com/songmatch/search?abstrack=${abstrack}&token=${publicToken}&background_mode=1&mxm_data=1`;
 
         // Fazendo a requisição para a API
         fetch(url)
@@ -300,7 +301,7 @@ function searchByText(text) {
     console.log('Pesquisar por texto:', text);
 
     // URL da API com o ID dinâmico
-    const url = `https://datamatch-backend.onrender.com/new-lyricsfinder/search?query=${text}&token=${publicToken}&background_mode=1&mxm_data=1`;
+    const url = `https://datamatch-backend.onrender.com/songmatch/search?query=${text}&token=${publicToken}&background_mode=1&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
