@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             flagMenu.style.display = 'none';
         }
     });
+
 });
 
 function getQueryParameter(param) {
@@ -145,6 +146,7 @@ function copyUrl() {
 function notification(customMessage) {
     const notification_div = document.getElementById("notification");
     const message = document.getElementById("notification-message");
+
     message.textContent = customMessage;
     notification_div.style.opacity = 1;
     notification_div.classList.remove("hidden");
@@ -256,7 +258,7 @@ function searchSpotifyId(id) {
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
-            notification('Ocorreu um erro ao fazer a busca')
+            notification(translations[selectedLanguage]['somethingWentWrong1'])
         });
 }
 
@@ -276,7 +278,7 @@ function searchByIsrc(isrc) {
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
-            notification('Ocorreu um erro ao fazer a busca')
+            notification(translations[selectedLanguage]['somethingWentWrong1'])
         });
 }
 
@@ -296,12 +298,12 @@ function searchByAbstrack(abstrack) {
             })
             .catch(error => {
                 console.error('Erro ao fazer a requisição:', error);
-                notification('Ocorreu um erro ao fazer a busca')
+                notification(translations[selectedLanguage]['somethingWentWrong1'])
             });
 }
 
 function searchByText(text) {
-    document.getElementById('search_bar_content').value = ''
+    document.getElementById('search_bar_content').value = '';
     console.log('Pesquisar por texto:', text);
 
     // URL da API com o ID dinâmico
@@ -309,14 +311,54 @@ function searchByText(text) {
 
     // Fazendo a requisição para a API
     fetch(url)
-        .then(response => response.json()) // Converte a resposta em JSON
+        .then(response => {
+            if (!response.ok) {
+                // Verifica o status da resposta e lança um erro personalizado
+                if (response.status === 429) {
+                    throw new Error('Erro 429: Muitas requisições. Tente novamente mais tarde.');
+                }
+                if (response.status === 401) {
+                    throw new Error('Erro 401: Não autorizado.');
+                }
+                if (response.status === 400) {
+                    throw new Error('Erro 400: Requisição inválida.');
+                }
+                if (response.status === 500) {
+                    throw new Error('Erro 500: Erro interno do servidor.');
+                }
+                throw new Error('Erro desconhecido ao fazer a requisição.');
+            }
+            return response.json(); // Converte a resposta em JSON se estiver tudo ok
+        })
         .then(data => {
             console.log('Dados recebidos da API:', data);
             // Aqui você pode manipular os dados recebidos conforme necessário
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
-            notification('Ocorreu um erro ao fazer a busca')
+
+            // Notificação de erro específica para cada código de status
+            let errorMessage;
+            switch (error.message) {
+                case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
+                    errorMessage = translations[selectedLanguage]['error429'];
+                    break;
+                case 'Erro 401: Não autorizado.':
+                    errorMessage = translations[selectedLanguage]['error401'];
+                    break;
+                case 'Erro 400: Requisição inválida.':
+                    errorMessage = translations[selectedLanguage]['error400'];
+                    break;
+                case 'Erro 500: Erro interno do servidor.':
+                    errorMessage = translations[selectedLanguage]['error500'];
+                    break;
+                default:
+                    errorMessage = translations[selectedLanguage]['somethingWentWrong1'];
+                    break;
+            }
+
+            // Exibir notificação de erro
+            notification(errorMessage);
         });
 }
 

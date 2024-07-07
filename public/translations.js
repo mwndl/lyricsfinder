@@ -36,6 +36,14 @@ const translations = {
         "noContentCopyFailed": "Não há conteúdo a ser copiado",
         "editorIsAlreadyEmptyCleanFailed": "O campo de texto já está limpo",
 
+        "somethingWentWrong1": "Ocorreu um erro ao processar a sua solicitação",
+        "somethingWentWrong2": "Ocorreu um erro, tente novamente em alguns instantes",
+
+        "error400": "Oops! Parece que houve um erro. Verifique se você digitou tudo corretamente.",
+        "error401": "Oops! Ocorreu um erro do nosso lado. Estamos trabalhando para resolvê-lo o mais rápido possível.",
+        "error429": "Muitas solicitações! Por favor, aguarde um pouco e tente novamente mais tarde.",
+        "error500": "Nossos sistemas estão temporariamente ocupados. Tente novamente mais tarde.",
+        "error502": "Oops! Houve um problema de conexão. Por favor, tente novamente mais tarde.",
 
         "contentCopiedSuccess": "Conteúdo copiado para a área de transferência",
 
@@ -77,6 +85,15 @@ const translations = {
         "noContentCopyFailed": "There is no content to copy",
         "editorIsAlreadyEmptyCleanFailed": "The text field is now cleared",
 
+        "somethingWentWrong1": "An error occurred while processing your request",
+        "somethingWentWrong2": "An error occurred, please try again in a few moments",
+
+        "error400": "Oops! It seems there was an error. Please check if you entered everything correctly.",
+        "error401": "Oops! There was an error on our side. We are working to resolve it as quickly as possible.",
+        "error429": "Too many requests! Please wait a moment and try again later.",
+        "error500": "Our systems are temporarily busy. Please try again later.",
+        "error502": "Oops! There was a connection problem. Please try again later.",
+
         "contentCopiedSuccess": "Content copied to clipboard",
 
     },
@@ -117,6 +134,15 @@ const translations = {
         "noContentCopyFailed": "No hay contenido para copiar",
         "editorIsAlreadyEmptyCleanFailed": "El campo de texto ya está vacío",
 
+        "somethingWentWrong1": "Ocurrió un error al procesar su solicitud",
+        "somethingWentWrong2": "Se produjo un error, inténtelo nuevamente en unos momentos.",
+
+        "error400": "¡Ups! Parece que hubo un error. Por favor, verifica si ingresaste todo correctamente.",
+        "error401": "¡Ups! Hubo un error de nuestro lado. Estamos trabajando para resolverlo lo antes posible.",
+        "error429": "¡Demasiadas solicitudes! Por favor, espera un momento y vuelve a intentarlo más tarde.",
+        "error500": "Nuestros sistemas están temporalmente ocupados. Por favor, inténtalo de nuevo más tarde.",
+        "error502": "¡Ups! Hubo un problema de conexión. Por favor, inténtalo de nuevo más tarde.",
+
         "contentCopiedSuccess": "Contenido copiado al portapapeles"
     },
 
@@ -155,6 +181,15 @@ const translations = {
         "copyFailed": "Échec de la copie du contenu",
         "noContentCopyFailed": "Il n'y a pas de contenu à copier",
         "editorIsAlreadyEmptyCleanFailed": "Le champ de texte est maintenant vide",
+
+        "somethingWentWrong1": "Une erreur s'est produite lors du traitement de votre demande",
+        "somethingWentWrong2": "Une erreur s'est produite, veuillez réessayer dans quelques instants",
+
+        "error400": "Oups ! Il semble qu'il y ait eu une erreur. Veuillez vérifier si vous avez tout saisi correctement.",
+        "error401": "Oups ! Une erreur s'est produite de notre côté. Nous travaillons pour la résoudre le plus rapidement possible.",
+        "error429": "Trop de demandes ! Veuillez patienter un moment et réessayer plus tard.",
+        "error500": "Nos systèmes sont temporairement occupés. Veuillez réessayer plus tard.",
+        "error502": "Oups ! Il y a eu un problème de connexion. Veuillez réessayer plus tard.",
 
         "contentCopiedSuccess": "Contenu copié dans le presse-papiers",
     }

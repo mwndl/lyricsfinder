@@ -192,21 +192,19 @@ hr {
 }
 
 #notification {
+    display: flex;
     position: fixed;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     background-color: #fbfbfb;
     border-radius: 8px;
-    display: flex;
     max-height: 65px;
-    justify-content: center;
-    align-items: center;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    z-index: 1001;
+    z-index: 99999;
     padding: 10px 20px;
-    box-shadow: 0 11px 34px 0 rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    transition: opacity 0.5s ease-in-out;
 }
 
 #notification-message {
@@ -388,6 +386,10 @@ hr {
     margin: 10px 0;
 }
 
+#bmcButton {
+    transition: opacity 0.5s ease;
+}
+
 
 /**/
 
@@ -538,6 +540,12 @@ hr {
     .text_rocket {
         font-size: 18px;
         width: calc(100% - 155px);
+    }
+
+    #notification {
+        padding: 10px 20px;
+        width: 85%;
+        max-height: 100px;
     }
 
 }
