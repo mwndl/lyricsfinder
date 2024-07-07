@@ -113,9 +113,6 @@ function setLanguageBasedOnBrowser() {
 
 function setElementContent(selectedLanguage) {
     document.getElementById('flagDiv').title = translations[selectedLanguage]['flagDivTitle'];
-    document.getElementById('developerNameLabel').title = translations[selectedLanguage]['developerNameTitle'];
-    document.getElementById('bmac2Label').title = translations[selectedLanguage]['bmac2LabelTitle'];
-    document.getElementById('github_icon').title = translations[selectedLanguage]['githubIconTitle'];
     document.getElementById('search_bar_content').placeholder = translations[selectedLanguage]['searchPlaceholder'];
 }
 
