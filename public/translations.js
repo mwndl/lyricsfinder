@@ -11,6 +11,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Pesquisar...",
+        "textRocketLabel": "Pesquise pelo nome da música, link do Spotify, ISRC ou abstrack",
 
         "developedByLabel": "Desenvolvido por ",
         "developerNameLabel": "Marcos Wiendl",
@@ -51,6 +52,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Search...",
+        "textRocketLabel": "Search by song name, Spotify link, ISRC code, or abstrack",
 
         "developedByLabel": "Developed by ",
         "developerNameLabel": "Marcos Wiendl",
@@ -90,6 +92,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Buscar...",
+        "textRocketLabel": "Buscar por nombre de canción, enlace de Spotify, ISRC o abstrack",
 
         "developedByLabel": "Desarrollado por ",
         "developerNameLabel": "Marcos Wiendl",
@@ -128,6 +131,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Rechercher...",
+        "textRocketLabel": "Recherche par nom de chanson, lien Spotify, ISRC ou abstrack",
 
         "developedByLabel": "Développé par ",
         "developerNameLabel": "Marcos Wiendl",

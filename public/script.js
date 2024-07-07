@@ -203,6 +203,10 @@ function hasRequiredParameters() {
     return true;
 }
 
+document.getElementById('search_examples').addEventListener('click', function() {
+    document.getElementById('search_bar_content').focus();
+});
+
 document.getElementById('search_bar_content').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
         handleSearch()
@@ -255,6 +259,7 @@ function searchSpotifyId(id) {
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
+            notification('Ocorreu um erro ao fazer a busca')
         });
 }
 
@@ -274,6 +279,7 @@ function searchByIsrc(isrc) {
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
+            notification('Ocorreu um erro ao fazer a busca')
         });
 }
 
@@ -293,6 +299,7 @@ function searchByAbstrack(abstrack) {
             })
             .catch(error => {
                 console.error('Erro ao fazer a requisição:', error);
+                notification('Ocorreu um erro ao fazer a busca')
             });
 }
 
@@ -312,6 +319,7 @@ function searchByText(text) {
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
+            notification('Ocorreu um erro ao fazer a busca')
         });
 }
 
