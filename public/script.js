@@ -247,18 +247,58 @@ function searchSpotifyId(id) {
     console.log('Pesquisar Spotify ID:', id);
 
     // URL da API com o ID dinâmico
-    const url = `https://datamatch-backend.onrender.com/songmatch/search?track_id=${id}&token=${publicToken}&background_mode=1&mxm_data=1`;
+    const url = `https://datamatch-backend.onrender.com/songmatch/id?content=${id}&token=${publicToken}&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
-        .then(response => response.json()) // Converte a resposta em JSON
+        .then(response => {
+            if (!response.ok) {
+                // Verifica o status da resposta e lança um erro personalizado
+                if (response.status === 429) {
+                    throw new Error('Erro 429: Muitas requisições. Tente novamente mais tarde.');
+                }
+                if (response.status === 401) {
+                    throw new Error('Erro 401: Não autorizado.');
+                }
+                if (response.status === 400) {
+                    throw new Error('Erro 400: Requisição inválida.');
+                }
+                if (response.status === 500) {
+                    throw new Error('Erro 500: Erro interno do servidor.');
+                }
+                throw new Error('Erro desconhecido ao fazer a requisição.');
+            }
+            return response.json(); // Converte a resposta em JSON se estiver tudo ok
+        })
         .then(data => {
             console.log('Dados recebidos da API:', data);
             // Aqui você pode manipular os dados recebidos conforme necessário
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
-            notification(translations[selectedLanguage]['somethingWentWrong1'])
+
+            // Notificação de erro específica para cada código de status
+            let errorMessage;
+            switch (error.message) {
+                case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
+                    errorMessage = translations[selectedLanguage]['error429'];
+                    break;
+                case 'Erro 401: Não autorizado.':
+                    errorMessage = translations[selectedLanguage]['error401'];
+                    break;
+                case 'Erro 400: Requisição inválida.':
+                    errorMessage = translations[selectedLanguage]['error400'];
+                    break;
+                case 'Erro 500: Erro interno do servidor.':
+                    errorMessage = translations[selectedLanguage]['error500'];
+                    break;
+                default:
+                    errorMessage = translations[selectedLanguage]['somethingWentWrong1'];
+                    break;
+            }
+
+            // Exibir notificação de erro
+            notification(errorMessage);
         });
 }
 
@@ -267,18 +307,58 @@ function searchByIsrc(isrc) {
     console.log('Pesquisar ISRC:', isrc);
 
     // URL da API com o ID dinâmico
-    const url = `https://datamatch-backend.onrender.com/songmatch/search?track_isrc=${isrc}&token=${publicToken}&background_mode=1&mxm_data=1`;
+    const url = `https://datamatch-backend.onrender.com/songmatch/isrc?content=${isrc}&token=${publicToken}&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
-        .then(response => response.json()) // Converte a resposta em JSON
+        .then(response => {
+            if (!response.ok) {
+                // Verifica o status da resposta e lança um erro personalizado
+                if (response.status === 429) {
+                    throw new Error('Erro 429: Muitas requisições. Tente novamente mais tarde.');
+                }
+                if (response.status === 401) {
+                    throw new Error('Erro 401: Não autorizado.');
+                }
+                if (response.status === 400) {
+                    throw new Error('Erro 400: Requisição inválida.');
+                }
+                if (response.status === 500) {
+                    throw new Error('Erro 500: Erro interno do servidor.');
+                }
+                throw new Error('Erro desconhecido ao fazer a requisição.');
+            }
+            return response.json(); // Converte a resposta em JSON se estiver tudo ok
+        })
         .then(data => {
             console.log('Dados recebidos da API:', data);
             // Aqui você pode manipular os dados recebidos conforme necessário
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
-            notification(translations[selectedLanguage]['somethingWentWrong1'])
+
+            // Notificação de erro específica para cada código de status
+            let errorMessage;
+            switch (error.message) {
+                case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
+                    errorMessage = translations[selectedLanguage]['error429'];
+                    break;
+                case 'Erro 401: Não autorizado.':
+                    errorMessage = translations[selectedLanguage]['error401'];
+                    break;
+                case 'Erro 400: Requisição inválida.':
+                    errorMessage = translations[selectedLanguage]['error400'];
+                    break;
+                case 'Erro 500: Erro interno do servidor.':
+                    errorMessage = translations[selectedLanguage]['error500'];
+                    break;
+                default:
+                    errorMessage = translations[selectedLanguage]['somethingWentWrong1'];
+                    break;
+            }
+
+            // Exibir notificação de erro
+            notification(errorMessage);
         });
 }
 
@@ -287,19 +367,59 @@ function searchByAbstrack(abstrack) {
     console.log('Pesquisar Abstrack:', abstrack);
 
         // URL da API com o ID dinâmico
-        const url = `https://datamatch-backend.onrender.com/songmatch/search?abstrack=${abstrack}&token=${publicToken}&background_mode=1&mxm_data=1`;
+        const url = `https://datamatch-backend.onrender.com/songmatch/abstrack?content=${abstrack}&token=${publicToken}&mxm_data=1`;
 
-        // Fazendo a requisição para a API
-        fetch(url)
-            .then(response => response.json()) // Converte a resposta em JSON
-            .then(data => {
-                console.log('Dados recebidos da API:', data);
-                // Aqui você pode manipular os dados recebidos conforme necessário
-            })
-            .catch(error => {
-                console.error('Erro ao fazer a requisição:', error);
-                notification(translations[selectedLanguage]['somethingWentWrong1'])
-            });
+    // Fazendo a requisição para a API
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                // Verifica o status da resposta e lança um erro personalizado
+                if (response.status === 429) {
+                    throw new Error('Erro 429: Muitas requisições. Tente novamente mais tarde.');
+                }
+                if (response.status === 401) {
+                    throw new Error('Erro 401: Não autorizado.');
+                }
+                if (response.status === 400) {
+                    throw new Error('Erro 400: Requisição inválida.');
+                }
+                if (response.status === 500) {
+                    throw new Error('Erro 500: Erro interno do servidor.');
+                }
+                throw new Error('Erro desconhecido ao fazer a requisição.');
+            }
+            return response.json(); // Converte a resposta em JSON se estiver tudo ok
+        })
+        .then(data => {
+            console.log('Dados recebidos da API:', data);
+            // Aqui você pode manipular os dados recebidos conforme necessário
+        })
+        .catch(error => {
+            console.error('Erro ao fazer a requisição:', error);
+
+            // Notificação de erro específica para cada código de status
+            let errorMessage;
+            switch (error.message) {
+                case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
+                    errorMessage = translations[selectedLanguage]['error429'];
+                    break;
+                case 'Erro 401: Não autorizado.':
+                    errorMessage = translations[selectedLanguage]['error401'];
+                    break;
+                case 'Erro 400: Requisição inválida.':
+                    errorMessage = translations[selectedLanguage]['error400'];
+                    break;
+                case 'Erro 500: Erro interno do servidor.':
+                    errorMessage = translations[selectedLanguage]['error500'];
+                    break;
+                default:
+                    errorMessage = translations[selectedLanguage]['somethingWentWrong1'];
+                    break;
+            }
+
+            // Exibir notificação de erro
+            notification(errorMessage);
+        });
 }
 
 function searchByText(text) {
@@ -307,7 +427,7 @@ function searchByText(text) {
     console.log('Pesquisar por texto:', text);
 
     // URL da API com o ID dinâmico
-    const url = `https://datamatch-backend.onrender.com/songmatch/search?query=${text}&token=${publicToken}&background_mode=1&mxm_data=1`;
+    const url = `https://datamatch-backend.onrender.com/songmatch/search?content=${text}&token=${publicToken}&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
