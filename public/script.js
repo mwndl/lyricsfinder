@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
+    hasRequiredParameters()
+
     if (getQueryParameter('language')) {
         language = getQueryParameter('language')
         changeLanguage(language);
@@ -22,6 +24,15 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
 });
+
+function removeQueryParameter(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.delete(param);
+    
+    // Replace the current URL without the specified parameter
+    const newUrl = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
+    history.replaceState(null, '', newUrl);
+}
 
 function getQueryParameter(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -172,13 +183,7 @@ function formatDate(date) {
 
 function hasRequiredParameters() {
     const requiredParams = [
-        'initial_value', 
-        'monthly_value', 
-        'term', 
-        'yield', 
-        'description', 
-        'yd',
-        'taxes'
+        'query', 
     ];
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -188,17 +193,13 @@ function hasRequiredParameters() {
         }
     }
 
-    // Extraindo os valores dos parâmetros
-    const initialValue = parseFloat(urlParams.get('initial_value'));
-    const monthlyValue = parseFloat(urlParams.get('monthly_value'));
-    const term = parseInt(urlParams.get('term'), 10);
-    const yieldRate = parseFloat(urlParams.get('yield'));
-    const description = String(urlParams.get('description'));
-    const rent_description = String(urlParams.get('yd'))
-    const taxes = String(urlParams.get('taxes'));
+    if (urlParams.get('query') === 'null') {
+        removeQueryParameter('query');
+        return false;
+    }
 
-    // Chama a função calcularInvestimento com os parâmetros extraídos
-    calcularInvestimento(initialValue, monthlyValue, term, yieldRate, description, rent_description, taxes);
+    content = getQueryParameter('search')
+    handleSearch(content)
     return true;
 }
 
@@ -206,20 +207,51 @@ document.getElementById('search_examples').addEventListener('click', function() 
     document.getElementById('search_bar_content').focus();
 });
 
+/* elementos dinâmicos */
+    const spIframe = document.getElementById('track_sp_iframe')
+
+    const trackReleased = document.getElementById('track_released')
+    const trackPosition = document.getElementById('track_position')
+    const trackPopularity = document.getElementById('track_popularity')
+    const trackAlbumType = document.getElementById('track_album_type')
+    const trackMarkets = document.getElementById('track_markets')
+
+    const trackSpId = document.getElementById('track_sp_id')
+    const trackIsrc = document.getElementById('track_isrc_code')
+    const trackAbstrack = document.getElementById('track_abstrack')
+
+    const trackMxmLyrics = document.getElementById('track_mxm_lyrics')
+    const trackMxmArtist = document.getElementById('track_mxm_artist')
+    const trackMxmAlbum = document.getElementById('track_mxm_album')
+
+    const trackLyricsStat = document.getElementById('track_lyrics_stat')
+    const trackLinesyncStat = document.getElementById('track_linesync_stat')
+    const trackWordsyncStat = document.getElementById('track_wordsync_stat')
+
+    const openLyrics = document.getElementById('openLyricsLabel')
+    const openStudio = document.getElementById('openStudioLabel')
+
+    let publicToken = '8KuA9GwNbaJYvTD8U6h64beb6d6dd56c'
+
+/* ***************** */
+
 document.getElementById('search_bar_content').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
-        handleSearch()
+        searchButton()
     }
 });
 
-let publicToken = '8KuA9GwNbaJYvTD8U6h64beb6d6dd56c'
-
-function handleSearch() {
+function searchButton() {
     const content = document.getElementById('search_bar_content').value.trim();
+    handleSearch(content)
+}
+
+function handleSearch(content) {
+
     if (content === '') { return }
 
     // Verificar se é um ID do Spotify
-    const spotifyIdRegex = /^(?:https:\/\/open\.spotify\.com\/(?:intl-pt\/)?track\/)?([a-zA-Z0-9]{22})(?:\?si=[a-zA-Z0-9]+)?$/;
+    const spotifyIdRegex = /^(?:https:\/\/open\.spotify\.com\/(?:intl-[a-z]{2}\/)?track\/)?([a-zA-Z0-9]{22})(?:\?[^\/]+)?$/;
 
     // Verificar se é um ISRC
     const isrcRegex = /^[A-Z]{2}[A-Z0-9]{3}\d{7}$/;
@@ -230,15 +262,19 @@ function handleSearch() {
     if (spotifyIdRegex.test(content)) {
         const spotifyId = content.match(spotifyIdRegex)[1]; // Captura o ID do Spotify
         searchSpotifyId(spotifyId);
+        setQueryParameter('query', spotifyId)
     } else if (isrcRegex.test(content)) {
         document.getElementById('search_bar_content').value = ''
         searchByIsrc(content);
+        setQueryParameter('query', content)
     } else if (abstrackRegex.test(content)) {
         document.getElementById('search_bar_content').value = ''
         searchByAbstrack(content);
+        setQueryParameter('query', content)
     } else {
         document.getElementById('search_bar_content').value = ''
         searchByText(content);
+        setQueryParameter('query', content)
     }
 }
 
@@ -272,7 +308,12 @@ function searchSpotifyId(id) {
         })
         .then(data => {
             console.log('Dados recebidos da API:', data);
-            // Aqui você pode manipular os dados recebidos conforme necessário
+
+            spotifyData = data.message.body.spotify;
+            musixmatchData = data.message.body.musixmatch;
+
+            setSpotifyData(spotifyData, musixmatchData)
+
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
@@ -332,7 +373,13 @@ function searchByIsrc(isrc) {
         })
         .then(data => {
             console.log('Dados recebidos da API:', data);
-            // Aqui você pode manipular os dados recebidos conforme necessário
+
+            spotifyData = data.message.body.spotify;
+            musixmatchData = data.message.body.musixmatch;
+
+            setSpotifyData(spotifyData, musixmatchData)
+
+
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
@@ -392,7 +439,15 @@ function searchByAbstrack(abstrack) {
         })
         .then(data => {
             console.log('Dados recebidos da API:', data);
-            // Aqui você pode manipular os dados recebidos conforme necessário
+
+            spotifyData = data.message.body.spotify;
+            musixmatchData = data.message.body.musixmatch;
+
+            setSpotifyData(spotifyData, musixmatchData)
+
+
+
+            
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
@@ -452,7 +507,14 @@ function searchByText(text) {
         })
         .then(data => {
             console.log('Dados recebidos da API:', data);
-            // Aqui você pode manipular os dados recebidos conforme necessário
+
+            spotifyData = data.message.body.spotify;
+            musixmatchData = data.message.body.musixmatch;
+
+            setSpotifyData(spotifyData, musixmatchData)
+
+
+
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
@@ -482,6 +544,65 @@ function searchByText(text) {
         });
 }
 
+function setSpotifyData(spotifyData, musixmatchData) {
+    const trackId = spotifyData.track_data.track_id;
+    const albumImage = spotifyData.album_data.images[0].url;
+
+    document.getElementById('search_examples').style.display = 'none';
+    document.getElementById('sp_container').style.display = 'block';
+
+    spIframe.src = `https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0`;
+
+    trackReleased.textContent = `Lançada em ${spotifyData.album_data.release_date}`;
+    trackPosition.textContent = `Faixa ${spotifyData.track_data.disc_position} de ${spotifyData.album_data.total_tracks}`;
+    trackPopularity.textContent = `Popularidade de ${spotifyData.track_data.popularity}%`;
+    trackAlbumType.textContent = `Tipo de álbum: ${spotifyData.album_data.album_type}`;
+    trackMarkets.textContent = `Disponível em 182 países`;
+
+    trackSpId.textContent = trackId;
+    trackIsrc.textContent = spotifyData.track_data.isrc;
+    trackAbstrack.textContent = musixmatchData.track_data.commontrack_id;
+
+    trackSpId.style.color = '#ffffff';
+    trackIsrc.style.color = '#ffffff';
+    trackAbstrack.style.color = '#ffffff';
+
+    trackMxmLyrics.textContent = `http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`;
+    trackMxmArtist.textContent = `http://mxmt.ch/a/${musixmatchData.artist_data.artist_id}`;
+    trackMxmAlbum.textContent = `http://mxmt.ch/r/${musixmatchData.album_data.album_id}`;
+
+    trackMxmLyrics.style.color = '#ffffff';
+    trackMxmArtist.style.color = '#ffffff';
+    trackMxmAlbum.style.color = '#ffffff';
+
+    trackMxmLyrics.title = musixmatchData.track_data.track_name;
+    trackMxmArtist.title = musixmatchData.artist_data.artist_name;
+    trackMxmAlbum.title = musixmatchData.album_data.album_name;
+
+    if (musixmatchData.track_data.stats.has_lyrics === 1) {
+        trackLyricsStat.className = 'status-1 status-blue'
+    } 
+    
+    if (musixmatchData.track_data.stats.has_line_sync === 1) {
+        trackLinesyncStat.className = 'status-1 status-blue'
+    }
+    
+    if (musixmatchData.track_data.stats.has_word_sync === 1) {
+        trackWordsyncStat.className = 'status-1 status-blue'
+    }
+
+    document.getElementById('openLyricsLabel').addEventListener('click', function() {
+        window.open(`http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`, '_blank');
+    });
+
+    document.getElementById('openStudioLabel').addEventListener('click', function() {
+        window.open(`https://curators.musixmatch.com/tool?commontrack_id=${musixmatchData.track_data.commontrack_id}&mode=edit`, '_blank');
+    });
+
+    document.getElementById("body").style.backgroundImage = `url('${albumImage}')`;
+    document.getElementById("body").style.backgroundSize = "cover";
+    document.getElementById("body").style.backgroundPosition = "center";
+}
 
 
 

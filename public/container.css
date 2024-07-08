@@ -1,0 +1,185 @@
+.track_container {
+    padding: 10px;
+}
+
+.cont_top {
+    display: flex;
+    height: 152px;
+    justify-content: space-between;
+}
+
+.sp_iframe {
+    width: 100%;
+    height: 152;
+}
+
+.cont_main {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.internal_div {
+    background-color: #333333;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    margin: 10px 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
+}
+
+.track_info {
+    display:flex;
+    flex-direction: column;
+    width: calc(40% - 10px);
+    align-items: center;
+    padding: 20px;
+}
+
+.track_ids {
+    width: calc(60% - 10px);
+}
+
+.mxm_links {
+    width: calc(60% - 10px);
+}
+
+.stats_div {
+    margin: 0;
+}
+
+.cont_id {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.cont_id_label {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    text-align: start;
+}
+
+.cont_id_value {
+    flex: 1;
+    padding: 8px;
+    background-color: #3e3e3e;
+    border-radius: 12px;
+}
+
+.lyrics_stats_div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: calc(40% - 10px);
+    margin: 10px 0;
+}
+
+.lyrics_stats {
+    background-color: #333333;
+    border-radius: 12px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5px 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-gray {
+    background-color: #626262;
+}
+
+.status-blue {
+    background-color: #4A90E2;
+}
+
+.status-red {
+    background-color: #ff351b;
+}
+
+.status-1 {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    align-items: right;
+    max-width: 10px;
+}
+
+.shortcuts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.studio_shortcut {
+    background-color: #333333;
+    border-radius: 12px;
+    padding: 20px 8px;
+    width: calc(50% - 20px);
+    font-size: 14px;
+    text-overflow: ellipsis;
+    transition: background-color 0.3s ease;
+    text-wrap:nowrap;
+}
+
+.studio_shortcut:hover {
+    background-color: #5c5c5c;
+}
+
+
+
+@media (max-width: 700px) {
+
+    .cont_top {
+        height: 80px;
+    }
+
+    .sp_iframe {
+        height: 80;
+    }
+
+    .cont_main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .track_info, .track_ids, .mxm_links {
+        width: 100%
+    }
+
+    .lyrics_stats_div {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .stats_div {
+        width: calc(100% - 180px);
+    }
+
+    .studio_shortcut {
+        padding: 10px 20px;
+        width: 75%;
+    }
+
+    .shortcuts {
+        width: 160px;
+        flex-direction: column;
+    }
+
+}
