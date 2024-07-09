@@ -226,7 +226,7 @@ function copyContent(id) {
     var element = document.getElementById(id);
     var content = element.textContent.trim(); // Obtém o conteúdo da div, removendo espaços em branco
 
-    if (content !== "No data") {
+    if (content !== "-") {
         // Copia o conteúdo para a área de transferência
         navigator.clipboard.writeText(content)
             .then(() => {
@@ -683,17 +683,9 @@ function setSpotifyData(spotifyData, musixmatchData) {
     trackIsrc.textContent = spotifyData.track_data.isrc;
     trackAbstrack.textContent = musixmatchData.track_data.commontrack_id;
 
-    trackSpId.style.color = '#ffffff';
-    trackIsrc.style.color = '#ffffff';
-    trackAbstrack.style.color = '#ffffff';
-
     trackMxmLyrics.textContent = `http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`;
     trackMxmArtist.textContent = `http://mxmt.ch/a/${musixmatchData.artist_data.artist_id}`;
     trackMxmAlbum.textContent = `http://mxmt.ch/r/${musixmatchData.album_data.album_id}`;
-
-    trackMxmLyrics.style.color = '#ffffff';
-    trackMxmArtist.style.color = '#ffffff';
-    trackMxmAlbum.style.color = '#ffffff';
 
     trackMxmLyrics.title = musixmatchData.track_data.track_name;
     trackMxmArtist.title = musixmatchData.artist_data.artist_name;
