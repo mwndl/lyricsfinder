@@ -335,6 +335,7 @@ function searchSpotifyId(id) {
 
             // Notificação de erro específica para cada código de status
             let errorMessage;
+            console.log("Error message: " + error.message)
             switch (error.message) {
                 case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
                     errorMessage = translations[selectedLanguage]['error429'];
@@ -407,6 +408,7 @@ function searchByIsrc(isrc) {
 
             // Notificação de erro específica para cada código de status
             let errorMessage;
+            console.log("Error message: " + error.message)
             switch (error.message) {
                 case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
                     errorMessage = translations[selectedLanguage]['error429'];
@@ -481,6 +483,7 @@ function searchByAbstrack(abstrack) {
 
             // Notificação de erro específica para cada código de status
             let errorMessage;
+            console.log("Error message: " + error.message)
             switch (error.message) {
                 case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
                     errorMessage = translations[selectedLanguage]['error429'];
@@ -554,6 +557,7 @@ function searchByText(text) {
 
             // Notificação de erro específica para cada código de status
             let errorMessage;
+            console.log("Error message: " + error.message)
             switch (error.message) {
                 case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
                     errorMessage = translations[selectedLanguage]['error429'];
