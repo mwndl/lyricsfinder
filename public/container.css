@@ -369,11 +369,15 @@
     }
     
     #play_icon {
-        left: 8px;
+        left: 10px;
+        width: 14px;
+        height: 14px; 
     }
     
     #pause_icon {
-        left: 5.4px;
+        left: 8.4px;
+        width: 14px;
+        height: 14px; 
     }
 
     .track_data {
