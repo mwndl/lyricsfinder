@@ -577,6 +577,9 @@ hr {
     #notification {
         padding: 10px 20px;
         max-height: 100px;
+        width: 85%;
+        display: flex;
+        justify-content: center;
     }
 
 }
