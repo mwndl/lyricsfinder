@@ -22,9 +22,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             flagMenu.style.display = 'none';
         }
     });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
+    // funções do player de preview
     const player = document.getElementById('player');
     const audio = document.getElementById('audio');
     const playIcon = document.getElementById('play_icon');
@@ -45,7 +44,15 @@ document.addEventListener('DOMContentLoaded', function() {
         playIcon.style.display = 'block';
         pauseIcon.style.display = 'none';
     });
+
+    // reload no titulo
+    const topTitle = document.getElementById('topTitle');
+    topTitle.addEventListener('click', function() {
+        removeQueryParameter('query')
+        location.reload(); 
+    });
 });
+
 
 function removeQueryParameter(param) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -515,7 +522,7 @@ function searchByText(text) {
     console.log('Pesquisar por texto:', text);
 
     // URL da API com o ID dinâmico
-    const url = `https://datamatch-backend.onrender.com/songmatch/search?content=${text}&token=${publicToken}&mxm_data=1`;
+    const url = `http://localhost:3000/songmatch/search?content=${text}&token=${publicToken}&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
@@ -592,11 +599,16 @@ function setSpotifyData(spotifyData, musixmatchData) {
     const trackAlbum = document.getElementById('album_name')
     const trackDuration = document.getElementById('track_duration')
 
-    const trackReleased = document.getElementById('track_released')
-    const trackPosition = document.getElementById('track_position')
-    const trackPopularity = document.getElementById('track_popularity')
-    const trackAlbumType = document.getElementById('track_album_type')
-    const trackMarkets = document.getElementById('track_markets')
+    const trackReleased = document.getElementById('track_released_date')
+    const trackPosition1 = document.getElementById('track_position_content')
+    const trackPosition2 = document.getElementById('album_total_content')
+    const trackPopularity = document.getElementById('track_popularity_number')
+
+    const albumType1 = document.getElementById('albumLabel1')
+    const albumType2 = document.getElementById('singleLabel')
+    const albumType3 = document.getElementById('compilationLabel')
+    
+    const trackMarkets = document.getElementById('track_markets_total')
 
     const trackSpId = document.getElementById('track_sp_id')
     const trackIsrc = document.getElementById('track_isrc_code')
@@ -671,21 +683,33 @@ function setSpotifyData(spotifyData, musixmatchData) {
         trackDuration.textContent = formattedDuration;
     /* *********** */
 
-    trackReleased.textContent = `${translations[selectedLanguage]['releasedDateLabel']} ${spotifyData.album_data.release_date}`; // lançada em DD/MM/YYYY
-    trackPosition.textContent = `${translations[selectedLanguage]['trackPositionLabel1']} ${spotifyData.track_data.disc_position} ${translations[selectedLanguage]['trackPositionLabel2']} ${spotifyData.album_data.total_tracks}`; // faixa X de Y
-    trackPopularity.textContent = `${translations[selectedLanguage]['trackPopularityLabel']} ${spotifyData.track_data.popularity}%`; // popularidade de xx%
+    trackReleased.textContent = spotifyData.album_data.release_date; // lançada em DD/MM/YYYY
+
+    trackPosition1.textContent = spotifyData.track_data.disc_position
+    trackPosition2.textContent = spotifyData.album_data.total_tracks
+
+    trackPopularity.textContent = `${spotifyData.track_data.popularity}%`; // popularidade de xx%
 
     if (spotifyData.album_data.album_type === 'album') {
-        trackAlbumType.textContent = `${translations[selectedLanguage]['albumTypeLabel']} ${translations[selectedLanguage]['albumLabel1']}`;
+        albumType1.style.display = 'inline' // album
+        albumType2.style.display = 'none' // single
+        albumType3.style.display = 'none' // compilation
+        
     } else if (spotifyData.album_data.album_type === 'single') {
-        trackAlbumType.textContent = `${translations[selectedLanguage]['albumTypeLabel']} ${translations[selectedLanguage]['singleLabel']}`;
+        albumType1.style.display = 'none'
+        albumType2.style.display = 'inline'
+        albumType3.style.display = 'none'
+
     } else if (spotifyData.album_data.album_type === 'compilation') {
-        trackAlbumType.textContent = `${translations[selectedLanguage]['albumTypeLabel']} ${translations[selectedLanguage]['compilationLabel']}`;
+        albumType1.style.display = 'none'
+        albumType2.style.display = 'none'
+        albumType3.style.display = 'inline'
+
     }
     
     const availableMarkets = spotifyData.track_data.available_markets;
     const numCountries = availableMarkets.length;
-    trackMarkets.textContent = `${translations[selectedLanguage]['trackMarkets1']} ${numCountries} ${translations[selectedLanguage]['trackMarkets2']}`;
+    trackMarkets.textContent = numCountries;
 
     trackSpId.textContent = trackId;
     trackIsrc.textContent = spotifyData.track_data.isrc;

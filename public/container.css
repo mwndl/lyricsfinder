@@ -100,14 +100,17 @@
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 10px;
+    user-select: text;
 }
 
 #artist_list {
     font-size: 16px;
+    user-select: text;
 }
 
 #album_name {
     font-size: 16px;
+    user-select: text;
 }
 
 #track_duration {
@@ -134,11 +137,12 @@
 }
 
 .track_info {
-    display:flex;
+    display: flex;
     flex-direction: column;
     width: calc(40% - 10px);
     align-items: center;
     padding: 20px;
+    user-select: text;
 }
 
 .track_ids {
@@ -417,11 +421,6 @@
     .cont_id_value {
         background-color: #3e3e3e;
         color: #ffffff;
-        font-size: 13px;
-    }
-
-    .cont_id_label {
-        font-size: 14px;
     }
 
     .status-gray {

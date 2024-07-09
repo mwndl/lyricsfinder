@@ -37,7 +37,7 @@ a {
     padding: 0;
     margin: 0; 
     font: inherit; 
-    cursor: default;
+    cursor: pointer;
     outline: none; 
 }
 
@@ -64,6 +64,7 @@ a:hover {
     position: relative;
     display: inline-block;
     cursor: pointer;
+    user-select: none;
 }
 
 .flag-menu {
@@ -207,6 +208,7 @@ hr {
     color: #333;
     margin: 0;
     user-select: none;
+    cursor: pointer;
 }
 
 #mainTitle {
