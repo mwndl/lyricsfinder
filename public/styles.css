@@ -29,7 +29,21 @@ body::before {
     z-index: -1;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+    background: none; 
+    border: none; 
+    padding: 0;
+    margin: 0; 
+    font: inherit; 
+    cursor: default;
+    outline: none; 
+}
 
+a:hover {
+    text-decoration: underline;
+}
 
 ::-webkit-scrollbar {
     width: 14px;
@@ -568,6 +582,26 @@ hr {
 
 }
 
+@media (max-width: 550px) {
+    .main {
+        padding: 0;
+    }
+
+    .bmcButton {
+        display: none;
+    }
+
+    .search_container {
+        margin: 0 5px;
+        border-radius: 12px;
+    }
+
+    .sp_data_container {
+        border-radius: 0;
+    }
+
+}
+
 
 .google_input_wrapper {
     position: relative;
@@ -631,10 +665,6 @@ hr {
     body {
         background-color: #181818;
         color: rgb(255, 255, 255);
-    }
-
-    .top {
-        background: linear-gradient(to top, #ffffff00, black);
     }
 
     h1, p, label {

@@ -47,6 +47,34 @@ const translations = {
 
         "contentCopiedSuccess": "Conteúdo copiado para a área de transferência",
 
+        "releasedDateLabel": "Lançada em", // lançada em DD/MM/YYYY
+        "trackPositionLabel1": "Faixa", // faixa X de Y
+        "trackPositionLabel2": "de", // faixa X de Y
+        "trackPopularityLabel": "Popularidade de", // popularidade de xx%
+
+        "albumTypeLabel": "Tipo de álbum:", // tipo de álbum: x
+        "albumLabel": "Álbum", // album type: Álbum
+        "singleLabel": "Single", // album type: Single
+        "compilationLabel": "Compilação", // album type: Compilação
+
+        "trackMarkets1": "Disponível em", // disponível em X países
+        "trackMarkets2": "países", // disponível em X países
+
+        "spotifyIdLabel": "ID do Spotify:",
+        "isrcLabel": "ISRC:",
+        "abstrackLabel": "Abstrack:",
+
+        "lyricsLabel": "Letras:",
+        "artistLabel": "Artista:",
+        "albumLabel": "Álbum:",
+
+        "lyricsStatLabel": "Letras:",
+        "syncStatLabel": "Sync linhas:",
+        "wordSyncStatLabel": "Sync palavras:",
+
+        "openLyricsLabel": "Ver as letras",
+        "openStudioLabel": "Abrir no Studio",
+
     },
 
     "en": {
@@ -96,6 +124,34 @@ const translations = {
 
         "contentCopiedSuccess": "Content copied to clipboard",
 
+        "releasedDateLabel": "Released on", // released on DD/MM/YYYY
+        "trackPositionLabel1": "Track", // track X of Y
+        "trackPositionLabel2": "of", // track X of Y
+        "trackPopularityLabel": "Popularity of", // popularity of xx%
+
+        "albumTypeLabel": "Album type:", // album type: x
+        "albumLabel": "Album", // album type: album
+        "singleLabel": "Single", // album type: single
+        "compilationLabel": "Compilation", // album type: compilation
+
+        "trackMarkets1": "Available in", // available in X countries
+        "trackMarkets2": "countries", // available in X countries
+    
+        "spotifyIdLabel": "Spotify ID:",
+        "isrcLabel": "ISRC:",
+        "abstrackLabel": "Abstract:",
+    
+        "lyricsLabel": "Lyrics:",
+        "artistLabel": "Artist:",
+        "albumLabel": "Album:",
+    
+        "lyricsStatLabel": "Lyrics:",
+        "syncStatLabel": "Line sync:",
+        "wordSyncStatLabel": "Word sync:",
+    
+        "openLyricsLabel": "View lyrics",
+        "openStudioLabel": "Open in Studio",
+
     },
 
     "es": {
@@ -143,7 +199,35 @@ const translations = {
         "error500": "Nuestros sistemas están temporalmente ocupados. Por favor, inténtalo de nuevo más tarde.",
         "error502": "¡Ups! Hubo un problema de conexión. Por favor, inténtalo de nuevo más tarde.",
 
-        "contentCopiedSuccess": "Contenido copiado al portapapeles"
+        "contentCopiedSuccess": "Contenido copiado al portapapeles",
+
+        "releasedDateLabel": "Lanzado el", // lanzado el DD/MM/YYYY
+        "trackPositionLabel1": "Pista", // pista X de Y
+        "trackPositionLabel2": "de", // pista X de Y
+        "trackPopularityLabel": "Popularidad de", // popularidad de xx%
+
+        "albumTypeLabel": "Tipo de álbum:", // tipo de álbum: x
+        "albumLabel": "Álbum", // tipo de álbum : álbum
+        "singleLabel": "Single", // tipo de álbum : single
+        "compilationLabel": "Compilación", // tipo de álbum : compilación
+
+        "trackMarkets1": "Disponible en", // disponible en X países
+        "trackMarkets2": "países", // disponible en X países
+    
+        "spotifyIdLabel": "ID de Spotify:",
+        "isrcLabel": "ISRC:",
+        "abstrackLabel": "Resumen:",
+    
+        "lyricsLabel": "Letras:",
+        "artistLabel": "Artista:",
+        "albumLabel": "Álbum:",
+    
+        "lyricsStatLabel": "Letras:",
+        "syncStatLabel": "Sync líneas:",
+        "wordSyncStatLabel": "Sync palabras:",
+    
+        "openLyricsLabel": "Ver las letras",
+        "openStudioLabel": "Abrir en Studio",
     },
 
     "fr": {
@@ -192,5 +276,33 @@ const translations = {
         "error502": "Oups ! Il y a eu un problème de connexion. Veuillez réessayer plus tard.",
 
         "contentCopiedSuccess": "Contenu copié dans le presse-papiers",
+
+        "releasedDateLabel": "Sorti le", // sorti le DD/MM/YYYY
+        "trackPositionLabel1": "Piste", // piste X de Y
+        "trackPositionLabel2": "de", // piste X de Y
+        "trackPopularityLabel": "Popularité de", // popularité de xx%
+
+        "albumTypeLabel": "Type d'album :", // type d'album : x
+        "albumLabel": "Album", // type d'album : album
+        "singleLabel": "Single", // type d'album : single
+        "compilationLabel": "Compilation", // type d'album : compilation
+
+        "trackMarkets1": "Disponible dans", // disponible dans X pays
+        "trackMarkets2": "pays", // disponible dans X pays
+    
+        "spotifyIdLabel": "ID Spotify :",
+        "isrcLabel": "ISRC :",
+        "abstrackLabel": "Résumé :",
+    
+        "lyricsLabel": "Paroles :",
+        "artistLabel": "Artiste :",
+        "albumLabel": "Album :",
+    
+        "lyricsStatLabel": "Paroles :",
+        "syncStatLabel": "Sync lignes :",
+        "wordSyncStatLabel": "Sync mots :",
+    
+        "openLyricsLabel": "Voir les paroles",
+        "openStudioLabel": "Ouvrir dans Studio",
     }
 };

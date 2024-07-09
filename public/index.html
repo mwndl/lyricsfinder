@@ -109,7 +109,7 @@
         <div class="main">
             <div class="message">
             </div>
-            <div class="simulator" id="simulator" style="user-select: none;">
+            <div class="simulator search_container" id="simulator" style="user-select: none;">
                 <div class="simulator_top">
                     <div class="search-container">
                         <input id="search_bar_content" autocomplete="off" type="text" class="search-bar"
@@ -124,10 +124,23 @@
                 </div>
             </div>
 
-            <div class="simulator" id="sp_container" style="user-select: none; display: none;">
+            <div class="simulator sp_data_container" id="sp_container" style="user-select: none; display: block;">
                 <div class="track_container">
                     <div class="cont_top">
-                        <iframe id="track_sp_iframe" class="sp_iframe" style="border-radius:12px" src="" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <div class="internal_div track_data">
+                            <div class="track_image_div">
+                                <img id="track_image" width="100%">
+                            </div>
+                            <div class="track_data_div">
+                                <div id="track_name"></div>
+                                <div id="artist_list"></div>
+                                <div id="album_name"></div>
+                            </div>
+                            <div class="player" id="player" style="display:none">
+                                <img id="play_icon" src="./images/play_icon.svg" alt="Play">
+                                <img id="pause_icon" src="./images/pause_icon.svg" alt="Pause" style="display:none">
+                            </div>
+                        </div>
                     </div>
                     <div class="cont_main">
 
@@ -140,15 +153,15 @@
                         </div>
                         <div class="internal_div track_ids">
                             <div class="cont_id">
-                                <div id="spotifyIdLabel" class="cont_id_label">Spotify ID</div>
+                                <div id="spotifyIdLabel" class="cont_id_label"></div>
                                 <div id="track_sp_id" class="cont_id_value" style="color: #8a8a8a;">No data</div>
                             </div>
                             <div class="cont_id">
-                                <div id="isrcLabel" class="cont_id_label">ISRC</div>
+                                <div id="isrcLabel" class="cont_id_label"></div>
                                 <div id="track_isrc_code" class="cont_id_value" style="color: #8a8a8a;">No data</div>
                             </div>
                             <div class="cont_id">
-                                <div id="abstrackLabel" class="cont_id_label">Abstrack</div>
+                                <div id="abstrackLabel" class="cont_id_label"></div>
                                 <div id="track_abstrack" class="cont_id_value" style="color: #8a8a8a;">No data</div>
                             </div>
                         </div>
@@ -156,43 +169,43 @@
                     <div class="cont_main">
                         <div class="internal_div mxm_links">
                             <div class="cont_id">
-                                <div id="lyricsLabel" class="cont_id_label">Lyrics</div>
+                                <div id="lyricsLabel" class="cont_id_label"></div>
                                 <div id="track_mxm_lyrics" class="cont_id_value" style="color: #8a8a8a;">No data</div>
                             </div>
                             <div class="cont_id">
-                                <div id="artistLabel" class="cont_id_label">Artist</div>
+                                <div id="artistLabel" class="cont_id_label"></div>
                                 <div id="track_mxm_artist" class="cont_id_value" style="color: #8a8a8a;">No data</div>
                             </div>
                             <div class="cont_id">
-                                <div id="albumLabel" class="cont_id_label">Album</div>
+                                <div id="albumLabel" class="cont_id_label"></div>
                                 <div id="track_mxm_album" class="cont_id_value" style="color: #8a8a8a;">No data</div>
                             </div>
                         </div>
                         <div class="lyrics_stats_div">  
                             <div class="internal_div stats_div">
                                 <div class="stat">
-                                    <div id="lyricsStatLabel" >Lyrics</div>
+                                    <div id="lyricsStatLabel" ></div>
                                     <div id="track_lyrics_stat" class="status-1 status-gray"></div>
                                 </div>
                                 <div class="stat">
-                                    <div id="syncStatLabel">Line-sync</div>
+                                    <div id="syncStatLabel"></div>
                                     <div id="track_linesync_stat" class="status-1 status-gray"></div>
                                 </div>
                                 <div class="stat">
-                                    <div id="wordSyncStatLabel">Word-sync</div>
+                                    <div id="wordSyncStatLabel"></div>
                                     <div id="track_wordsync_stat" class="status-1 status-gray"></div>
                                 </div>
                             </div>
                             <div class="shortcuts">
-                                <div id="openLyricsLabel" class="studio_shortcut">See the lyrics</div>
-                                <div id="openStudioLabel" class="studio_shortcut">Open on Studio</div>
+                                <div id="openLyricsLabel" class="studio_shortcut" data-link="#" onclick="openLyrics()">See the lyrics</div>
+                                <div id="openStudioLabel" class="studio_shortcut" data-link="#" onclick="openStudio()">Open on Studio</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <div class="search_examples" id="search_examples">
+            <div class="search_examples" id="search_examples" style="display: none">
                 <p class="text_rocket" id="textRocketLabel" style="font-size: larger;"></p>
                 <div class="rocket_svg">
                     <img src="./images/astronaut.svg" alt="Astronaut">
@@ -249,13 +262,9 @@
                     <p id="notification-message"></p>
                 </div>
             </div>
+            <audio id="audio" src="#"></audio>
         </div>
-        <div class="footer">
-            <script id="bmcButton" data-name="BMC-Widget" data-cfasync="false"
-                src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="marcoswiendl"
-                data-description="Support me on Buy me a coffee!" data-message="Thank you for visiting!"
-                data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18">
-            </script>
+        <div style="display:none" class="footer">
         </div>
     </div>
     <script src="translations.js"></script>

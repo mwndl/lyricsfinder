@@ -22,7 +22,29 @@ document.addEventListener('DOMContentLoaded', async function () {
             flagMenu.style.display = 'none';
         }
     });
+});
 
+document.addEventListener('DOMContentLoaded', function() {
+    const player = document.getElementById('player');
+    const audio = document.getElementById('audio');
+    const playIcon = document.getElementById('play_icon');
+    const pauseIcon = document.getElementById('pause_icon');
+
+    player.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        } else {
+            audio.pause();
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        }
+    });
+    audio.addEventListener('ended', function() {
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+    });
 });
 
 function removeQueryParameter(param) {
@@ -207,33 +229,9 @@ document.getElementById('search_examples').addEventListener('click', function() 
     document.getElementById('search_bar_content').focus();
 });
 
-/* elementos dinâmicos */
-    const spIframe = document.getElementById('track_sp_iframe')
 
-    const trackReleased = document.getElementById('track_released')
-    const trackPosition = document.getElementById('track_position')
-    const trackPopularity = document.getElementById('track_popularity')
-    const trackAlbumType = document.getElementById('track_album_type')
-    const trackMarkets = document.getElementById('track_markets')
+let publicToken = '8KuA9GwNbaJYvTD8U6h64beb6d6dd56c'
 
-    const trackSpId = document.getElementById('track_sp_id')
-    const trackIsrc = document.getElementById('track_isrc_code')
-    const trackAbstrack = document.getElementById('track_abstrack')
-
-    const trackMxmLyrics = document.getElementById('track_mxm_lyrics')
-    const trackMxmArtist = document.getElementById('track_mxm_artist')
-    const trackMxmAlbum = document.getElementById('track_mxm_album')
-
-    const trackLyricsStat = document.getElementById('track_lyrics_stat')
-    const trackLinesyncStat = document.getElementById('track_linesync_stat')
-    const trackWordsyncStat = document.getElementById('track_wordsync_stat')
-
-    const openLyrics = document.getElementById('openLyricsLabel')
-    const openStudio = document.getElementById('openStudioLabel')
-
-    let publicToken = '8KuA9GwNbaJYvTD8U6h64beb6d6dd56c'
-
-/* ***************** */
 
 document.getElementById('search_bar_content').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
@@ -545,19 +543,99 @@ function searchByText(text) {
 }
 
 function setSpotifyData(spotifyData, musixmatchData) {
+    const trackImage = document.getElementById('track_image')
+
+    const trackName = document.getElementById('track_name')
+    const trackArtist = document.getElementById('artist_list')
+    const trackAlbum = document.getElementById('album_name')
+
+    const trackReleased = document.getElementById('track_released')
+    const trackPosition = document.getElementById('track_position')
+    const trackPopularity = document.getElementById('track_popularity')
+    const trackAlbumType = document.getElementById('track_album_type')
+    const trackMarkets = document.getElementById('track_markets')
+
+    const trackSpId = document.getElementById('track_sp_id')
+    const trackIsrc = document.getElementById('track_isrc_code')
+    const trackAbstrack = document.getElementById('track_abstrack')
+
+    const trackMxmLyrics = document.getElementById('track_mxm_lyrics')
+    const trackMxmArtist = document.getElementById('track_mxm_artist')
+    const trackMxmAlbum = document.getElementById('track_mxm_album')
+
+    const trackLyricsStat = document.getElementById('track_lyrics_stat')
+    const trackLinesyncStat = document.getElementById('track_linesync_stat')
+    const trackWordsyncStat = document.getElementById('track_wordsync_stat')
+
+    const openLyrics = document.getElementById('openLyricsLabel')
+    const openStudio = document.getElementById('openStudioLabel')
+
+    const previewPlayer = document.getElementById('player')
+    const audioPlayer = document.getElementById('audio');
+    const playIcon = document.getElementById('play_icon');
+    const pauseIcon = document.getElementById('pause_icon');
+
     const trackId = spotifyData.track_data.track_id;
     const albumImage = spotifyData.album_data.images[0].url;
 
     document.getElementById('search_examples').style.display = 'none';
     document.getElementById('sp_container').style.display = 'block';
 
-    spIframe.src = `https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0`;
+    trackImage.src = albumImage;
 
-    trackReleased.textContent = `Lançada em ${spotifyData.album_data.release_date}`;
-    trackPosition.textContent = `Faixa ${spotifyData.track_data.disc_position} de ${spotifyData.album_data.total_tracks}`;
-    trackPopularity.textContent = `Popularidade de ${spotifyData.track_data.popularity}%`;
-    trackAlbumType.textContent = `Tipo de álbum: ${spotifyData.album_data.album_type}`;
-    trackMarkets.textContent = `Disponível em 182 países`;
+    /* Track name */
+        const track = spotifyData.track_data;
+        trackName.textContent = ''
+        const trackLink = document.createElement('a');
+        trackLink.href = `https://open.spotify.com/track/${track.track_id}`;
+        trackLink.textContent = track.track_name;
+        trackLink.target = "_blank"; // Abre o link em uma nova aba
+
+        trackName.appendChild(trackLink);
+
+    /* Artist name */
+        const artists = spotifyData.artists_data.artists;
+        trackArtist.textContent = ''
+        artists.forEach((artist, index) => {
+            const artistLink = document.createElement('a');
+            artistLink.href = `https://open.spotify.com/artist/${artist.artist_id}`;
+            artistLink.textContent = artist.name;
+            artistLink.target = "_blank"; // Abre o link em uma nova aba
+        
+            trackArtist.appendChild(artistLink);
+        
+            // Adiciona uma vírgula e espaço após cada link, exceto o último
+            if (index < artists.length - 1) {
+                const separator = document.createTextNode(', ');
+                trackArtist.appendChild(separator);
+            }
+        });
+
+    /* Album name */
+        const album = spotifyData.album_data;
+        trackAlbum.textContent = ''
+        const albumLink = document.createElement('a');
+        albumLink.href = `https://open.spotify.com/album/${album.album_id}`;
+        albumLink.textContent = album.album_name;
+        albumLink.target = "_blank"; // Abre o link em uma nova aba
+
+        trackAlbum.appendChild(albumLink);
+
+    trackReleased.textContent = `${translations[selectedLanguage]['releasedDateLabel']} ${spotifyData.album_data.release_date}`; // lançada em DD/MM/YYYY
+    trackPosition.textContent = `${translations[selectedLanguage]['trackPositionLabel1']} ${spotifyData.track_data.disc_position} ${translations[selectedLanguage]['trackPositionLabel2']} ${spotifyData.album_data.total_tracks}`; // faixa X de Y
+    trackPopularity.textContent = `${translations[selectedLanguage]['trackPopularityLabel']} ${spotifyData.track_data.popularity}%`; // popularidade de xx%
+
+    if (spotifyData.album_data.album_type === 'album') {
+        trackAlbumType.textContent = `${translations[selectedLanguage]['albumTypeLabel']} ${translations[selectedLanguage]['albumLabel']}`;
+    } else if (spotifyData.album_data.album_type === 'single') {
+        trackAlbumType.textContent = `${translations[selectedLanguage]['albumTypeLabel']} ${translations[selectedLanguage]['singleLabel']}`;
+    } else if (spotifyData.album_data.album_type === 'compilation') {
+        trackAlbumType.textContent = `${translations[selectedLanguage]['albumTypeLabel']} ${translations[selectedLanguage]['compilationLabel']}`;
+    }
+    
+    const availableMarkets = spotifyData.track_data.available_markets;
+    const numCountries = availableMarkets.length;
+    trackMarkets.textContent = `${translations[selectedLanguage]['trackMarkets1']} ${numCountries} ${translations[selectedLanguage]['trackMarkets2']}`;
 
     trackSpId.textContent = trackId;
     trackIsrc.textContent = spotifyData.track_data.isrc;
@@ -581,32 +659,48 @@ function setSpotifyData(spotifyData, musixmatchData) {
 
     if (musixmatchData.track_data.stats.has_lyrics === 1) {
         trackLyricsStat.className = 'status-1 status-blue'
-    } 
+    } else {
+        trackLyricsStat.className = 'status-1 status-gray'
+    }
     
     if (musixmatchData.track_data.stats.has_line_sync === 1) {
         trackLinesyncStat.className = 'status-1 status-blue'
+    } else {
+        trackLinesyncStat.className = 'status-1 status-gray'
     }
     
     if (musixmatchData.track_data.stats.has_word_sync === 1) {
         trackWordsyncStat.className = 'status-1 status-blue'
+    } else {
+        trackWordsyncStat.className = 'status-1 status-gray'
     }
 
-    document.getElementById('openLyricsLabel').addEventListener('click', function() {
-        window.open(`http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`, '_blank');
-    });
+    if (spotifyData.track_data.preview_url !== null) {
+        previewPlayer.style.display = 'flex'
+        playIcon.style.display = 'block'
+        pauseIcon.style.display = 'none'
+        audioPlayer.src = spotifyData.track_data.preview_url
+    } else {
+        previewPlayer.style.display = 'none'
+        playIcon.style.display = 'block'
+        pauseIcon.style.display = 'none'
+        audioPlayer.src = '#'
+    }
 
-    document.getElementById('openStudioLabel').addEventListener('click', function() {
-        window.open(`https://curators.musixmatch.com/tool?commontrack_id=${musixmatchData.track_data.commontrack_id}&mode=edit`, '_blank');
-    });
+    openLyrics.setAttribute('data-link', `http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`);
+    openStudio.setAttribute('data-link', `https://curators.musixmatch.com/tool?commontrack_id=${musixmatchData.track_data.commontrack_id}&mode=edit`);
 
-    document.getElementById("body").style.backgroundImage = `url('${albumImage}')`;
-    document.getElementById("body").style.backgroundSize = "cover";
-    document.getElementById("body").style.backgroundPosition = "center";
 }
 
+function openLyrics() {
+    const link = document.getElementById('openLyricsLabel').getAttribute('data-link');
+    window.open(link, '_blank');
+}
 
-
-
+function openStudio() {
+    const link = document.getElementById('openStudioLabel').getAttribute('data-link');
+    window.open(link, '_blank');
+}
 
 
 
