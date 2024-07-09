@@ -34,7 +34,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
 }
 
 /* player */
@@ -88,7 +88,7 @@
 
 /* ********* */
 
-#track_name, #artist_list, #album_name {
+#track_name, #artist_list, #album_name, #track_duration {
     margin-bottom: 5px;
     text-wrap: nowrap;
     overflow: hidden;
@@ -108,6 +108,12 @@
 
 #album_name {
     font-size: 16px;
+}
+
+#track_duration {
+    font-size: 14px;
+    font-style: italic;
+    color: #818181;
 }
 
 .cont_main {

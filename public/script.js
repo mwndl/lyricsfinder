@@ -590,6 +590,7 @@ function setSpotifyData(spotifyData, musixmatchData) {
     const trackName = document.getElementById('track_name')
     const trackArtist = document.getElementById('artist_list')
     const trackAlbum = document.getElementById('album_name')
+    const trackDuration = document.getElementById('track_duration')
 
     const trackReleased = document.getElementById('track_released')
     const trackPosition = document.getElementById('track_position')
@@ -631,7 +632,7 @@ function setSpotifyData(spotifyData, musixmatchData) {
         const trackLink = document.createElement('a');
         trackLink.href = `https://open.spotify.com/track/${track.track_id}`;
         trackLink.textContent = track.track_name;
-        trackLink.target = "_blank"; // Abre o link em uma nova aba
+        trackLink.target = "_blank";
 
         trackName.appendChild(trackLink);
 
@@ -642,11 +643,10 @@ function setSpotifyData(spotifyData, musixmatchData) {
             const artistLink = document.createElement('a');
             artistLink.href = `https://open.spotify.com/artist/${artist.artist_id}`;
             artistLink.textContent = artist.name;
-            artistLink.target = "_blank"; // Abre o link em uma nova aba
+            artistLink.target = "_blank";
         
             trackArtist.appendChild(artistLink);
         
-            // Adiciona uma vírgula e espaço após cada link, exceto o último
             if (index < artists.length - 1) {
                 const separator = document.createTextNode(', ');
                 trackArtist.appendChild(separator);
@@ -659,9 +659,17 @@ function setSpotifyData(spotifyData, musixmatchData) {
         const albumLink = document.createElement('a');
         albumLink.href = `https://open.spotify.com/album/${album.album_id}`;
         albumLink.textContent = album.album_name;
-        albumLink.target = "_blank"; // Abre o link em uma nova aba
+        albumLink.target = "_blank";
 
         trackAlbum.appendChild(albumLink);
+
+    /* Track duration */
+        let durationMs = spotifyData.track_data.duration_ms;
+        let minutes = Math.floor(durationMs / 60000);
+        let seconds = ((durationMs % 60000) / 1000).toFixed(0);
+        let formattedDuration = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+        trackDuration.textContent = formattedDuration;
+    /* *********** */
 
     trackReleased.textContent = `${translations[selectedLanguage]['releasedDateLabel']} ${spotifyData.album_data.release_date}`; // lançada em DD/MM/YYYY
     trackPosition.textContent = `${translations[selectedLanguage]['trackPositionLabel1']} ${spotifyData.track_data.disc_position} ${translations[selectedLanguage]['trackPositionLabel2']} ${spotifyData.album_data.total_tracks}`; // faixa X de Y
