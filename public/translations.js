@@ -44,7 +44,7 @@ const translations = {
         "error400": "Oops! Parece que houve um erro. Verifique se você digitou tudo corretamente.",
         "error401": "Oops! Ocorreu um erro do nosso lado. Estamos trabalhando para resolvê-lo o mais rápido possível.",
         "error404": "Hmm... Não encontramos a faixa que você está procurando",
-        "error429": "Muitas solicitações! Por favor, aguarde um pouco e tente novamente mais tarde.",
+        "error429": "Muitas solicitações! Por favor, aguarde alguns instantes e tente novamente mais tarde.",
         "error500": "Nossos sistemas estão temporariamente ocupados. Tente novamente mais tarde.",
         "error502": "Oops! Houve um problema de conexão. Por favor, tente novamente mais tarde.",
 
