@@ -358,4 +358,7 @@
         padding: 0 5px;
     }
 
+    .studio_shortcut, .internal_div {
+        border-radius: 8px;
+    }
 }
