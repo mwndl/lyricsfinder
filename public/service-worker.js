@@ -1,4 +1,4 @@
-const CACHE_NAME = 'lyricsfinder-cache-v1';
+const CACHE_NAME = 'songmatch-cache-v1';
 const urlsToCache = [
     '/',
     '/public/' // Adiciona toda a pasta 'public' (certifique-se de que isso esteja funcionando conforme esperado)

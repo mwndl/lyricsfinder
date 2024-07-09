@@ -1,6 +1,6 @@
 {
-    "name": "LyricsFinder",
-    "short_name": "LyricsFinder",
+    "name": "Songmatch",
+    "short_name": "Songmatch",
     "description": "A free service for finding data on your favorite songs",
     "start_url": "/",
     "display": "standalone",
