@@ -43,7 +43,7 @@
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background-color: #f9f9f9;
+    background-color: #333333;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,6 +51,11 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+}
+
+.player:hover {
+    background-color: #5c5c5c;
 }
 
 .player img {
@@ -59,13 +64,25 @@
 }
 
 #play_icon {
+    width: 20px;
+    height: 20px;
     position: absolute;
     left: 10px;
+    background-image: url('./images/icons/play_icon_light.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #pause_icon {
+    width: 20px;
+    height: 20px;
     position: absolute;
     left: 8px;
+    background-image: url('./images/icons/pause_icon_light.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 
@@ -100,13 +117,14 @@
 }
 
 .internal_div {
-    background-color: #333333;
+    background-color: #ffffff;
+    color: #333;
     border-radius: 12px;
     padding: 15px 20px;
     box-sizing: border-box;
     justify-content: space-between;
     margin: 10px 0;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
 }
 
 .track_info {
@@ -145,7 +163,8 @@
 .cont_id_value {
     flex: 1;
     padding: 8px;
-    background-color: #3e3e3e;
+    background-color: #ededed;
+    color: #333;
     border-radius: 12px;
     user-select: text;
     cursor: text;
@@ -178,7 +197,7 @@
 }
 
 .status-gray {
-    background-color: #626262;
+    background-color: #d6d6d6;
 }
 
 .status-blue {
@@ -209,7 +228,7 @@
 }
 
 .studio_shortcut {
-    background-color: #333333;
+    background-color: #ffffff;
     border-radius: 12px;
     padding: 20px 8px;
     width: calc(50% - 20px);
@@ -217,10 +236,12 @@
     text-overflow: ellipsis;
     transition: background-color 0.3s ease;
     text-wrap:nowrap;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
 }
 
 .studio_shortcut:hover {
-    background-color: #5c5c5c;
+    background-color: #ededed;
 }
 
 @media (max-width: 700px) {
@@ -360,5 +381,33 @@
 
     .studio_shortcut, .internal_div {
         border-radius: 8px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .internal_div, .studio_shortcut {
+        background-color: #333333;
+        color: #ffffff;
+    }
+
+    .studio_shortcut:hover {
+        background-color: #5c5c5c;
+    }
+
+    .cont_id_value {
+        background-color: #3e3e3e;
+        color: #ffffff;
+    }
+
+    .status-gray {
+        background-color: #626262;
+    }
+
+    .player {
+        background-color: #f9f9f9;
+    }
+    
+    .player:hover {
+        background-color: #ededed;
     }
 }

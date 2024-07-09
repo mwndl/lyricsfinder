@@ -608,56 +608,6 @@ hr {
 
 }
 
-
-.google_input_wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border: 2px solid #cccccc;
-    border-radius: 8px;
-    width: 100%;
-    transition: border-color 0.3s ease;
-}
-
-.google_input_wrapper:hover {
-    border-color: #007bff;
-}
-
-.google_input_container {
-    position: relative;
-    margin: 10px 0;
-}
-
-.google_prefix {
-    border-right: none;
-    color: #777;
-    font-size: 16px;
-    font-weight: 500;
-    padding: 0 10px;
-}
-
-.google_input {
-    border: none;
-    outline: none;
-    width: 100%;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.google_label {
-    position: absolute;
-    top: -8px;
-    left: 15px;
-    background-color: white;
-    padding: 0 5px;
-    color: #777;
-    font-size: 14px;
-    font-weight: 500;
-    z-index: 1;
-}
-
 /**/
 
 .simulator_section_intern {
