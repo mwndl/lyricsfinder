@@ -596,6 +596,7 @@ hr {
 
     .sp_data_container {
         border-radius: 12px;
+        margin-bottom: 12px;
     }
 
     .search_examples_div {
