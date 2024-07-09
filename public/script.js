@@ -283,7 +283,7 @@ function searchSpotifyId(id) {
     console.log('Pesquisar Spotify ID:', id);
 
     // URL da API com o ID dinâmico
-    const url = `https://datamatch-backend.onrender.com/songmatch/id?content=${id}&token=${publicToken}&mxm_data=1`;
+    const url = `http://localhost:3000/songmatch/id?content=${id}&token=${publicToken}&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
