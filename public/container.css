@@ -187,7 +187,7 @@
     justify-content: space-between;
     width: 100%;
     margin: 5px 0;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
 }
 
 .stat {
@@ -237,7 +237,7 @@
     transition: background-color 0.3s ease;
     text-wrap:nowrap;
     cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
 }
 
 .studio_shortcut:hover {
@@ -345,11 +345,11 @@
     }
     
     #play_icon {
-        left: 9px;
+        left: 8px;
     }
     
     #pause_icon {
-        left: 7px;
+        left: 5.4px;
     }
 
     .track_data {
