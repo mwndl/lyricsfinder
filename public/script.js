@@ -221,7 +221,9 @@ function hasRequiredParameters() {
     }
 
     content = getQueryParameter('search')
-    handleSearch(content)
+    if (content !== null) {
+        handleSearch(content)
+    }
     return true;
 }
 
