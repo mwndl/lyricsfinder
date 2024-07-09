@@ -53,7 +53,7 @@ const translations = {
         "trackPopularityLabel": "Popularidade de", // popularidade de xx%
 
         "albumTypeLabel": "Tipo de álbum:", // tipo de álbum: x
-        "albumLabel": "Álbum", // album type: Álbum
+        "albumLabel1": "Álbum", // album type: Álbum
         "singleLabel": "Single", // album type: Single
         "compilationLabel": "Compilação", // album type: Compilação
 
@@ -130,7 +130,7 @@ const translations = {
         "trackPopularityLabel": "Popularity of", // popularity of xx%
 
         "albumTypeLabel": "Album type:", // album type: x
-        "albumLabel": "Album", // album type: album
+        "albumLabel1": "Album", // album type: album
         "singleLabel": "Single", // album type: single
         "compilationLabel": "Compilation", // album type: compilation
 
@@ -207,7 +207,7 @@ const translations = {
         "trackPopularityLabel": "Popularidad de", // popularidad de xx%
 
         "albumTypeLabel": "Tipo de álbum:", // tipo de álbum: x
-        "albumLabel": "Álbum", // tipo de álbum : álbum
+        "albumLabel1": "Álbum", // tipo de álbum : álbum
         "singleLabel": "Single", // tipo de álbum : single
         "compilationLabel": "Compilación", // tipo de álbum : compilación
 
@@ -283,7 +283,7 @@ const translations = {
         "trackPopularityLabel": "Popularité de", // popularité de xx%
 
         "albumTypeLabel": "Type d'album :", // type d'album : x
-        "albumLabel": "Album", // type d'album : album
+        "albumLabel1": "Album", // type d'album : album
         "singleLabel": "Single", // type d'album : single
         "compilationLabel": "Compilation", // type d'album : compilation
 

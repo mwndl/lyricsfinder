@@ -628,7 +628,7 @@ function setSpotifyData(spotifyData, musixmatchData) {
     trackPopularity.textContent = `${translations[selectedLanguage]['trackPopularityLabel']} ${spotifyData.track_data.popularity}%`; // popularidade de xx%
 
     if (spotifyData.album_data.album_type === 'album') {
-        trackAlbumType.textContent = `${translations[selectedLanguage]['albumTypeLabel']} ${translations[selectedLanguage]['albumLabel']}`;
+        trackAlbumType.textContent = `${translations[selectedLanguage]['albumTypeLabel']} ${translations[selectedLanguage]['albumLabel1']}`;
     } else if (spotifyData.album_data.album_type === 'single') {
         trackAlbumType.textContent = `${translations[selectedLanguage]['albumTypeLabel']} ${translations[selectedLanguage]['singleLabel']}`;
     } else if (spotifyData.album_data.album_type === 'compilation') {
