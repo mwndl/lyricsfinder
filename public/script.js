@@ -522,7 +522,7 @@ function searchByText(text) {
     console.log('Pesquisar por texto:', text);
 
     // URL da API com o ID dinâmico
-    const url = `http://localhost:3000/songmatch/search?content=${text}&token=${publicToken}&mxm_data=1`;
+    const url = `https://datamatch-backend.onrender.com/songmatch/search?content=${text}&token=${publicToken}&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
