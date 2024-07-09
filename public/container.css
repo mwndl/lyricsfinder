@@ -261,16 +261,16 @@
     }
 
     #track_name {
-        font-size: 16px;
+        font-size: 18px;
         margin-bottom: 10px;
     }
 
     .internal_div, .studio_shortcut, .cont_id_label, #artist_list, #album_name {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     .cont_id_value {
-        font-size: 13px;
+        font-size: 15px;
     }
 
 
@@ -306,6 +306,19 @@
 }
 
 @media (max-width: 550px) {
+
+    #track_name {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .internal_div, .studio_shortcut, .cont_id_label, #artist_list, #album_name {
+        font-size: 14px;
+    }
+
+    .cont_id_value {
+        font-size: 13px;
+    }
 
     .track_container {
         padding: 1px 0;
