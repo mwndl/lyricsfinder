@@ -410,4 +410,12 @@
     .player:hover {
         background-color: #ededed;
     }
+
+    #play_icon {
+        background-image: url('./images/icons/play_icon_dark.svg');
+    }
+    
+    #pause_icon {
+        background-image: url('./images/icons/pause_icon_dark.svg');
+    }
 }
