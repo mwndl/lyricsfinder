@@ -147,7 +147,8 @@
     padding: 8px;
     background-color: #3e3e3e;
     border-radius: 12px;
-    user-select: auto;
+    user-select: text;
+    cursor: text;
 }
 
 .lyrics_stats_div {
