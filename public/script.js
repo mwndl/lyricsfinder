@@ -305,6 +305,9 @@ function searchSpotifyId(id) {
                 if (response.status === 429) {
                     throw new Error('Erro 429: Muitas requisições. Tente novamente mais tarde.');
                 }
+                if (response.status === 404) {
+                    throw new Error('Erro 404: Não encontrado.');
+                }
                 if (response.status === 401) {
                     throw new Error('Erro 401: Não autorizado.');
                 }
@@ -335,6 +338,9 @@ function searchSpotifyId(id) {
             switch (error.message) {
                 case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
                     errorMessage = translations[selectedLanguage]['error429'];
+                    break;
+                case 'Erro 404: Não encontrado.':
+                    errorMessage = translations[selectedLanguage]['error404'];
                     break;
                 case 'Erro 401: Não autorizado.':
                     errorMessage = translations[selectedLanguage]['error401'];
@@ -370,6 +376,9 @@ function searchByIsrc(isrc) {
                 if (response.status === 429) {
                     throw new Error('Erro 429: Muitas requisições. Tente novamente mais tarde.');
                 }
+                if (response.status === 404) {
+                    throw new Error('Erro 404: Não encontrado.');
+                }
                 if (response.status === 401) {
                     throw new Error('Erro 401: Não autorizado.');
                 }
@@ -401,6 +410,9 @@ function searchByIsrc(isrc) {
             switch (error.message) {
                 case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
                     errorMessage = translations[selectedLanguage]['error429'];
+                    break;
+                case 'Erro 404: Não encontrado.':
+                    errorMessage = translations[selectedLanguage]['error404'];
                     break;
                 case 'Erro 401: Não autorizado.':
                     errorMessage = translations[selectedLanguage]['error401'];
@@ -436,6 +448,9 @@ function searchByAbstrack(abstrack) {
                 if (response.status === 429) {
                     throw new Error('Erro 429: Muitas requisições. Tente novamente mais tarde.');
                 }
+                if (response.status === 404) {
+                    throw new Error('Erro 404: Não encontrado.');
+                }
                 if (response.status === 401) {
                     throw new Error('Erro 401: Não autorizado.');
                 }
@@ -469,6 +484,9 @@ function searchByAbstrack(abstrack) {
             switch (error.message) {
                 case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
                     errorMessage = translations[selectedLanguage]['error429'];
+                    break;
+                case 'Erro 404: Não encontrado.':
+                    errorMessage = translations[selectedLanguage]['error404'];
                     break;
                 case 'Erro 401: Não autorizado.':
                     errorMessage = translations[selectedLanguage]['error401'];
@@ -504,6 +522,9 @@ function searchByText(text) {
                 if (response.status === 429) {
                     throw new Error('Erro 429: Muitas requisições. Tente novamente mais tarde.');
                 }
+                if (response.status === 404) {
+                    throw new Error('Erro 404: Não encontrado.');
+                }
                 if (response.status === 401) {
                     throw new Error('Erro 401: Não autorizado.');
                 }
@@ -536,6 +557,9 @@ function searchByText(text) {
             switch (error.message) {
                 case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
                     errorMessage = translations[selectedLanguage]['error429'];
+                    break;
+                case 'Erro 404: Não encontrado.':
+                    errorMessage = translations[selectedLanguage]['error404'];
                     break;
                 case 'Erro 401: Não autorizado.':
                     errorMessage = translations[selectedLanguage]['error401'];

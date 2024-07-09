@@ -43,6 +43,7 @@ const translations = {
 
         "error400": "Oops! Parece que houve um erro. Verifique se você digitou tudo corretamente.",
         "error401": "Oops! Ocorreu um erro do nosso lado. Estamos trabalhando para resolvê-lo o mais rápido possível.",
+        "error404": "Hmm... Não encontramos a faixa que você está procurando",
         "error429": "Muitas solicitações! Por favor, aguarde um pouco e tente novamente mais tarde.",
         "error500": "Nossos sistemas estão temporariamente ocupados. Tente novamente mais tarde.",
         "error502": "Oops! Houve um problema de conexão. Por favor, tente novamente mais tarde.",
@@ -122,6 +123,7 @@ const translations = {
 
         "error400": "Oops! It seems there was an error. Please check if you entered everything correctly.",
         "error401": "Oops! There was an error on our side. We are working to resolve it as quickly as possible.",
+        "error404": "Hmm... We couldn't find the track you're looking for.",
         "error429": "Too many requests! Please wait a moment and try again later.",
         "error500": "Our systems are temporarily busy. Please try again later.",
         "error502": "Oops! There was a connection problem. Please try again later.",
@@ -201,6 +203,7 @@ const translations = {
 
         "error400": "¡Ups! Parece que hubo un error. Por favor, verifica si ingresaste todo correctamente.",
         "error401": "¡Ups! Hubo un error de nuestro lado. Estamos trabajando para resolverlo lo antes posible.",
+        "error404": "Hmm... No encontramos la pista que estás buscando.",
         "error429": "¡Demasiadas solicitudes! Por favor, espera un momento y vuelve a intentarlo más tarde.",
         "error500": "Nuestros sistemas están temporalmente ocupados. Por favor, inténtalo de nuevo más tarde.",
         "error502": "¡Ups! Hubo un problema de conexión. Por favor, inténtalo de nuevo más tarde.",
@@ -279,6 +282,7 @@ const translations = {
 
         "error400": "Oups ! Il semble qu'il y ait eu une erreur. Veuillez vérifier si vous avez tout saisi correctement.",
         "error401": "Oups ! Une erreur s'est produite de notre côté. Nous travaillons pour la résoudre le plus rapidement possible.",
+        "error404": "Hmm... Nous n'avons pas trouvé la piste que vous recherchez.",
         "error429": "Trop de demandes ! Veuillez patienter un moment et réessayer plus tard.",
         "error500": "Nos systèmes sont temporairement occupés. Veuillez réessayer plus tard.",
         "error502": "Oups ! Il y a eu un problème de connexion. Veuillez réessayer plus tard.",
