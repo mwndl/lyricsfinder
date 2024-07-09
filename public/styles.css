@@ -600,6 +600,10 @@ hr {
         border-radius: 0;
     }
 
+    .search_examples_div {
+        padding: 0 5px;
+    }
+
 }
 
 
