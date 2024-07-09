@@ -60,7 +60,7 @@ const translations = {
         "trackMarkets1": "Disponível em", // disponível em X países
         "trackMarkets2": "países", // disponível em X países
 
-        "spotifyIdLabel": "ID do Spotify:",
+        "spotifyIdLabel": "Spotify ID:",
         "isrcLabel": "ISRC:",
         "abstrackLabel": "Abstrack:",
 
@@ -214,7 +214,7 @@ const translations = {
         "trackMarkets1": "Disponible en", // disponible en X países
         "trackMarkets2": "países", // disponible en X países
     
-        "spotifyIdLabel": "ID de Spotify:",
+        "spotifyIdLabel": "Spotify ID:",
         "isrcLabel": "ISRC:",
         "abstrackLabel": "Resumen:",
     
@@ -290,7 +290,7 @@ const translations = {
         "trackMarkets1": "Disponible dans", // disponible dans X pays
         "trackMarkets2": "pays", // disponible dans X pays
     
-        "spotifyIdLabel": "ID Spotify :",
+        "spotifyIdLabel": "Spotify ID :",
         "isrcLabel": "ISRC :",
         "abstrackLabel": "Résumé :",
     
