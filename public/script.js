@@ -222,6 +222,23 @@ function hasRequiredParameters() {
     return true;
 }
 
+function copyContent(id) {
+    var element = document.getElementById(id);
+    var content = element.textContent.trim(); // Obtém o conteúdo da div, removendo espaços em branco
+
+    if (content !== "No data") {
+        // Copia o conteúdo para a área de transferência
+        navigator.clipboard.writeText(content)
+            .then(() => {
+                notification(translations[selectedLanguage]['copySuccess']);
+            })
+            .catch(err => {
+                notification(translations[selectedLanguage]['copyFailed']);
+                console.error('Erro ao copiar: ', err);
+            });
+    }
+}
+
 document.getElementById('search_examples').addEventListener('click', function() {
     document.getElementById('search_bar_content').focus();
 });

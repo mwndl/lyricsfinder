@@ -30,6 +30,8 @@ const translations = {
         "bmac2LabelTitle": "Abrir Buy Me a Coffee",
         "githubIconTitle": "Abrir repositório GitHub",
 
+        "copySuccess": "Conteúdo copiado com sucesso",
+
         // notificações
         "pasteFailed": "Falha ao colar conteúdo",
         "copyFailed": "Falha ao copiar o conteúdo",
@@ -106,6 +108,8 @@ const translations = {
         "developerNameTitle": "Open LinkedIn",
         "bmac2LabelTitle": "Open Buy Me a Coffee",
         "githubIconTitle": "Open GitHub repository",
+
+        "copySuccess": "Copy successful",
 
         // notificações
         "pasteFailed": "Failed to paste content",
@@ -184,6 +188,8 @@ const translations = {
         "bmac2LabelTitle": "Abrir Buy Me a Coffee",
         "githubIconTitle": "Abrir repositorio de GitHub",
 
+        "copySuccess": "Contenido copiado correctamente",
+
         // notificaciones
         "pasteFailed": "No se pudo pegar el contenido",
         "copyFailed": "No se pudo copiar el contenido",
@@ -259,6 +265,8 @@ const translations = {
         "developerNameTitle": "Ouvrir LinkedIn",
         "bmac2LabelTitle": "Ouvrir Buy Me a Coffee",
         "githubIconTitle": "Ouvrir le dépôt GitHub",
+
+        "copySuccess": "Copie réussie",
 
         // notificações
         "pasteFailed": "Échec du collage du contenu",
