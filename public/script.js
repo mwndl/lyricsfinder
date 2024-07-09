@@ -215,12 +215,7 @@ function hasRequiredParameters() {
         }
     }
 
-    if (urlParams.get('query') === 'null') {
-        removeQueryParameter('query');
-        return false;
-    }
-
-    content = getQueryParameter('search')
+    content = getQueryParameter('query')
     if (content !== null) {
         handleSearch(content)
     }
