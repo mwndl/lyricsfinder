@@ -304,9 +304,6 @@ function searchSpotifyId(id) {
     document.getElementById('search_bar_content').value = '';
     console.log('Pesquisar Spotify ID:', id);
 
-    document.getElementById('search_icon').style.display = 'block'
-    document.getElementById('loader').style.display = 'none'
-
     // URL da API com o ID dinâmico
     const url = `https://datamatch-backend.onrender.com/songmatch/id?content=${id}&token=${publicToken}&mxm_data=1`;
 
@@ -335,12 +332,14 @@ function searchSpotifyId(id) {
             return response.json(); // Converte a resposta em JSON se estiver tudo ok
         })
         .then(data => {
-            console.log('Dados recebidos da API:', data);
 
             spotifyData = data.message.body.spotify;
             musixmatchData = data.message.body.musixmatch;
 
             setSpotifyData(spotifyData, musixmatchData)
+
+            document.getElementById('search_icon').style.display = 'block'
+            document.getElementById('loader').style.display = 'none'
 
         })
         .catch(error => {
@@ -379,9 +378,6 @@ function searchByIsrc(isrc) {
     document.getElementById('search_bar_content').value = ''
     console.log('Pesquisar ISRC:', isrc);
 
-    document.getElementById('search_icon').style.display = 'block'
-    document.getElementById('loader').style.display = 'none'
-
     // URL da API com o ID dinâmico
     const url = `https://datamatch-backend.onrender.com/songmatch/isrc?content=${isrc}&token=${publicToken}&mxm_data=1`;
 
@@ -410,12 +406,14 @@ function searchByIsrc(isrc) {
             return response.json(); // Converte a resposta em JSON se estiver tudo ok
         })
         .then(data => {
-            console.log('Dados recebidos da API:', data);
 
             spotifyData = data.message.body.spotify;
             musixmatchData = data.message.body.musixmatch;
 
             setSpotifyData(spotifyData, musixmatchData)
+
+            document.getElementById('search_icon').style.display = 'block'
+            document.getElementById('loader').style.display = 'none'
 
 
         })
@@ -483,15 +481,11 @@ function searchByAbstrack(abstrack) {
             return response.json(); // Converte a resposta em JSON se estiver tudo ok
         })
         .then(data => {
-            console.log('Dados recebidos da API:', data);
 
             spotifyData = data.message.body.spotify;
             musixmatchData = data.message.body.musixmatch;
 
             setSpotifyData(spotifyData, musixmatchData)
-
-
-
             
         })
         .catch(error => {
@@ -530,9 +524,6 @@ function searchByText(text) {
     document.getElementById('search_bar_content').value = '';
     console.log('Pesquisar por texto:', text);
 
-    document.getElementById('search_icon').style.display = 'block'
-    document.getElementById('loader').style.display = 'none'
-
     // URL da API com o ID dinâmico
     const url = `https://datamatch-backend.onrender.com/songmatch/search?content=${text}&token=${publicToken}&mxm_data=1`;
 
@@ -561,14 +552,13 @@ function searchByText(text) {
             return response.json(); // Converte a resposta em JSON se estiver tudo ok
         })
         .then(data => {
-            console.log('Dados recebidos da API:', data);
-
             spotifyData = data.message.body.spotify;
             musixmatchData = data.message.body.musixmatch;
 
             setSpotifyData(spotifyData, musixmatchData)
 
-
+            document.getElementById('search_icon').style.display = 'block'
+            document.getElementById('loader').style.display = 'none'
 
         })
         .catch(error => {
