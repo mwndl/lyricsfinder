@@ -265,6 +265,7 @@ function searchButton() {
     handleSearch(content)
 }
 
+
 function handleSearch(content) {
 
     if (content === '') { return }
@@ -278,8 +279,7 @@ function handleSearch(content) {
     // Verificar se é um Abstrack (número entre 2 e 10 dígitos)
     const abstrackRegex = /^\d{2,10}$/;
 
-    document.getElementById('search_icon').style.display = 'none'
-    document.getElementById('loader').style.display = 'block'
+    showLoader()
 
     if (spotifyIdRegex.test(content)) {
         const spotifyId = content.match(spotifyIdRegex)[1]; // Captura o ID do Spotify
@@ -337,13 +337,10 @@ function searchSpotifyId(id) {
             musixmatchData = data.message.body.musixmatch;
 
             setSpotifyData(spotifyData, musixmatchData)
-
-            document.getElementById('search_icon').style.display = 'block'
-            document.getElementById('loader').style.display = 'none'
-
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
+            hideLoader()
 
             // Notificação de erro específica para cada código de status
             let errorMessage;
@@ -412,13 +409,10 @@ function searchByIsrc(isrc) {
 
             setSpotifyData(spotifyData, musixmatchData)
 
-            document.getElementById('search_icon').style.display = 'block'
-            document.getElementById('loader').style.display = 'none'
-
-
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
+            hideLoader()
 
             // Notificação de erro específica para cada código de status
             let errorMessage;
@@ -490,6 +484,7 @@ function searchByAbstrack(abstrack) {
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
+            hideLoader()
 
             // Notificação de erro específica para cada código de status
             let errorMessage;
@@ -563,6 +558,7 @@ function searchByText(text) {
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
+            hideLoader()
 
             // Notificação de erro específica para cada código de status
             let errorMessage;
@@ -594,6 +590,8 @@ function searchByText(text) {
 }
 
 function setSpotifyData(spotifyData, musixmatchData) {
+    hideLoader()
+
     const trackImage = document.getElementById('track_image')
 
     const trackName = document.getElementById('track_name')
@@ -768,6 +766,16 @@ function openLyrics() {
 function openStudio() {
     const link = document.getElementById('openStudioLabel').getAttribute('data-link');
     window.open(link, '_blank');
+}
+
+function showLoader() {
+    document.getElementById('search_icon').style.display = 'none'
+    document.getElementById('loader').style.display = 'block'
+}
+
+function hideLoader() {
+    document.getElementById('search_icon').style.display = 'block'
+    document.getElementById('loader').style.display = 'none'
 }
 
 
