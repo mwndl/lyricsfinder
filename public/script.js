@@ -278,6 +278,9 @@ function handleSearch(content) {
     // Verificar se é um Abstrack (número entre 2 e 10 dígitos)
     const abstrackRegex = /^\d{2,10}$/;
 
+    document.getElementById('search_icon').style.display = 'none'
+    document.getElementById('loader').style.display = 'block'
+
     if (spotifyIdRegex.test(content)) {
         const spotifyId = content.match(spotifyIdRegex)[1]; // Captura o ID do Spotify
         searchSpotifyId(spotifyId);
@@ -300,6 +303,9 @@ function handleSearch(content) {
 function searchSpotifyId(id) {
     document.getElementById('search_bar_content').value = '';
     console.log('Pesquisar Spotify ID:', id);
+
+    document.getElementById('search_icon').style.display = 'block'
+    document.getElementById('loader').style.display = 'none'
 
     // URL da API com o ID dinâmico
     const url = `https://datamatch-backend.onrender.com/songmatch/id?content=${id}&token=${publicToken}&mxm_data=1`;
@@ -372,6 +378,9 @@ function searchSpotifyId(id) {
 function searchByIsrc(isrc) {
     document.getElementById('search_bar_content').value = ''
     console.log('Pesquisar ISRC:', isrc);
+
+    document.getElementById('search_icon').style.display = 'block'
+    document.getElementById('loader').style.display = 'none'
 
     // URL da API com o ID dinâmico
     const url = `https://datamatch-backend.onrender.com/songmatch/isrc?content=${isrc}&token=${publicToken}&mxm_data=1`;
@@ -520,6 +529,9 @@ function searchByAbstrack(abstrack) {
 function searchByText(text) {
     document.getElementById('search_bar_content').value = '';
     console.log('Pesquisar por texto:', text);
+
+    document.getElementById('search_icon').style.display = 'block'
+    document.getElementById('loader').style.display = 'none'
 
     // URL da API com o ID dinâmico
     const url = `https://datamatch-backend.onrender.com/songmatch/search?content=${text}&token=${publicToken}&mxm_data=1`;
