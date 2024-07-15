@@ -11,7 +11,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Pesquisar...",
-        "textRocketLabel": "Pesquise pelo nome da música, link do Spotify, ISRC ou abstrack",
+        "textRocketLabel": "Pesquise pelo nome da música, link do Spotify ou ISRC",
 
         "developedByLabel": "Desenvolvido por ",
         "developerNameLabel": "Marcos Wiendl",
@@ -55,7 +55,7 @@ const translations = {
         "trackPositionLabel2": "de", // faixa X de Y
         "trackPopularityLabel": "Popularidade de", // popularidade de xx%
 
-        "albumTypeLabel": "Tipo de álbum:", // tipo de álbum: x
+        "albumTypeLabel": "Tipo de lançamento:", // tipo de álbum: x
         "albumLabel1": "Álbum", // album type: Álbum
         "singleLabel": "Single", // album type: Single
         "compilationLabel": "Compilação", // album type: Compilação
@@ -91,7 +91,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Search...",
-        "textRocketLabel": "Search by song name, Spotify link, ISRC code, or abstrack",
+        "textRocketLabel": "Search by song name, Spotify link or ISRC code",
 
         "developedByLabel": "Developed by ",
         "developerNameLabel": "Marcos Wiendl",
@@ -135,7 +135,7 @@ const translations = {
         "trackPositionLabel2": "of", // track X of Y
         "trackPopularityLabel": "Popularity of", // popularity of xx%
 
-        "albumTypeLabel": "Album type:", // album type: x
+        "albumTypeLabel": "Release type:", // album type: x
         "albumLabel1": "Album", // album type: album
         "singleLabel": "Single", // album type: single
         "compilationLabel": "Compilation", // album type: compilation
@@ -171,7 +171,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Buscar...",
-        "textRocketLabel": "Buscar por nombre de canción, enlace de Spotify, ISRC o abstrack",
+        "textRocketLabel": "Buscar por nombre de canción, enlace de Spotify o ISRC",
 
         "developedByLabel": "Desarrollado por ",
         "developerNameLabel": "Marcos Wiendl",
@@ -215,7 +215,7 @@ const translations = {
         "trackPositionLabel2": "de", // pista X de Y
         "trackPopularityLabel": "Popularidad de", // popularidad de xx%
 
-        "albumTypeLabel": "Tipo de álbum:", // tipo de álbum: x
+        "albumTypeLabel": "Tipo de lanzamiento:", // tipo de álbum: x
         "albumLabel1": "Álbum", // tipo de álbum : álbum
         "singleLabel": "Single", // tipo de álbum : single
         "compilationLabel": "Compilación", // tipo de álbum : compilación
@@ -250,7 +250,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Rechercher...",
-        "textRocketLabel": "Recherche par nom de chanson, lien Spotify, ISRC ou abstrack",
+        "textRocketLabel": "Recherche par nom de chanson, lien Spotify ou ISRC",
 
         "developedByLabel": "Développé par ",
         "developerNameLabel": "Marcos Wiendl",
@@ -294,7 +294,7 @@ const translations = {
         "trackPositionLabel2": "de", // piste X de Y
         "trackPopularityLabel": "Popularité de", // popularité de xx%
 
-        "albumTypeLabel": "Type d'album :", // type d'album : x
+        "albumTypeLabel": "Type de sortie :", // type d'album : x
         "albumLabel1": "Album", // type d'album : album
         "singleLabel": "Single", // type d'album : single
         "compilationLabel": "Compilation", // type d'album : compilation

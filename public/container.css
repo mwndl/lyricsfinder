@@ -29,7 +29,7 @@
 .track_data_div {
     width: calc(100% - 152px);
     height: 100%;
-    padding: 20px;
+    padding: 10px 20px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -87,7 +87,7 @@
 
 /* ********* */
 
-#track_name, #artist_list, #album_name, #track_duration {
+#track_name, #artist_list, #album_name, #track_duration_div {
     margin-bottom: 5px;
     text-wrap: nowrap;
     overflow: hidden;
@@ -111,10 +111,14 @@
     user-select: text;
 }
 
-#track_duration {
+#track_duration_div {
     font-size: 14px;
     font-style: italic;
     color: #818181;
+}
+
+#track_duration_seconds {
+    margin-left: 3px;
 }
 
 .cont_main {

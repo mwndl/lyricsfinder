@@ -304,6 +304,9 @@ function searchSpotifyId(id) {
     document.getElementById('search_bar_content').value = '';
     console.log('Pesquisar Spotify ID:', id);
 
+    // https://datamatch-backend.onrender.com/
+    // http://localhost:3000/
+
     // URL da API com o ID dinâmico
     const url = `https://datamatch-backend.onrender.com/songmatch/id?content=${id}&token=${publicToken}&mxm_data=1`;
 
@@ -598,6 +601,8 @@ function setSpotifyData(spotifyData, musixmatchData) {
     const trackArtist = document.getElementById('artist_list')
     const trackAlbum = document.getElementById('album_name')
     const trackDuration = document.getElementById('track_duration')
+    const trackDurationSeconds = document.getElementById('track_duration_seconds')
+    const trackDurationSeconds2 = document.getElementById('track_duration_seconds_hidden')
 
     const trackReleased = document.getElementById('track_released_date')
     const trackPosition1 = document.getElementById('track_position_content')
@@ -681,6 +686,11 @@ function setSpotifyData(spotifyData, musixmatchData) {
         let seconds = ((durationMs % 60000) / 1000).toFixed(0);
         let formattedDuration = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
         trackDuration.textContent = formattedDuration;
+
+        // Track duration seconds
+        let durationSeconds = Math.floor(durationMs / 1000);
+        trackDurationSeconds.textContent = `(${durationSeconds})`;
+        trackDurationSeconds2.textContent = durationSeconds;
     /* *********** */
 
     trackReleased.textContent = spotifyData.album_data.release_date; // lançada em DD/MM/YYYY
