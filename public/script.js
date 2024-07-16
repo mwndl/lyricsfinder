@@ -205,15 +205,15 @@ function changeLanguage(language) {
 
 function setLanguageBasedOnBrowser() {
     const userLanguage = navigator.language || navigator.userLanguage;
-    if (userLanguage === 'pt-BR' || userLanguage === 'pt-PT') {
+    if (userLanguage.startsWith('pt')) {
         changeLanguage('pt');
-    } else if (userLanguage === 'es') {
+    } else if (userLanguage.startsWith('es')) {
         changeLanguage('es');
-    } else if (userLanguage === 'fr') {
+    } else if (userLanguage.startsWith('fr')) {
         changeLanguage('fr');
-    } else if (userLanguage === 'de') {
+    } else if (userLanguage.startsWith('de')) {
         changeLanguage('de');
-    } else if (userLanguage === 'it') {
+    } else if (userLanguage.startsWith('it')) {
         changeLanguage('it');
     } else {
         changeLanguage('en');
