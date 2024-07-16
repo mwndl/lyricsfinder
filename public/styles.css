@@ -78,6 +78,8 @@ a:hover {
     z-index: 5;
     border-radius: 12px;
     padding: 5px;
+    max-height: 200px;
+    overflow: auto;
 }
 
 .flag-option {

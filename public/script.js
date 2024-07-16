@@ -74,28 +74,6 @@ function setQueryParameter(param, value) {
     window.history.replaceState({}, '', url);
 }
 
-var selectedFlag = document.getElementById('selectedFlag')
-var brFlag = document.getElementById('brOption')
-var usFlag = document.getElementById('usOption')
-var esFlag = document.getElementById('esOption')
-var frFlag = document.getElementById('frOption')
-
-brFlag.addEventListener('click', function() {
-    changeLanguage('pt');
-});
-
-usFlag.addEventListener('click', function() {
-    changeLanguage('en');
-});
-
-esFlag.addEventListener('click', function() {
-    changeLanguage('es');
-});
-
-frFlag.addEventListener('click', function() {
-    changeLanguage('fr');
-});
-
 
 let selectedLanguage = 'en';
 
@@ -113,15 +91,27 @@ function changeLanguage(language) {
     if (language === 'en') {
         selectedFlag.src = 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1fa-1f1f8.svg'
         selectedFlag.alt = 'EN Flag'
-    } else if (language === 'es') {
-        selectedFlag.src = 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1ea-1f1f8.svg'
-        selectedFlag.alt = 'ES Flag'
+        createLanguageOptions(language)
     } else if (language === 'fr') {
         selectedFlag.src = 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1eb-1f1f7.svg'
         selectedFlag.alt = 'FR Flag'
+        createLanguageOptions(language)
+    } else if (language === 'de') {
+        selectedFlag.src = 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1e9-1f1ea.svg'
+        selectedFlag.alt = 'DE Flag'
+        createLanguageOptions(language)
+    } else if (language === 'it') {
+        selectedFlag.src = 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1ee-1f1f9.svg'
+        selectedFlag.alt = 'IT Flag'
+        createLanguageOptions(language)
     } else if (language === 'pt') {
         selectedFlag.src = 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1e7-1f1f7.svg'
         selectedFlag.alt = 'BR Flag'
+        createLanguageOptions(language)
+    } else if (language === 'es') {
+        selectedFlag.src = 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1ea-1f1f8.svg'
+        selectedFlag.alt = 'ES Flag'
+        createLanguageOptions(language)
     }
 
     elementsToTranslate.forEach(element => {
@@ -138,6 +128,81 @@ function changeLanguage(language) {
     });
 }
 
+/* SISTEMA PARA REORDENAR FLAGS DE IDIOMAS NO MENU */
+
+    // Arrays com a ordem desejada para cada idioma
+    const orderEn = ['fr', 'de', 'it', 'pt', 'es']; 
+    const orderFr = ['en', 'de', 'it', 'es', 'pt']; 
+    const orderDe = ['en', 'fr', 'it', 'pt', 'es']; 
+    const orderIt = ['fr', 'en', 'pt', 'es', 'de']; 
+    const orderPt = ['de', 'es', 'fr', 'en', 'it'];
+    const orderEs = ['de', 'fr', 'en', 'it', 'pt'];
+
+    // Função auxiliar para retornar a ordem de acordo com o idioma selecionado
+    function getOrderForLanguage(language) {
+        switch (language) {
+            case 'en':
+                return orderEn;
+            case 'fr':
+                return orderFr;
+            case 'de':
+                return orderDe;
+            case 'it':
+                return orderIt;
+            case 'pt':
+                return orderPt;
+            case 'es':
+                return orderEs;
+            default:
+                return orderEn; // Padrão para idioma 'en'
+        }
+    }
+
+    const languages = {
+        'en': { flagUrl: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1fa-1f1f8.svg' },
+        'fr': { flagUrl: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1eb-1f1f7.svg' },
+        'de': { flagUrl: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1e9-1f1ea.svg' },
+        'it': { flagUrl: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1ee-1f1f9.svg' },
+        'pt': { flagUrl: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1e7-1f1f7.svg' },
+        'es': { flagUrl: 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f1ea-1f1f8.svg' }
+    };
+
+    // criar as opções dinamicamente, com base no idioma selecionado
+    function createLanguageOptions(selectedLanguage) {
+        const flagMenu = document.getElementById('flagMenu');
+        flagMenu.innerHTML = '';
+
+        const order = getOrderForLanguage(selectedLanguage);
+
+        order.forEach(code => {
+            const language = languages[code];
+            if (language) {
+                const option = document.createElement('div');
+                option.id = `${code}Option`;
+                option.className = 'flag-option';
+                option.onclick = () => changeLanguage(code);
+
+                const flagImage = document.createElement('img');
+                flagImage.id = `${code}FlagMenu`;
+                flagImage.className = 'flag';
+                flagImage.src = language.flagUrl;
+                flagImage.alt = `${language.name} Flag`;
+                option.appendChild(flagImage);
+
+                const labelSpan = document.createElement('span');
+                labelSpan.id = `${code}Label`;
+                labelSpan.className = 'country-name';
+                labelSpan.textContent = translations[selectedLanguage][`${code}Label`];
+                option.appendChild(labelSpan);
+
+                flagMenu.appendChild(option);
+            }
+        });
+    }
+
+/* ********** */
+
+
 function setLanguageBasedOnBrowser() {
     const userLanguage = navigator.language || navigator.userLanguage;
     if (userLanguage === 'pt-BR' || userLanguage === 'pt-PT') {
@@ -146,6 +211,10 @@ function setLanguageBasedOnBrowser() {
         changeLanguage('es');
     } else if (userLanguage === 'fr') {
         changeLanguage('fr');
+    } else if (userLanguage === 'de') {
+        changeLanguage('de');
+    } else if (userLanguage === 'it') {
+        changeLanguage('it');
     } else {
         changeLanguage('en');
     }

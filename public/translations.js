@@ -2,10 +2,12 @@
 const translations = {
     "pt": {
         // nome idiomas
-        "englishName": "Inglês",
-        "frenchName": "Francês",
-        "portugueseName": "Português",
-        "spanishName": "Espanhol",
+        "deLabel": "Alemão",
+        "esLabel": "Espanhol",
+        "enLabel": "Inglês",
+        "itLabel": "Italiano",
+        "frLabel": "Francês",
+        "ptLabel": "Português",
 
         "pageTitle": "Songmatch | Encontre letras para suas faixas favoritas",
         "topTitle": "Songmatch",
@@ -82,10 +84,12 @@ const translations = {
 
     "en": {
         // nome idiomas
-        "englishName": "English",
-        "frenchName": "French",
-        "portugueseName": "Portuguese",
-        "spanishName": "Spanish",
+        "enLabel": "English",
+        "frLabel": "French",
+        "deLabel": "German",
+        "itLabel": "Italian",
+        "ptLabel": "Portuguese",
+        "esLabel": "Spanish",
 
         "pageTitle": "Songmatch | Find lyrics to your favorite songs",
         "topTitle": "Songmatch",
@@ -160,12 +164,177 @@ const translations = {
 
     },
 
+    "it": {
+        // nome idiomas
+        "enLabel": "Inglese",
+        "itLabel": "Italiano",
+        "frLabel": "Francese",
+        "ptLabel": "Portoghese",
+        "esLabel": "Spagnolo",
+        "deLabel": "Tedesco",
+
+        "pageTitle": "Songmatch | Trova i testi delle tue canzoni preferite",
+        "topTitle": "Songmatch",
+
+        "searchPlaceholder": "Cerca...",
+        "textRocketLabel": "Cerca per nome della canzone, link Spotify o codice ISRC",
+
+        "developedByLabel": "Sviluppato da ",
+        "developerNameLabel": "Marcos Wiendl",
+        "bmac1Label": "Ti piace? ",
+        "bmac2Label": "Offrimi un caffè! ☕️",
+
+        // titles
+        "abrirEditorTitle": "Tocca per aprire l'editor",
+        "abrirVisualizacaoFinalTitle": "Tocca per vedere la versione finale",
+        "cleanButtonTitle": "Tocca per pulire l'editor",
+        "copyButtonTitle": "Tocca per copiare il contenuto negli appunti",
+        "pasteButtonTitle": "Tocca per incollare il contenuto nell'editor",
+
+        "flagDivTitle": "Tocca per cambiare la lingua",
+        "developerNameTitle": "Apri LinkedIn",
+        "bmac2LabelTitle": "Apri Buy Me a Coffee",
+        "githubIconTitle": "Apri il repository GitHub",
+
+        "copySuccess": "Copia avvenuta con successo",
+
+        // notificazioni
+        "pasteFailed": "Impossibile incollare il contenuto",
+        "copyFailed": "Impossibile copiare il contenuto",
+        "noContentCopyFailed": "Non c'è contenuto da copiare",
+        "editorIsAlreadyEmptyCleanFailed": "Il campo di testo è ora vuoto",
+
+        "somethingWentWrong1": "Si è verificato un errore durante l'elaborazione della tua richiesta",
+        "somethingWentWrong2": "Si è verificato un errore, riprova tra qualche momento",
+
+        "error400": "Oops! Sembra che ci sia stato un errore. Controlla se hai inserito tutto correttamente.",
+        "error401": "Oops! C'è stato un errore da parte nostra. Stiamo lavorando per risolverlo il prima possibile.",
+        "error404": "Hmm... Non siamo riusciti a trovare la traccia che stai cercando.",
+        "error429": "Troppe richieste! Attendi un momento e riprova più tardi.",
+        "error500": "I nostri sistemi sono temporaneamente occupati. Riprova più tardi.",
+        "error502": "Oops! C'è stato un problema di connessione. Riprova più tardi.",
+
+        "contentCopiedSuccess": "Contenuto copiato negli appunti",
+
+        "releasedDateLabel": "Rilasciato il", // rilasciato il DD/MM/YYYY
+        "trackPositionLabel1": "Traccia", // traccia X di Y
+        "trackPositionLabel2": "di", // traccia X di Y
+        "trackPopularityLabel": "Popolarità di", // popolarità di xx%
+
+        "albumTypeLabel": "Tipo di uscita:", // tipo di uscita: x
+        "albumLabel1": "Album", // tipo di uscita: album
+        "singleLabel": "Singolo", // tipo di uscita: singolo
+        "compilationLabel": "Compilation", // tipo di uscita: compilation
+
+        "trackMarkets1": "Disponibile in", // disponibile in X paesi
+        "trackMarkets2": "paesi", // disponibile in X paesi
+
+        "spotifyIdLabel": "ID Spotify:",
+        "isrcLabel": "ISRC:",
+        "abstrackLabel": "Abstract:",
+
+        "lyricsLabel": "Testo:",
+        "artistLabel": "Artista:",
+        "albumLabel": "Album:",
+
+        "lyricsStatLabel": "Testo:",
+        "syncStatLabel": "Sincronizzazione linea:",
+        "wordSyncStatLabel": "Sincronizzazione parole:",
+
+        "openLyricsLabel": "Visualizza testo",
+        "openStudioLabel": "Apri in Studio"
+    },
+
+    "de": {
+        // nome idiomas
+        "enLabel": "Englisch",
+        "frLabel": "Französisch",
+        "deLabel": "Deutsch",
+        "itLabel": "Italienisch",
+        "ptLabel": "Portugiesisch",
+        "esLabel": "Spanisch",
+
+        "pageTitle": "Songmatch | Finde die Texte deiner Lieblingslieder",
+        "topTitle": "Songmatch",
+
+        "searchPlaceholder": "Suche...",
+        "textRocketLabel": "Suche nach Songname, Spotify-Link oder ISRC-Code",
+
+        "developedByLabel": "Entwickelt von ",
+        "developerNameLabel": "Marcos Wiendl",
+        "bmac1Label": "Gefällt es dir? ",
+        "bmac2Label": "Kauf mir einen Kaffee! ☕️",
+
+        // titles
+        "abrirEditorTitle": "Tippen, um den Editor zu öffnen",
+        "abrirVisualizacaoFinalTitle": "Tippen, um die Endversion zu sehen",
+        "cleanButtonTitle": "Tippen, um den Editor zu reinigen",
+        "copyButtonTitle": "Tippen, um den Inhalt in die Zwischenablage zu kopieren",
+        "pasteButtonTitle": "Tippen, um den Inhalt in den Editor einzufügen",
+
+        "flagDivTitle": "Tippen, um die Sprache zu ändern",
+        "developerNameTitle": "LinkedIn öffnen",
+        "bmac2LabelTitle": "Buy Me a Coffee öffnen",
+        "githubIconTitle": "GitHub-Repository öffnen",
+
+        "copySuccess": "Kopieren erfolgreich",
+
+        // Benachrichtigungen
+        "pasteFailed": "Einfügen des Inhalts fehlgeschlagen",
+        "copyFailed": "Kopieren des Inhalts fehlgeschlagen",
+        "noContentCopyFailed": "Es gibt keinen Inhalt zum Kopieren",
+        "editorIsAlreadyEmptyCleanFailed": "Das Textfeld ist jetzt leer",
+
+        "somethingWentWrong1": "Bei der Verarbeitung deiner Anfrage ist ein Fehler aufgetreten",
+        "somethingWentWrong2": "Es ist ein Fehler aufgetreten, bitte versuche es in ein paar Minuten erneut",
+
+        "error400": "Oops! Es scheint ein Fehler aufgetreten zu sein. Bitte überprüfe, ob du alles richtig eingegeben hast.",
+        "error401": "Oops! Es gab einen Fehler auf unserer Seite. Wir arbeiten daran, ihn so schnell wie möglich zu beheben.",
+        "error404": "Hmm... Wir konnten den gesuchten Titel nicht finden.",
+        "error429": "Zu viele Anfragen! Bitte warte einen Moment und versuche es später erneut.",
+        "error500": "Unsere Systeme sind vorübergehend ausgelastet. Bitte versuche es später erneut.",
+        "error502": "Oops! Es gab ein Verbindungsproblem. Bitte versuche es später erneut.",
+
+        "contentCopiedSuccess": "Inhalt in die Zwischenablage kopiert",
+
+        "releasedDateLabel": "Veröffentlicht am", // veröffentlicht am DD/MM/YYYY
+        "trackPositionLabel1": "Titel", // Titel X von Y
+        "trackPositionLabel2": "von", // Titel X von Y
+        "trackPopularityLabel": "Popularität von", // Popularität von xx%
+
+        "albumTypeLabel": "Veröffentlichungstyp:", // Veröffentlichungstyp: x
+        "albumLabel1": "Album", // Veröffentlichungstyp: Album
+        "singleLabel": "Single", // Veröffentlichungstyp: Single
+        "compilationLabel": "Compilation", // Veröffentlichungstyp: Compilation
+
+        "trackMarkets1": "Verfügbar in", // verfügbar in X Ländern
+        "trackMarkets2": "Ländern", // verfügbar in X Ländern
+
+        "spotifyIdLabel": "Spotify-ID:",
+        "isrcLabel": "ISRC:",
+        "abstrackLabel": "Abstract:",
+
+        "lyricsLabel": "Text:",
+        "artistLabel": "Künstler:",
+        "albumLabel": "Album:",
+
+        "lyricsStatLabel": "Text:",
+        "syncStatLabel": "Zeilensynchronisation:",
+        "wordSyncStatLabel": "Wortsynchronisation:",
+
+        "openLyricsLabel": "Text anzeigen",
+        "openStudioLabel": "Im Studio öffnen"
+    },
+
+
     "es": {
         // nome idiomas
-        "englishName": "Inglés",
-        "frenchName": "Francés",
-        "portugueseName": "Portugués",
-        "spanishName": "Español",
+        "deLabel": "Alemán",
+        "esLabel": "Español",
+        "enLabel": "Inglés",
+        "itLabel": "Italiano",
+        "frLabel": "Francés",
+        "ptLabel": "Portugués",
 
         "pageTitle": "Songmatch | Encuentra letras de tus canciones favoritas",
         "topTitle": "Songmatch",
@@ -241,10 +410,12 @@ const translations = {
 
     "fr": {
         // nome dos idiomas
-        "englishName": "Anglais",
-        "frenchName": "Français",
-        "portugueseName": "Portugais",
-        "spanishName": "Espagnol",
+        "enLabel": "Anglais",
+        "deLabel": "Allemand",
+        "esLabel": "Espagnol",
+        "itLabel": "Italien",
+        "frLabel": "Français",
+        "ptLabel": "Portugais",
 
         "pageTitle": "Songmatch | Trouvez les paroles de vos chansons préférées",
         "topTitle": "Songmatch",
