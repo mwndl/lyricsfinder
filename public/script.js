@@ -339,36 +339,39 @@ function handleSearch(content) {
 
     if (content === '') { return }
 
+    // Remover espaços extras ao redor e dentro do content
+    content = content.trim().replace(/\s+/g, ' ');
+
     // Verificar se é um ID do Spotify
     const spotifyIdRegex = /^(?:https:\/\/open\.spotify\.com\/(?:intl-[a-z]{2}\/)?track\/)?([a-zA-Z0-9]{22})(?:\?[^\/]+)?$/;
 
     // Verificar se é um ISRC
     const isrcRegex = /^[A-Z]{2}[A-Z0-9]{3}\d{7}$/;
 
-    // Verificar se é um Abstrack (número entre 2 e 10 dígitos)
-    const abstrackRegex = /^\d{2,10}$/;
+    // Verificar se é um Abstrack (número entre 2 e 9 dígitos)
+    const abstrackRegex = /^\d{2,9}$/;
 
-    showLoader()
+    showLoader();
 
     if (spotifyIdRegex.test(content)) {
         const spotifyId = content.match(spotifyIdRegex)[1]; // Captura o ID do Spotify
         searchSpotifyId(spotifyId);
-        setQueryParameter('query', spotifyId)
+        setQueryParameter('query', spotifyId);
     } else if (isrcRegex.test(content)) {
-        document.getElementById('search_bar_content').value = ''
+        document.getElementById('search_bar_content').value = '';
         searchByIsrc(content);
-        setQueryParameter('query', content)
+        setQueryParameter('query', content);
     } else if (abstrackRegex.test(content)) {
-        document.getElementById('search_bar_content').value = ''
-        setQueryParameter('query', content)
+        document.getElementById('search_bar_content').value = '';
+        setQueryParameter('query', content);
 
-        notification(translations[selectedLanguage]['abstrackDevelopment']) // remover após implementação
-        hideLoader() // remover após implementação
+        notification(translations[selectedLanguage]['abstrackDevelopment']); // remover após implementação
+        hideLoader(); // remover após implementação
         /* searchByAbstrack(content); */
     } else {
-        document.getElementById('search_bar_content').value = ''
+        document.getElementById('search_bar_content').value = '';
         searchByText(content);
-        setQueryParameter('query', content)
+        setQueryParameter('query', content);
     }
 }
 
@@ -376,11 +379,14 @@ function searchSpotifyId(id) {
     document.getElementById('search_bar_content').value = '';
     console.log('Pesquisar Spotify ID:', id);
 
-    // https://datamatch-backend.onrender.com/
-    // http://localhost:3000/
+    if (checkLocalhostDomain()) {
+        window.serverPath = 'http://localhost:3000'; 
+    } else {
+        window.serverPath = 'https://datamatch-backend.onrender.com';
+    }
 
     // URL da API com o ID dinâmico
-    const url = `https://datamatch-backend.onrender.com/songmatch/id?content=${id}&token=${publicToken}&mxm_data=1`;
+    const url = `${window.serverPath}/songmatch/id?content=${id}&token=${publicToken}&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
@@ -446,12 +452,97 @@ function searchSpotifyId(id) {
         });
 }
 
+function searchAppleId(id) {
+    document.getElementById('search_bar_content').value = '';
+    console.log('Pesquisar Apple ID:', id);
+
+    if (checkLocalhostDomain()) {
+        window.serverPath = 'http://localhost:3000'; 
+    } else {
+        window.serverPath = 'https://datamatch-backend.onrender.com';
+    }
+
+    // URL da API com o ID dinâmico
+    const url = `${window.serverPath}/songmatch/apple_id?content=${id}&token=${publicToken}&mxm_data=1`;
+
+    // Fazendo a requisição para a API
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                // Verifica o status da resposta e lança um erro personalizado
+                if (response.status === 429) {
+                    throw new Error('Erro 429: Muitas requisições. Tente novamente mais tarde.');
+                }
+                if (response.status === 404) {
+                    throw new Error('Erro 404: Não encontrado.');
+                }
+                if (response.status === 401) {
+                    throw new Error('Erro 401: Não autorizado.');
+                }
+                if (response.status === 400) {
+                    throw new Error('Erro 400: Requisição inválida.');
+                }
+                if (response.status === 500) {
+                    throw new Error('Erro 500: Erro interno do servidor.');
+                }
+                throw new Error('Erro desconhecido ao fazer a requisição.');
+            }
+            return response.json(); // Converte a resposta em JSON se estiver tudo ok
+        })
+        .then(data => {
+
+            appleData = data.message.body.apple;
+            musixmatchData = data.message.body.musixmatch;
+
+            /*
+            setSpotifyData(appleData, musixmatchData)
+            */
+        })
+        .catch(error => {
+            console.error('Erro ao fazer a requisição:', error);
+            hideLoader()
+
+            // Notificação de erro específica para cada código de status
+            let errorMessage;
+            console.log("Error message: " + error.message)
+            switch (error.message) {
+                case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
+                    errorMessage = translations[selectedLanguage]['error429'];
+                    break;
+                case 'Erro 404: Não encontrado.':
+                    errorMessage = translations[selectedLanguage]['error404'];
+                    break;
+                case 'Erro 401: Não autorizado.':
+                    errorMessage = translations[selectedLanguage]['error401'];
+                    break;
+                case 'Erro 400: Requisição inválida.':
+                    errorMessage = translations[selectedLanguage]['error400'];
+                    break;
+                case 'Erro 500: Erro interno do servidor.':
+                    errorMessage = translations[selectedLanguage]['error500'];
+                    break;
+                default:
+                    errorMessage = translations[selectedLanguage]['somethingWentWrong1'];
+                    break;
+            }
+
+            // Exibir notificação de erro
+            notification(errorMessage);
+        });
+}
+
 function searchByIsrc(isrc) {
     document.getElementById('search_bar_content').value = ''
     console.log('Pesquisar ISRC:', isrc);
 
+    if (checkLocalhostDomain()) {
+        window.serverPath = 'http://localhost:3000'; 
+    } else {
+        window.serverPath = 'https://datamatch-backend.onrender.com';
+    }
+
     // URL da API com o ID dinâmico
-    const url = `https://datamatch-backend.onrender.com/songmatch/isrc?content=${isrc}&token=${publicToken}&mxm_data=1`;
+    const url = `${window.serverPath}/songmatch/isrc?content=${isrc}&token=${publicToken}&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
@@ -522,8 +613,14 @@ function searchByAbstrack(abstrack) {
     document.getElementById('search_bar_content').value = ''
     console.log('Pesquisar Abstrack:', abstrack);
 
-        // URL da API com o ID dinâmico
-        const url = `https://datamatch-backend.onrender.com/songmatch/abstrack?content=${abstrack}&token=${publicToken}&mxm_data=1`;
+    if (checkLocalhostDomain()) {
+        window.serverPath = 'http://localhost:3000'; 
+    } else {
+        window.serverPath = 'https://datamatch-backend.onrender.com';
+    }
+
+    // URL da API com o ID dinâmico
+    const url = `${window.serverPath}/songmatch/abstrack?content=${abstrack}&token=${publicToken}&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
@@ -594,8 +691,14 @@ function searchByText(text) {
     document.getElementById('search_bar_content').value = '';
     console.log('Pesquisar por texto:', text);
 
+    if (checkLocalhostDomain()) {
+        window.serverPath = 'http://localhost:3000'; 
+    } else {
+        window.serverPath = 'https://datamatch-backend.onrender.com';
+    }
+
     // URL da API com o ID dinâmico
-    const url = `https://datamatch-backend.onrender.com/songmatch/search?content=${text}&token=${publicToken}&mxm_data=1`;
+    const url = `${window.serverPath}/songmatch/search?content=${text}&token=${publicToken}&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
@@ -860,7 +963,24 @@ function hideLoader() {
     document.getElementById('loader').style.display = 'none'
 }
 
-
+function checkLocalhostDomain() {
+    const hostname = window.location.hostname;
+  
+    // Verifica se é 127.0.0.1 ou começa com 192.
+    if (hostname.startsWith('127.') || hostname.startsWith('192.')) {
+      return true;
+    }
+  
+  // Verifica se é um domínio .com
+  if (hostname.endsWith('.com')) {
+    return false;
+  }
+  
+    // Se não atender nenhum dos critérios acima, retorna false
+    return false;
+  }
+  
+  
 
 
 /* DISABLE PINCH AND ZOOM */

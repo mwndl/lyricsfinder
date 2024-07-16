@@ -1,0 +1,70 @@
+{
+    "data": [
+        {
+            "id": "1736426869",
+            "type": "songs",
+            "href": "/v1/catalog/us/songs/1736426869",
+            "attributes": {
+                "albumName": "i like the way you kiss me - Single",
+                "genreNames": [
+                    "Pop",
+                    "Music",
+                    "Alternative"
+                ],
+                "trackNumber": 1,
+                "releaseDate": "2024-02-09",
+                "durationInMillis": 142515,
+                "isrc": "QZJ842400387",
+                "artwork": {
+                    "width": 3000,
+                    "height": 3000,
+                    "url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b6/1e/ac/b61eaceb-b493-0909-abfe-0930b7e53d9f/810129998306.jpg/{w}x{h}bb.jpg",
+                    "bgColor": "291909",
+                    "textColor1": "cfab5b",
+                    "textColor2": "e8913c",
+                    "textColor3": "ae8d4b",
+                    "textColor4": "c17932"
+                },
+                "composerName": "Artemas Diamandis, Jesse Fink, Kevin White & Toby Daintree",
+                "url": "https://music.apple.com/us/album/i-like-the-way-you-kiss-me/1736426868?i=1736426869",
+                "playParams": {
+                    "id": "1736426869",
+                    "kind": "song"
+                },
+                "discNumber": 1,
+                "hasCredits": false,
+                "hasLyrics": true,
+                "isAppleDigitalMaster": false,
+                "name": "i like the way you kiss me",
+                "previews": [
+                    {
+                        "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/58/64/c3/5864c37e-bcae-0688-f025-8565ea1da2fa/mzaf_16997188397818469912.plus.aac.p.m4a"
+                    }
+                ],
+                "artistName": "Artemas"
+            },
+            "relationships": {
+                "albums": {
+                    "href": "/v1/catalog/us/songs/1736426869/albums",
+                    "data": [
+                        {
+                            "id": "1736426868",
+                            "type": "albums",
+                            "href": "/v1/catalog/us/albums/1736426868"
+                        }
+                    ]
+                },
+                "artists": {
+                    "href": "/v1/catalog/us/songs/1736426869/artists",
+                    "data": [
+                        {
+                            "id": "1300620186",
+                            "type": "artists",
+                            "href": "/v1/catalog/us/artists/1300620186"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
