@@ -49,6 +49,7 @@ const translations = {
         "error429": "Muitas solicitações! Por favor, aguarde alguns instantes e tente novamente mais tarde.",
         "error500": "Nossos sistemas estão temporariamente ocupados. Tente novamente mais tarde.",
         "error502": "Oops! Houve um problema de conexão. Por favor, tente novamente mais tarde.",
+        "abstrackDevelopment": "Buscas por abstrack ainda não estão disponíveis",
 
         "contentCopiedSuccess": "Conteúdo copiado para a área de transferência",
 
@@ -131,6 +132,7 @@ const translations = {
         "error429": "Too many requests! Please wait a moment and try again later.",
         "error500": "Our systems are temporarily busy. Please try again later.",
         "error502": "Oops! There was a connection problem. Please try again later.",
+        "abstrackDevelopment": "Searches for abstrack are not yet available",
 
         "contentCopiedSuccess": "Content copied to clipboard",
 
@@ -213,6 +215,7 @@ const translations = {
         "error429": "Troppe richieste! Attendi un momento e riprova più tardi.",
         "error500": "I nostri sistemi sono temporaneamente occupati. Riprova più tardi.",
         "error502": "Oops! C'è stato un problema di connessione. Riprova più tardi.",
+        "abstrackDevelopment": "Le ricerche per abstrack non sono ancora disponibili",
 
         "contentCopiedSuccess": "Contenuto copiato negli appunti",
 
@@ -294,6 +297,7 @@ const translations = {
         "error429": "Zu viele Anfragen! Bitte warte einen Moment und versuche es später erneut.",
         "error500": "Unsere Systeme sind vorübergehend ausgelastet. Bitte versuche es später erneut.",
         "error502": "Oops! Es gab ein Verbindungsproblem. Bitte versuche es später erneut.",
+        "abstrackDevelopment": "Suchen nach abstrack sind noch nicht verfügbar",
 
         "contentCopiedSuccess": "Inhalt in die Zwischenablage kopiert",
 
@@ -376,6 +380,7 @@ const translations = {
         "error429": "¡Demasiadas solicitudes! Por favor, espera un momento y vuelve a intentarlo más tarde.",
         "error500": "Nuestros sistemas están temporalmente ocupados. Por favor, inténtalo de nuevo más tarde.",
         "error502": "¡Ups! Hubo un problema de conexión. Por favor, inténtalo de nuevo más tarde.",
+        "abstrackDevelopment": "Las búsquedas de abstrack aún no están disponibles",
 
         "contentCopiedSuccess": "Contenido copiado al portapapeles",
 
@@ -457,7 +462,8 @@ const translations = {
         "error429": "Trop de demandes ! Veuillez patienter un moment et réessayer plus tard.",
         "error500": "Nos systèmes sont temporairement occupés. Veuillez réessayer plus tard.",
         "error502": "Oups ! Il y a eu un problème de connexion. Veuillez réessayer plus tard.",
-
+        "abstrackDevelopment": "Les recherches pour abstrack ne sont pas encore disponibles",
+        
         "contentCopiedSuccess": "Contenu copié dans le presse-papiers",
 
         "releasedDateLabel": "Sorti le", // sorti le DD/MM/YYYY

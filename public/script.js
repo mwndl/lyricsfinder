@@ -360,8 +360,9 @@ function handleSearch(content) {
         setQueryParameter('query', content)
     } else if (abstrackRegex.test(content)) {
         document.getElementById('search_bar_content').value = ''
-        searchByAbstrack(content);
         setQueryParameter('query', content)
+        notification(translations[selectedLanguage]['abstrackDevelopment'])
+        /* searchByAbstrack(content); */
     } else {
         document.getElementById('search_bar_content').value = ''
         searchByText(content);
