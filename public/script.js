@@ -361,7 +361,9 @@ function handleSearch(content) {
     } else if (abstrackRegex.test(content)) {
         document.getElementById('search_bar_content').value = ''
         setQueryParameter('query', content)
-        notification(translations[selectedLanguage]['abstrackDevelopment'])
+
+        notification(translations[selectedLanguage]['abstrackDevelopment']) // remover após implementação
+        hideLoader() // remover após implementação
         /* searchByAbstrack(content); */
     } else {
         document.getElementById('search_bar_content').value = ''
