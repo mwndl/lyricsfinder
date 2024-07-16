@@ -149,7 +149,7 @@ const translations = {
     
         "spotifyIdLabel": "Spotify ID:",
         "isrcLabel": "ISRC:",
-        "abstrackLabel": "Abstract:",
+        "abstrackLabel": "Abstrack:",
     
         "lyricsLabel": "Lyrics:",
         "artistLabel": "Artist:",
@@ -231,7 +231,7 @@ const translations = {
 
         "spotifyIdLabel": "ID Spotify:",
         "isrcLabel": "ISRC:",
-        "abstrackLabel": "Abstract:",
+        "abstrackLabel": "Abstrack:",
 
         "lyricsLabel": "Testo:",
         "artistLabel": "Artista:",
@@ -312,7 +312,7 @@ const translations = {
 
         "spotifyIdLabel": "Spotify-ID:",
         "isrcLabel": "ISRC:",
-        "abstrackLabel": "Abstract:",
+        "abstrackLabel": "Abstrack:",
 
         "lyricsLabel": "Text:",
         "artistLabel": "Künstler:",
@@ -394,7 +394,7 @@ const translations = {
     
         "spotifyIdLabel": "Spotify ID:",
         "isrcLabel": "ISRC:",
-        "abstrackLabel": "Resumen:",
+        "abstrackLabel": "Abstrack:",
     
         "lyricsLabel": "Letras:",
         "artistLabel": "Artista:",
@@ -475,7 +475,7 @@ const translations = {
     
         "spotifyIdLabel": "Spotify ID :",
         "isrcLabel": "ISRC :",
-        "abstrackLabel": "Résumé :",
+        "abstrackLabel": "Abstrack :",
     
         "lyricsLabel": "Paroles :",
         "artistLabel": "Artiste :",
