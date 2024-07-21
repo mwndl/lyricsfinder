@@ -1,70 +1,88 @@
+https://curators-beta.musixmatch.com/ws/1.1/track.get?app_id=web-desktop-app-v1.0&usertoken=240716987bc3d783a1238ed08e5ad25ceead08d721bc54a0063e1a&commontrack_id=145239577
+
 {
-    "data": [
-        {
-            "id": "1736426869",
-            "type": "songs",
-            "href": "/v1/catalog/us/songs/1736426869",
-            "attributes": {
-                "albumName": "i like the way you kiss me - Single",
-                "genreNames": [
-                    "Pop",
-                    "Music",
-                    "Alternative"
+    "message": {
+        "header": {
+            "status_code": 200,
+            "execute_time": 0.0054671764373779
+        },
+        "body": {
+            "track": {
+                "track_id": 237656101,
+                "track_mbid": "",
+                "track_isrc": "BCM9A2000004",
+                "commontrack_isrcs": [
+                    [
+                        "BCM9A2000004"
+                    ]
                 ],
-                "trackNumber": 1,
-                "releaseDate": "2024-02-09",
-                "durationInMillis": 142515,
-                "isrc": "QZJ842400387",
-                "artwork": {
-                    "width": 3000,
-                    "height": 3000,
-                    "url": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/b6/1e/ac/b61eaceb-b493-0909-abfe-0930b7e53d9f/810129998306.jpg/{w}x{h}bb.jpg",
-                    "bgColor": "291909",
-                    "textColor1": "cfab5b",
-                    "textColor2": "e8913c",
-                    "textColor3": "ae8d4b",
-                    "textColor4": "c17932"
-                },
-                "composerName": "Artemas Diamandis, Jesse Fink, Kevin White & Toby Daintree",
-                "url": "https://music.apple.com/us/album/i-like-the-way-you-kiss-me/1736426868?i=1736426869",
-                "playParams": {
-                    "id": "1736426869",
-                    "kind": "song"
-                },
-                "discNumber": 1,
-                "hasCredits": false,
-                "hasLyrics": true,
-                "isAppleDigitalMaster": false,
-                "name": "i like the way you kiss me",
-                "previews": [
-                    {
-                        "url": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/58/64/c3/5864c37e-bcae-0688-f025-8565ea1da2fa/mzaf_16997188397818469912.plus.aac.p.m4a"
-                    }
+                "track_spotify_id": "3dA7eXIIuCTY1w9xmskLNN",
+                "commontrack_spotify_ids": [
+                    "3dA7eXIIuCTY1w9xmskLNN"
                 ],
-                "artistName": "Artemas"
-            },
-            "relationships": {
-                "albums": {
-                    "href": "/v1/catalog/us/songs/1736426869/albums",
-                    "data": [
+                "commontrack_itunes_ids": [
+                    1627779411
+                ],
+                "track_soundcloud_id": 0,
+                "track_xboxmusic_id": "",
+                "track_name": "Quase uma Semana (feat. Ajaxx)",
+                "track_name_translation_list": [],
+                "track_rating": 51,
+                "track_length": 260,
+                "commontrack_id": 145239577,
+                "instrumental": 0,
+                "explicit": 1,
+                "has_lyrics": 1,
+                "has_lyrics_crowd": 0,
+                "has_subtitles": 1,
+                "has_richsync": 0,
+                "has_track_structure": 1,
+                "num_favourite": 0,
+                "lyrics_id": 35759685,
+                "subtitle_id": 36218329,
+                "album_id": 51883149,
+                "album_name": "Para todas as mulheres que j\u00e1 rimei",
+                "album_vanity_id": "BIN--2\/Para-todas-as-mulheres-que-j\u00e1-rimei-1",
+                "artist_id": 46524099,
+                "artist_mbid": "",
+                "artist_name": "BIN feat. Borges, L7NNON & Ajaxx",
+                "album_coverart_100x100": "https:\/\/s.mxmcdn.net\/images-storage\/albums2\/9\/6\/9\/3\/0\/0\/63003969.jpg",
+                "album_coverart_350x350": "https:\/\/s.mxmcdn.net\/images-storage\/albums2\/9\/6\/9\/3\/0\/0\/63003969_350_350.jpg",
+                "album_coverart_500x500": "",
+                "album_coverart_800x800": "",
+                "track_share_url": "https:\/\/www.musixmatch.com\/lyrics\/BIN-Borges-L7NNON-Ajaxx\/Quase-uma-Semana-1?utm_source=application&utm_campaign=api&utm_medium=musixmatch%3A1409612667678",
+                "track_edit_url": "https:\/\/www.musixmatch.com\/lyrics\/BIN-Borges-L7NNON-Ajaxx\/Quase-uma-Semana-1\/edit?utm_source=application&utm_campaign=api&utm_medium=musixmatch%3A1409612667678",
+                "commontrack_vanity_id": "BIN-Borges-L7NNON-Ajaxx\/Quase-uma-Semana-1",
+                "restricted": 0,
+                "first_release_date": "2020-09-30T00:00:00Z",
+                "updated_time": "2024-07-15T13:13:22Z",
+                "primary_genres": {
+                    "music_genre_list": [
                         {
-                            "id": "1736426868",
-                            "type": "albums",
-                            "href": "/v1/catalog/us/albums/1736426868"
+                            "music_genre": {
+                                "music_genre_id": 14,
+                                "music_genre_parent_id": 34,
+                                "music_genre_name": "Pop",
+                                "music_genre_name_extended": "Pop",
+                                "music_genre_vanity": "Pop"
+                            }
                         }
                     ]
                 },
-                "artists": {
-                    "href": "/v1/catalog/us/songs/1736426869/artists",
-                    "data": [
+                "secondary_genres": {
+                    "music_genre_list": [
                         {
-                            "id": "1300620186",
-                            "type": "artists",
-                            "href": "/v1/catalog/us/artists/1300620186"
+                            "music_genre": {
+                                "music_genre_id": 18,
+                                "music_genre_parent_id": 34,
+                                "music_genre_name": "Hip Hop\/Rap",
+                                "music_genre_name_extended": "Hip-Hop\/Rap",
+                                "music_genre_vanity": "Hip-Hop-Rap"
+                            }
                         }
                     ]
                 }
             }
         }
-    ]
+    }
 }

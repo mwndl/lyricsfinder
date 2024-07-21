@@ -900,9 +900,9 @@ function setSpotifyData(spotifyData, musixmatchData) {
     trackIsrc.textContent = spotifyData.track_data.isrc;
     trackAbstrack.textContent = musixmatchData.track_data.commontrack_id;
 
-    trackMxmLyrics.textContent = `http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`;
-    trackMxmArtist.textContent = `http://mxmt.ch/a/${musixmatchData.artist_data.artist_id}`;
-    trackMxmAlbum.textContent = `http://mxmt.ch/r/${musixmatchData.album_data.album_id}`;
+    trackMxmLyrics.textContent = `mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`;
+    trackMxmArtist.textContent = `mxmt.ch/a/${musixmatchData.artist_data.artist_id}`;
+    trackMxmAlbum.textContent = `mxmt.ch/r/${musixmatchData.album_data.album_id}`;
 
     trackMxmLyrics.title = musixmatchData.track_data.track_name;
     trackMxmArtist.title = musixmatchData.artist_data.artist_name;
