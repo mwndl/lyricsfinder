@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         removeQueryParameter('query')
         location.reload(); 
     });
+
+
+
+    showSpContainer()
 });
 
 
@@ -986,6 +990,8 @@ async function setSpotifyData(spotifyData, musixmatchData) {
     const previewPlayer = document.getElementById('player')
     const audioPlayer = document.getElementById('audio');
 
+    const spotifyIcon = document.getElementById("spotify_icon")
+
     const trackId = spotifyData.track_data.track_id;
     const albumImage = spotifyData.album_data.images[0].url;
 
@@ -996,6 +1002,7 @@ async function setSpotifyData(spotifyData, musixmatchData) {
         trackName.textContent = ''
         const trackLink = document.createElement('a');
         trackLink.href = `https://open.spotify.com/track/${track.track_id}`;
+        spotifyIcon.href = `https://open.spotify.com/track/${track.track_id}`;
         trackLink.textContent = track.track_name;
         trackLink.target = "_blank";
 
@@ -1183,6 +1190,8 @@ async function setAppleData(appleData, musixmatchData) {
     const previewPlayer = document.getElementById('player')
     const audioPlayer = document.getElementById('audio');
 
+    const appleMusicIcon = document.getElementById('apple_icon');
+
     const trackId = appleData.track_data.track_id;
     const albumImage = appleData.album_data.album_artwork;
 
@@ -1195,6 +1204,7 @@ async function setAppleData(appleData, musixmatchData) {
         trackName.textContent = ''
         const trackLink = document.createElement('a');
         trackLink.href = `https://music.apple.com/album/${album.album_id}?i=${track.track_id}`;
+        appleMusicIcon.href = `https://geo.music.apple.com/album/${album.album_id}?i=${track.track_id}&amp;itsct=music_box_appicon&amp;itscg=30200&amp;app=music&amp;ls=1`;
         trackLink.textContent = track.track_name;
         trackLink.target = "_blank";
 
