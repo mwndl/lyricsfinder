@@ -13,7 +13,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Pesquisar...",
-        "textRocketLabel": "Pesquise pelo nome da música, link do Spotify ou ISRC",
+        "textRocketLabel": "Pesquise pelo nome da música, link do Spotify, Apple Music ou ISRC",
 
         "developedByLabel": "Desenvolvido por ",
         "developerNameLabel": "Marcos Wiendl",
@@ -97,7 +97,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Search...",
-        "textRocketLabel": "Search by song name, Spotify link or ISRC code",
+        "textRocketLabel": "Search by the song name, Spotify link, Apple Music link, or ISRC",
 
         "developedByLabel": "Developed by ",
         "developerNameLabel": "Marcos Wiendl",
@@ -181,7 +181,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Cerca...",
-        "textRocketLabel": "Cerca per nome della canzone, link Spotify o codice ISRC",
+        "textRocketLabel": "Cerca per nome della canzone, link Spotify, link Apple Music o ISRC",
 
         "developedByLabel": "Sviluppato da ",
         "developerNameLabel": "Marcos Wiendl",
@@ -264,7 +264,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Suche...",
-        "textRocketLabel": "Suche nach Songname, Spotify-Link oder ISRC-Code",
+        "textRocketLabel": "Suchen Sie nach dem Namen des Liedes, Spotify-Link, Apple Music-Link oder ISRC",
 
         "developedByLabel": "Entwickelt von ",
         "developerNameLabel": "Marcos Wiendl",
@@ -348,7 +348,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Buscar...",
-        "textRocketLabel": "Buscar por nombre de canción, enlace de Spotify o ISRC",
+        "textRocketLabel": "Busca por el nombre de la canción, enlace de Spotify, enlace de Apple Music o ISRC",
 
         "developedByLabel": "Desarrollado por ",
         "developerNameLabel": "Marcos Wiendl",
@@ -431,7 +431,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Rechercher...",
-        "textRocketLabel": "Recherche par nom de chanson, lien Spotify ou ISRC",
+        "textRocketLabel": "Recherchez par nom de chanson, lien Spotify, lien Apple Music ou ISRC",
 
         "developedByLabel": "Développé par ",
         "developerNameLabel": "Marcos Wiendl",

@@ -30,9 +30,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         location.reload(); 
     });
 
-
-
-    showSpContainer()
 });
 
 
