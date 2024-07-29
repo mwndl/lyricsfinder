@@ -82,6 +82,8 @@ const translations = {
         "openLyricsLabel": "Ver as letras",
         "openStudioLabel": "Abrir no Studio",
 
+        "mxmNotAvailable": "Infelizmente essa faixa ainda não está disponível na Musixmatch",
+
     },
 
     "en": {
@@ -166,6 +168,8 @@ const translations = {
         "openLyricsLabel": "View lyrics",
         "openStudioLabel": "Open in Studio",
 
+        "mxmNotAvailable": "Unfortunately, this track is not yet available on Musixmatch",
+
     },
 
     "it": {
@@ -248,7 +252,9 @@ const translations = {
         "wordSyncStatLabel": "Sincronizzazione parole:",
 
         "openLyricsLabel": "Visualizza testo",
-        "openStudioLabel": "Apri in Studio"
+        "openStudioLabel": "Apri in Studio",
+
+        "mxmNotAvailable": "Purtroppo, questa traccia non è ancora disponibile su Musixmatch",
     },
 
     "de": {
@@ -331,7 +337,9 @@ const translations = {
         "wordSyncStatLabel": "Wortsynchronisation:",
 
         "openLyricsLabel": "Text anzeigen",
-        "openStudioLabel": "Im Studio öffnen"
+        "openStudioLabel": "Im Studio öffnen",
+
+        "mxmNotAvailable": "Leider ist dieser Track noch nicht auf Musixmatch verfügbar",
     },
 
 
@@ -416,6 +424,8 @@ const translations = {
     
         "openLyricsLabel": "Ver las letras",
         "openStudioLabel": "Abrir en Studio",
+
+        "mxmNotAvailable": "Lamentablemente, esta pista aún no está disponible en Musixmatch",
     },
 
     "fr": {
@@ -499,5 +509,7 @@ const translations = {
     
         "openLyricsLabel": "Voir les paroles",
         "openStudioLabel": "Ouvrir dans Studio",
+
+        "mxmNotAvailable": "Malheureusement, cette piste n'est pas encore disponible sur Musixmatch",
     }
 };

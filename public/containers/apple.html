@@ -36,13 +36,13 @@
                 <div id="isrcLabel" class="cont_id_label"></div>
                 <div id="track_isrc_code" onclick="copyContent('track_isrc_code')" class="cont_id_value">-</div>
             </div>
-            <div class="cont_id">
+            <div class="cont_id" id='track_abstrack_div' style="display:none">
                 <div id="abstrackLabel" class="cont_id_label"></div>
                 <div id="track_abstrack" onclick="copyContent('track_abstrack')" class="cont_id_value">-</div>
             </div>
         </div>
     </div>
-    <div class="cont_main">
+    <div class="cont_main" id="mxm_data_container" style="display:none">
         <div class="internal_div mxm_links">
             <div class="cont_id">
                 <div id="lyricsLabel" class="cont_id_label"></div>
@@ -79,5 +79,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="cont_main" id="mxm_not_found_div" style="display:none">
+        <div class="internal_div" id="mxmNotAvailable" style="width: 100%"></div>
     </div>
 </div>
