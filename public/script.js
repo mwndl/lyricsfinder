@@ -23,28 +23,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     });
 
-    // funções do player de preview
-    const player = document.getElementById('player');
-    const audio = document.getElementById('audio');
-    const playIcon = document.getElementById('play_icon');
-    const pauseIcon = document.getElementById('pause_icon');
-
-    player.addEventListener('click', function() {
-        if (audio.paused) {
-            audio.play();
-            playIcon.style.display = 'none';
-            pauseIcon.style.display = 'block';
-        } else {
-            audio.pause();
-            playIcon.style.display = 'block';
-            pauseIcon.style.display = 'none';
-        }
-    });
-    audio.addEventListener('ended', function() {
-        playIcon.style.display = 'block';
-        pauseIcon.style.display = 'none';
-    });
-
     // reload no titulo
     const topTitle = document.getElementById('topTitle');
     topTitle.addEventListener('click', function() {
@@ -85,6 +63,7 @@ function changeLanguage(language) {
     // Feche o simulador para evitar elementos dinâmicos não traduzidos
     setElementContent(language);
     setQueryParameter('language', language);
+    refreshDate(language)
 
     var selectedFlag = document.getElementById('selectedFlag')
 
@@ -113,6 +92,7 @@ function changeLanguage(language) {
         selectedFlag.alt = 'ES Flag'
         createLanguageOptions(language)
     }
+
 
     elementsToTranslate.forEach(element => {
         const key = element.id;
@@ -201,6 +181,17 @@ function changeLanguage(language) {
     }
 
 /* ********** */
+
+function refreshDate(selectedLanguage) {
+    let trackReleased = document.getElementById('track_release_date');
+    if (!trackReleased) { return; }
+
+    let originalDate = trackReleased.getAttribute('data-original-date');
+    if (!originalDate) { return; }
+
+    let formattedDate = formatDate(originalDate, selectedLanguage);
+    trackReleased.textContent = formattedDate;
+}
 
 
 function setLanguageBasedOnBrowser() {
@@ -292,9 +283,12 @@ function hasRequiredParameters() {
     }
 
     content = getQueryParameter('query')
+    source = getQueryParameter('source')
+
     if (content !== null) {
         handleSearch(content)
     }
+
     return true;
 }
 
@@ -339,48 +333,127 @@ function handleSearch(content) {
 
     if (content === '') { return }
 
-    // Remover espaços extras ao redor e dentro do content
+    showLoader();
+
+    source = getQueryParameter('source')
+
     content = content.trim().replace(/\s+/g, ' ');
+
+    // Verificar se é um ID do Apple
+    const appleMusicIdRegex = /^(?:https:\/\/)?music\.apple\.com(?:\/[a-z]{2})?\/album\/(?:[a-zA-Z0-9-%]+\/)?\d+\?i=(\d+)$/;
+
+    if (appleMusicIdRegex.test(content)) {
+        document.getElementById('search_bar_content').value = '';
+        const appleId = content.match(appleMusicIdRegex)[1]; // Captura o ID da Apple
+        searchAppleId(appleId);
+        setQueryParameter('query', appleId);
+        setQueryParameter('source', 'apple');
+        return;
+    }
 
     // Verificar se é um ID do Spotify
     const spotifyIdRegex = /^(?:https:\/\/open\.spotify\.com\/(?:intl-[a-z]{2}\/)?track\/)?([a-zA-Z0-9]{22})(?:\?[^\/]+)?$/;
 
+    if (spotifyIdRegex.test(content)) {
+        document.getElementById('search_bar_content').value = '';
+        const spotifyId = content.match(spotifyIdRegex)[1]; // Captura o ID do Spotify
+        searchSpotifyId(spotifyId)
+        setQueryParameter('query', spotifyId);
+        setQueryParameter('source', 'spotify');
+        return;
+    }
+
+
     // Verificar se é um ISRC
     const isrcRegex = /^[A-Z]{2}[A-Z0-9]{3}\d{7}$/;
 
-    // Verificar se é um Abstrack (número entre 2 e 9 dígitos)
-    const abstrackRegex = /^\d{2,9}$/;
-
-    showLoader();
-
-    if (spotifyIdRegex.test(content)) {
-        const spotifyId = content.match(spotifyIdRegex)[1]; // Captura o ID do Spotify
-        searchSpotifyId(spotifyId);
-        setQueryParameter('query', spotifyId);
-    } else if (isrcRegex.test(content)) {
+    if (isrcRegex.test(content)) {
         document.getElementById('search_bar_content').value = '';
-        searchByIsrc(content);
-        setQueryParameter('query', content);
-    } else if (abstrackRegex.test(content)) {
-        document.getElementById('search_bar_content').value = '';
-        setQueryParameter('query', content);
-
-        notification(translations[selectedLanguage]['abstrackDevelopment']); // remover após implementação
-        hideLoader(); // remover após implementação
-        /* searchByAbstrack(content); */
-    } else {
-        document.getElementById('search_bar_content').value = '';
-        searchByText(content);
-        setQueryParameter('query', content);
+        if (source === 'apple') {
+            searchByIsrcApple(content)
+            setQueryParameter('query', content);
+            setQueryParameter('source', 'apple');
+        } else {
+            searchByIsrc(content)
+            setQueryParameter('query', content);
+            setQueryParameter('source', 'spotify');
+        }
+        return;
     }
+
+    if (content.startsWith('mxm:')) {
+        content = content.substring(4); // Remove 'mxm:' do início
+
+        document.getElementById('search_bar_content').value = '';
+        content = content.trim().replace(/\s+/g, ' ');
+        setQueryParameter('query', content);
+        setQueryParameter('source', 'musixmatch');
+
+        searchByAbstrack(content);
+        return;
+    }
+
+    if (content.startsWith('apple:')) {
+        content = content.substring(6); // remove 'apple:' do início
+
+        document.getElementById('search_bar_content').value = '';
+        content = content.trim().replace(/\s+/g, ' ');
+        setQueryParameter('query', content);
+        setQueryParameter('source', 'apple');
+
+        notification('apple');
+        hideLoader();
+        searchAppleId(content);
+        return;
+    }
+
+    // Regex para abstrack ou Apple ID
+    const numberRegex = /^\d{2,12}$/;
+
+    if (numberRegex.test(content)) {
+        document.getElementById('search_bar_content').value = '';
+        if (source === 'apple') {
+            searchAppleId(content)
+            setQueryParameter('query', content);
+            setQueryParameter('source', 'apple');
+        } else if (source === 'musixmatch' || source === 'mxm') {
+            searchByAbstrack(content)
+            setQueryParameter('query', content);
+            setQueryParameter('source', 'musixmatch');
+        }
+        return;
+    }
+
+    if (source === 'apple') {
+        searchByTextApple(content);
+        setQueryParameter('query', content);
+        setQueryParameter('source', 'apple');
+    } else if (source === 'spotify') {
+        searchByTextSpotify(content);
+        setQueryParameter('query', content);
+        setQueryParameter('source', 'spotify');
+    } else if (source === 'musixmatch' || source === 'mxm') {
+        searchByTextMusixmatch(content);
+        setQueryParameter('query', content);
+        setQueryParameter('source', 'musixmatch');
+    } else {
+        // padrão
+        searchByTextSpotify(content);
+        setQueryParameter('query', content);
+        setQueryParameter('source', 'spotify');
+    }
+
 }
+
+
+
 
 function searchSpotifyId(id) {
     document.getElementById('search_bar_content').value = '';
     console.log('Pesquisar Spotify ID:', id);
 
     if (checkLocalhostDomain()) {
-        window.serverPath = 'http://localhost:3000'; 
+        window.serverPath = 'http://localhost:3001'; 
     } else {
         window.serverPath = 'https://datamatch-backend.onrender.com';
     }
@@ -457,13 +530,13 @@ function searchAppleId(id) {
     console.log('Pesquisar Apple ID:', id);
 
     if (checkLocalhostDomain()) {
-        window.serverPath = 'http://localhost:3000'; 
+        window.serverPath = 'http://localhost:3001'; 
     } else {
         window.serverPath = 'https://datamatch-backend.onrender.com';
     }
 
     // URL da API com o ID dinâmico
-    const url = `${window.serverPath}/songmatch/apple_id?content=${id}&token=${publicToken}&mxm_data=1`;
+    const url = `${window.serverPath}/songmatch/apple?content=${id}&token=${publicToken}&mxm_data=1`;
 
     // Fazendo a requisição para a API
     fetch(url)
@@ -494,9 +567,7 @@ function searchAppleId(id) {
             appleData = data.message.body.apple;
             musixmatchData = data.message.body.musixmatch;
 
-            /*
-            setSpotifyData(appleData, musixmatchData)
-            */
+            setAppleData(appleData, musixmatchData)
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
@@ -536,7 +607,7 @@ function searchByIsrc(isrc) {
     console.log('Pesquisar ISRC:', isrc);
 
     if (checkLocalhostDomain()) {
-        window.serverPath = 'http://localhost:3000'; 
+        window.serverPath = 'http://localhost:3001'; 
     } else {
         window.serverPath = 'https://datamatch-backend.onrender.com';
     }
@@ -609,12 +680,90 @@ function searchByIsrc(isrc) {
         });
 }
 
+function searchByIsrcApple(isrc) {
+    document.getElementById('search_bar_content').value = ''
+    console.log('Pesquisar ISRC:', isrc);
+
+    if (checkLocalhostDomain()) {
+        window.serverPath = 'http://localhost:3001'; 
+    } else {
+        window.serverPath = 'https://datamatch-backend.onrender.com';
+    }
+
+    // URL da API com o ID dinâmico
+    const url = `${window.serverPath}/songmatch/apple_isrc?content=${isrc}&token=${publicToken}&mxm_data=1`;
+
+    // Fazendo a requisição para a API
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                // Verifica o status da resposta e lança um erro personalizado
+                if (response.status === 429) {
+                    throw new Error('Erro 429: Muitas requisições. Tente novamente mais tarde.');
+                }
+                if (response.status === 404) {
+                    throw new Error('Erro 404: Não encontrado.');
+                }
+                if (response.status === 401) {
+                    throw new Error('Erro 401: Não autorizado.');
+                }
+                if (response.status === 400) {
+                    throw new Error('Erro 400: Requisição inválida.');
+                }
+                if (response.status === 500) {
+                    throw new Error('Erro 500: Erro interno do servidor.');
+                }
+                throw new Error('Erro desconhecido ao fazer a requisição.');
+            }
+            return response.json(); // Converte a resposta em JSON se estiver tudo ok
+        })
+        .then(data => {
+
+            appleData = data.message.body.apple;
+            musixmatchData = data.message.body.musixmatch;
+
+            setAppleData(appleData, musixmatchData)
+
+        })
+        .catch(error => {
+            console.error('Erro ao fazer a requisição:', error);
+            hideLoader()
+
+            // Notificação de erro específica para cada código de status
+            let errorMessage;
+            console.log("Error message: " + error.message)
+            switch (error.message) {
+                case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
+                    errorMessage = translations[selectedLanguage]['error429'];
+                    break;
+                case 'Erro 404: Não encontrado.':
+                    errorMessage = translations[selectedLanguage]['error404'];
+                    break;
+                case 'Erro 401: Não autorizado.':
+                    errorMessage = translations[selectedLanguage]['error401'];
+                    break;
+                case 'Erro 400: Requisição inválida.':
+                    errorMessage = translations[selectedLanguage]['error400'];
+                    break;
+                case 'Erro 500: Erro interno do servidor.':
+                    errorMessage = translations[selectedLanguage]['error500'];
+                    break;
+                default:
+                    errorMessage = translations[selectedLanguage]['somethingWentWrong1'];
+                    break;
+            }
+
+            // Exibir notificação de erro
+            notification(errorMessage);
+        });
+}
+
 function searchByAbstrack(abstrack) {
     document.getElementById('search_bar_content').value = ''
     console.log('Pesquisar Abstrack:', abstrack);
 
     if (checkLocalhostDomain()) {
-        window.serverPath = 'http://localhost:3000'; 
+        window.serverPath = 'http://localhost:3001'; 
     } else {
         window.serverPath = 'https://datamatch-backend.onrender.com';
     }
@@ -687,12 +836,12 @@ function searchByAbstrack(abstrack) {
         });
 }
 
-function searchByText(text) {
+function searchByTextSpotify(text) {
     document.getElementById('search_bar_content').value = '';
     console.log('Pesquisar por texto:', text);
 
     if (checkLocalhostDomain()) {
-        window.serverPath = 'http://localhost:3000'; 
+        window.serverPath = 'http://localhost:3001'; 
     } else {
         window.serverPath = 'https://datamatch-backend.onrender.com';
     }
@@ -767,8 +916,37 @@ function searchByText(text) {
         });
 }
 
-function setSpotifyData(spotifyData, musixmatchData) {
+async function setSpotifyData(spotifyData, musixmatchData) {
     hideLoader()
+    
+    try {
+        await showSpContainer();
+    } catch (error) {
+        console.error("Erro ao mostrar o contêiner do Spotify:", error);
+        return;
+    }
+
+    // funções do player de preview
+    const player = document.getElementById('player');
+    const audio = document.getElementById('audio');
+    const playIcon = document.getElementById('play_icon');
+    const pauseIcon = document.getElementById('pause_icon');
+
+    player.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        } else {
+            audio.pause();
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        }
+    });
+    audio.addEventListener('ended', function() {
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+    });
 
     const trackImage = document.getElementById('track_image')
 
@@ -779,7 +957,7 @@ function setSpotifyData(spotifyData, musixmatchData) {
     const trackDurationSeconds = document.getElementById('track_duration_seconds')
     const trackDurationSeconds2 = document.getElementById('track_duration_seconds_hidden')
 
-    const trackReleased = document.getElementById('track_released_date')
+    const trackReleased = document.getElementById('track_release_date')
     const trackPosition1 = document.getElementById('track_position_content')
     const trackPosition2 = document.getElementById('album_total_content')
     const trackPopularity = document.getElementById('track_popularity_number')
@@ -807,14 +985,9 @@ function setSpotifyData(spotifyData, musixmatchData) {
 
     const previewPlayer = document.getElementById('player')
     const audioPlayer = document.getElementById('audio');
-    const playIcon = document.getElementById('play_icon');
-    const pauseIcon = document.getElementById('pause_icon');
 
     const trackId = spotifyData.track_data.track_id;
     const albumImage = spotifyData.album_data.images[0].url;
-
-    document.getElementById('search_examples').style.display = 'none';
-    document.getElementById('sp_container').style.display = 'block';
 
     trackImage.src = albumImage;
 
@@ -868,7 +1041,9 @@ function setSpotifyData(spotifyData, musixmatchData) {
         trackDurationSeconds2.textContent = durationSeconds;
     /* *********** */
 
-    trackReleased.textContent = spotifyData.album_data.release_date; // lançada em DD/MM/YYYY
+    let releasedDate = spotifyData.album_data.release_date;
+    trackReleased.textContent = formatDate(releasedDate, selectedLanguage)
+    trackReleased.setAttribute('data-original-date', releasedDate);
 
     trackPosition1.textContent = spotifyData.track_data.disc_position
     trackPosition2.textContent = spotifyData.album_data.total_tracks
@@ -943,6 +1118,207 @@ function setSpotifyData(spotifyData, musixmatchData) {
 
 }
 
+
+
+async function setAppleData(appleData, musixmatchData) {
+    hideLoader()
+    
+    try {
+        await showApContainer();
+    } catch (error) {
+        console.error("Erro ao mostrar o contêiner da Apple Music:", error);
+        return;
+    }
+
+    // funções do player de preview
+    const player = document.getElementById('player');
+    const audio = document.getElementById('audio');
+    const playIcon = document.getElementById('play_icon');
+    const pauseIcon = document.getElementById('pause_icon');
+
+    player.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        } else {
+            audio.pause();
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+        }
+    });
+    audio.addEventListener('ended', function() {
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+    });
+
+    const pageBody = document.getElementById('body')
+
+    const trackImage = document.getElementById('track_image')
+
+    const trackName = document.getElementById('track_name')
+    const trackArtist = document.getElementById('artist_list')
+    const trackAlbum = document.getElementById('album_name')
+    const trackDuration = document.getElementById('track_duration')
+    const trackDurationSeconds2 = document.getElementById('track_duration_seconds_hidden')
+
+    const trackReleased = document.getElementById('track_release_date')
+    const genreList = document.getElementById('track_genre_list')
+
+    const trackApId = document.getElementById('track_ap_id')
+    const trackIsrc = document.getElementById('track_isrc_code')
+    const trackAbstrack = document.getElementById('track_abstrack')
+
+    const trackMxmLyrics = document.getElementById('track_mxm_lyrics')
+    const trackMxmArtist = document.getElementById('track_mxm_artist')
+    const trackMxmAlbum = document.getElementById('track_mxm_album')
+
+    const trackLyricsStat = document.getElementById('track_lyrics_stat')
+    const trackLinesyncStat = document.getElementById('track_linesync_stat')
+    const trackWordsyncStat = document.getElementById('track_wordsync_stat')
+
+    const openLyrics = document.getElementById('openLyricsLabel')
+    const openStudio = document.getElementById('openStudioLabel')
+
+    const previewPlayer = document.getElementById('player')
+    const audioPlayer = document.getElementById('audio');
+
+    const trackId = appleData.track_data.track_id;
+    const albumImage = appleData.album_data.album_artwork;
+
+    trackImage.src = albumImage;
+
+    /* Track name */
+        const track = appleData.track_data;
+        const album = appleData.album_data;
+
+        trackName.textContent = ''
+        const trackLink = document.createElement('a');
+        trackLink.href = `https://music.apple.com/album/${album.album_id}?i=${track.track_id}`;
+        trackLink.textContent = track.track_name;
+        trackLink.target = "_blank";
+
+        trackName.appendChild(trackLink);
+
+    /* Artist name */
+        trackArtist.textContent = '';
+        const link = document.createElement('a');
+
+        link.textContent = appleData.artist_data.artist_name;
+        link.href = `https://music.apple.com/artist/${appleData.artist_data.artists[0].artist_id}`; // Substitua pelo URL correto
+
+        trackArtist.appendChild(link);
+
+    /* Album name */
+
+        trackAlbum.textContent = ''
+        const albumLink = document.createElement('a');
+        albumLink.href = `https://music.apple.com/album/${album.album_id}`;
+        albumLink.textContent = album.album_name;
+        albumLink.target = "_blank";
+
+        trackAlbum.appendChild(albumLink);
+
+    /* Track duration */
+        let durationMs = appleData.track_data.duration_ms;
+        let minutes = Math.floor(durationMs / 60000);
+        let seconds = ((durationMs % 60000) / 1000).toFixed(0);
+        let formattedDuration = minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+        trackDuration.textContent = formattedDuration;
+
+        // Track duration seconds
+        let durationSeconds = Math.floor(durationMs / 1000);
+        trackDurationSeconds2.textContent = durationSeconds;
+    /* *********** */
+
+    let releasedDate = appleData.track_data.release_date;
+    trackReleased.textContent = formatDate(releasedDate, selectedLanguage)
+    trackReleased.setAttribute('data-original-date', releasedDate);
+
+    genreList.textContent = appleData.track_data.genre_names.join(', ');
+
+    trackApId.textContent = trackId;
+    trackIsrc.textContent = appleData.track_data.isrc;
+    trackAbstrack.textContent = musixmatchData.track_data.commontrack_id;
+
+    trackMxmLyrics.textContent = `mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`;
+    trackMxmArtist.textContent = `mxmt.ch/a/${musixmatchData.artist_data.artist_id}`;
+    trackMxmAlbum.textContent = `mxmt.ch/r/${musixmatchData.album_data.album_id}`;
+
+    trackMxmLyrics.title = musixmatchData.track_data.track_name;
+    trackMxmArtist.title = musixmatchData.artist_data.artist_name;
+    trackMxmAlbum.title = musixmatchData.album_data.album_name;
+
+    if (musixmatchData.track_data.stats.has_lyrics === 1) {
+        trackLyricsStat.className = 'status-1 status-blue'
+    } else {
+        trackLyricsStat.className = 'status-1 status-gray'
+    }
+    
+    if (musixmatchData.track_data.stats.has_line_sync === 1) {
+        trackLinesyncStat.className = 'status-1 status-blue'
+    } else {
+        trackLinesyncStat.className = 'status-1 status-gray'
+    }
+    
+    if (musixmatchData.track_data.stats.has_word_sync === 1) {
+        trackWordsyncStat.className = 'status-1 status-blue'
+    } else {
+        trackWordsyncStat.className = 'status-1 status-gray'
+    }
+
+    if (appleData.track_data.preview_url !== null) {
+        previewPlayer.style.display = 'flex'
+        playIcon.style.display = 'block'
+        pauseIcon.style.display = 'none'
+        audioPlayer.src = appleData.track_data.preview_url
+    } else {
+        previewPlayer.style.display = 'none'
+        playIcon.style.display = 'block'
+        pauseIcon.style.display = 'none'
+        audioPlayer.src = '#'
+    }
+
+    openLyrics.setAttribute('data-link', `http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`);
+    openStudio.setAttribute('data-link', `https://curators.musixmatch.com/tool?commontrack_id=${musixmatchData.track_data.commontrack_id}&mode=edit`);
+
+}
+
+function formatDate(dateString, language) {
+    if (!dateString) {
+      return 'undefined'; // Tratamento para data indefinida ou vazia
+    }
+  
+    // Verificar se a data está no formato yyyy-mm-dd
+    const dateParts = dateString.split('-');
+    if (dateParts.length !== 3) {
+      return 'Invalid Date Format'; // Tratamento para formato inválido
+    }
+  
+    const [year, month, day] = dateParts.map(Number);
+  
+    // Criar um objeto de data
+    const date = new Date(year, month - 1, day);
+  
+    // Mapear idiomas para códigos de localidade
+    const locales = {
+      'fr': 'fr-FR',
+      'de': 'de-DE',
+      'it': 'it-IT',
+      'pt': 'pt-PT',
+      'es': 'es-ES',
+      'br': 'pt-BR'
+    };
+  
+    const locale = locales[language] || 'en-US'; // Padrão para 'en-US' se o idioma não for encontrado
+  
+    // Formatar a data de acordo com o idioma selecionado
+    return new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
+  }
+
+
+
+
 function openLyrics() {
     const link = document.getElementById('openLyricsLabel').getAttribute('data-link');
     window.open(link, '_blank');
@@ -978,7 +1354,72 @@ function checkLocalhostDomain() {
   
     // Se não atender nenhum dos critérios acima, retorna false
     return false;
-  }
+}
+
+
+
+async function showSpContainer() {
+    document.getElementById('search_examples').style.display = 'none';
+    const resultsContainer = document.getElementById('results_container');
+    resultsContainer.innerHTML = '';
+
+    try {
+        const response = await fetch('./containers/spotify.html');
+        const data = await response.text();
+
+        resultsContainer.innerHTML = data;
+        resultsContainer.style.display = 'block';
+        changeLanguage(selectedLanguage) // recarregar strings traduzidas
+    } catch (error) {
+        console.error('Erro ao carregar o arquivo spotify.html:', error);
+    }
+}
+
+async function showApContainer() {
+    document.getElementById('search_examples').style.display = 'none';
+    const resultsContainer = document.getElementById('results_container');
+    resultsContainer.innerHTML = '';
+
+    try {
+        const response = await fetch('./containers/apple.html');
+        const data = await response.text();
+
+        resultsContainer.innerHTML = data;
+        resultsContainer.style.display = 'block';
+        changeLanguage(selectedLanguage) // recarregar strings traduzidas
+    } catch (error) {
+        console.error('Erro ao carregar o arquivo apple.html:', error);
+    }
+}
+
+async function showMxmContainer() {
+    document.getElementById('search_examples').style.display = 'none';
+    const resultsContainer = document.getElementById('results_container');
+    resultsContainer.innerHTML = '';
+
+    try {
+        const response = await fetch('./containers/mxm.html');
+        const data = await response.text();
+
+        resultsContainer.innerHTML = data;
+        resultsContainer.style.display = 'block';
+        changeLanguage(selectedLanguage) // recarregar strings traduzidas
+    } catch (error) {
+        console.error('Erro ao carregar o arquivo mxm.html:', error);
+    }
+}
+
+function hideContainers() {
+    document.getElementById('search_examples').style.display = 'block';
+    const resultsContainer = document.getElementById('results_container');
+    resultsContainer.innerHTML = '';
+}
+
+
+
+
+
+
   
   
 

@@ -67,6 +67,7 @@ const translations = {
         "trackMarkets2": "países", // disponível em X países
 
         "spotifyIdLabel": "Spotify ID:",
+        "appleIdLabel": "Apple ID:",
         "isrcLabel": "ISRC:",
         "abstrackLabel": "Abstrack:",
 
@@ -150,6 +151,7 @@ const translations = {
         "trackMarkets2": "countries", // available in X countries
     
         "spotifyIdLabel": "Spotify ID:",
+        "appleIdLabel": "Apple ID:",
         "isrcLabel": "ISRC:",
         "abstrackLabel": "Abstrack:",
     
@@ -233,6 +235,7 @@ const translations = {
         "trackMarkets2": "paesi", // disponibile in X paesi
 
         "spotifyIdLabel": "ID Spotify:",
+        "appleIdLabel": "ID Apple:",
         "isrcLabel": "ISRC:",
         "abstrackLabel": "Abstrack:",
 
@@ -315,6 +318,7 @@ const translations = {
         "trackMarkets2": "Ländern", // verfügbar in X Ländern
 
         "spotifyIdLabel": "Spotify-ID:",
+        "appleIdLabel": "Apple-ID:",
         "isrcLabel": "ISRC:",
         "abstrackLabel": "Abstrack:",
 
@@ -398,6 +402,7 @@ const translations = {
         "trackMarkets2": "países", // disponible en X países
     
         "spotifyIdLabel": "Spotify ID:",
+        "appleIdLabel": "Apple ID:",
         "isrcLabel": "ISRC:",
         "abstrackLabel": "Abstrack:",
     
@@ -480,6 +485,7 @@ const translations = {
         "trackMarkets2": "pays", // disponible dans X pays
     
         "spotifyIdLabel": "Spotify ID :",
+        "appleIdLabel": "Apple ID :",
         "isrcLabel": "ISRC :",
         "abstrackLabel": "Abstrack :",
     
