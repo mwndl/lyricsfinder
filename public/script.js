@@ -1096,11 +1096,11 @@ async function setSpotifyData(spotifyData, musixmatchData) {
         audioPlayer.src = '#'
     }
 
-    if (!musixmatchData) {
+    if (!musixmatchData.track_data) {
         trackAbstrackDiv.style.display = 'none'
         mxmDataContainer.style.display = 'none'
         mxmNotFoundDiv.style.display = 'block'
-    } else if (musixmatchData) {
+    } else if (musixmatchData.track_data) {
         trackAbstrackDiv.style.display = 'flex'
         mxmDataContainer.style.display = 'flex'
         mxmNotFoundDiv.style.display = 'none'
@@ -1280,25 +1280,12 @@ async function setAppleData(appleData, musixmatchData) {
         audioPlayer.src = '#'
     }
 
-    /*
 
-                "musixmatch": {
-                "mxm_header": {
-                    "status_code": 404,
-                    "execute_time": "0.116000"
-                }
-            }
-
-    const mxmNotFoundDiv = document.getElementById('mxm_not_found_div')
-    const mxmNotFoundText = document.getElementById('mxm_not_found_text')
-
-    */
-
-    if (!musixmatchData) {
+    if (!musixmatchData.track_data) {
         trackAbstrackDiv.style.display = 'none'
         mxmDataContainer.style.display = 'none'
         mxmNotFoundDiv.style.display = 'block'
-    } else if (musixmatchData) {
+    } else if (musixmatchData.track_data) {
         trackAbstrackDiv.style.display = 'flex'
         mxmDataContainer.style.display = 'flex'
         mxmNotFoundDiv.style.display = 'none'
