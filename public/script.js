@@ -30,8 +30,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         location.reload(); 
     });
 
-    showApContainer()
-
 });
 
 
