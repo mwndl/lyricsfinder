@@ -341,7 +341,7 @@ function handleSearch(content) {
     content = content.trim().replace(/\s+/g, ' ');
 
     // Verificar se é um ID do Apple
-    const appleMusicIdRegex = /^(?:https:\/\/)?music\.apple\.com(?:\/[a-z]{2})?\/album\/(?:[a-zA-Z0-9-%]+\/)?\d+\?i=(\d+)$/;
+    const appleMusicIdRegex = /^(?:https:\/\/)?music\.apple\.com(?:\/[a-z]{2})?\/album\/(?:[a-zA-Z0-9-%]+\/)?\d+\?i=(\d+)(?:&[\w-]+=[\w-]+)*$/;
 
     if (appleMusicIdRegex.test(content)) {
         document.getElementById('search_bar_content').value = '';
