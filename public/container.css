@@ -256,7 +256,7 @@
     background-color: #ededed;
 }
 
-#mxmImportButton {
+#mxmImportDiv {
     background-color: #ffffff;
     color: #000000;
     border-radius: 12px;
@@ -270,7 +270,7 @@
     cursor: pointer;
 }
 
-#mxmImportButton:hover {
+#mxmImportDiv:hover {
     background-color: #ededed;
 }
 
