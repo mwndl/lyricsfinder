@@ -1018,11 +1018,6 @@ let lastArtistName;
 let lastAlbumName;
 let lastDuration;
 
-document.getElementById('mxmImportButton').addEventListener('click', function() {
-    importRelease(source, lastDuration, lastTrackId, lastTrackName, lastAlbumName, lastArtistName);
-});
-
-
 
 async function setSpotifyData(spotifyData, musixmatchData) {
     hideLoader()
@@ -1054,6 +1049,10 @@ async function setSpotifyData(spotifyData, musixmatchData) {
     audio.addEventListener('ended', function() {
         playIcon.style.display = 'block';
         pauseIcon.style.display = 'none';
+    });
+
+    document.getElementById('mxmImportButton').addEventListener('click', function() {
+        importRelease(source, lastDuration, lastTrackId, lastTrackName, lastAlbumName, lastArtistName);
     });
 
     const trackImage = document.getElementById('track_image')
@@ -1283,6 +1282,10 @@ async function setAppleData(appleData, musixmatchData) {
     audio.addEventListener('ended', function() {
         playIcon.style.display = 'block';
         pauseIcon.style.display = 'none';
+    });
+
+    document.getElementById('mxmImportButton').addEventListener('click', function() {
+        importRelease(source, lastDuration, lastTrackId, lastTrackName, lastAlbumName, lastArtistName);
     });
 
     const pageBody = document.getElementById('body')
