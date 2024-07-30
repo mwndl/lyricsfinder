@@ -1088,7 +1088,7 @@ async function setSpotifyData(spotifyData, musixmatchData) {
         pauseIcon.style.display = 'none';
     });
 
-    document.getElementById('mxmImportButton').addEventListener('click', function() {
+    document.getElementById('mxmImportDiv').addEventListener('click', function() {
         importRelease(source, lastDuration, lastTrackId, lastTrackName, lastAlbumName, lastArtistName);
     });
 
@@ -1320,7 +1320,7 @@ async function setAppleData(appleData, musixmatchData) {
         pauseIcon.style.display = 'none';
     });
 
-    document.getElementById('mxmImportButton').addEventListener('click', function() {
+    document.getElementById('mxmImportDiv').addEventListener('click', function() {
         importRelease(source, lastDuration, lastTrackId, lastTrackName, lastAlbumName, lastArtistName);
     });
 
