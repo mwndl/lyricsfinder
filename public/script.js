@@ -849,7 +849,7 @@ function importRelease() {
     document.getElementById('search_bar_content').value = ''
     console.log('Importar faixa:');
     console.log(' - Duração: ', durationInSeconds);
-    console.log(' - ID: ', trackId);
+    console.log(' - ID: ', lastTrackId);
     console.log(' - Nome: ', encodedTrackName);
     console.log(' - Artista: ', encodedArtistName);
     console.log(' - Album:', encodedAlbumName);
