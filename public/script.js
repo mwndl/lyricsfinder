@@ -1157,7 +1157,7 @@ async function setSpotifyData(spotifyData, musixmatchData) {
 
     lastTrackId = spotifyData.track_data.track_id;
     lastTrackName = spotifyData.track_data.track_name;
-    lastArtistName = spotifyData.artist_data.artists[0].name;
+    lastArtistName = spotifyData.artists_data.artists[0].name;
     lastAlbumName = spotifyData.album_data.album_name;
     lastDuration = spotifyData.track_data.duration_ms;
     lastSource = 'spotify';
