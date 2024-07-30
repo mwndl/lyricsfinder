@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         location.reload(); 
     });
 
-    showApContainer()
 
 });
 
@@ -859,7 +858,7 @@ function searchByAbstrack(abstrack) {
 }
 
 function importShowLoader() {
-    loader = document.getElementById('loader')
+    loader = document.getElementById('import_loader')
     mxmImportText = document.getElementById('mxmImportButton')
 
     loader.style.display = 'flex'
@@ -867,7 +866,7 @@ function importShowLoader() {
 }
 
 function importHideLoader() {
-    loader = document.getElementById('loader')
+    loader = document.getElementById('import_loader')
     mxmImportText = document.getElementById('mxmImportButton')
 
     loader.style.display = 'none'
