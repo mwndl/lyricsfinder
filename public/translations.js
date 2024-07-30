@@ -82,7 +82,8 @@ const translations = {
         "openLyricsLabel": "Ver as letras",
         "openStudioLabel": "Abrir no Studio",
 
-        "mxmNotAvailable": "Infelizmente essa faixa ainda não está disponível na Musixmatch",
+        "mxmNotAvailable": "Infelizmente essa faixa ainda não está disponível na Musixmatch, gostaria de tentar importa-lá?",
+        "mxmImportButton": "Importar",
 
     },
 
@@ -168,7 +169,8 @@ const translations = {
         "openLyricsLabel": "View lyrics",
         "openStudioLabel": "Open in Studio",
 
-        "mxmNotAvailable": "Unfortunately, this track is not yet available on Musixmatch",
+        "mxmNotAvailable": "Unfortunately, this track is not available on Musixmatch yet. Would you like to try importing it?",
+        "mxmImportButton": "Import",
 
     },
 
@@ -254,7 +256,9 @@ const translations = {
         "openLyricsLabel": "Visualizza testo",
         "openStudioLabel": "Apri in Studio",
 
-        "mxmNotAvailable": "Purtroppo, questa traccia non è ancora disponibile su Musixmatch",
+        "mxmNotAvailable": "Sfortunatamente, questa traccia non è ancora disponibile su Musixmatch. Vuoi provare a importarla?",
+        "mxmImportButton": "Importa",
+
     },
 
     "de": {
@@ -339,7 +343,10 @@ const translations = {
         "openLyricsLabel": "Text anzeigen",
         "openStudioLabel": "Im Studio öffnen",
 
-        "mxmNotAvailable": "Leider ist dieser Track noch nicht auf Musixmatch verfügbar",
+        "mxmNotAvailable": "Leider ist dieser Track noch nicht auf Musixmatch verfügbar. Möchten Sie versuchen, ihn zu importieren?",
+
+        "mxmImportButton": "Importieren",
+
     },
 
 
@@ -425,7 +432,8 @@ const translations = {
         "openLyricsLabel": "Ver las letras",
         "openStudioLabel": "Abrir en Studio",
 
-        "mxmNotAvailable": "Lamentablemente, esta pista aún no está disponible en Musixmatch",
+        "mxmNotAvailable": "Lamentablemente, esta pista aún no está disponible en Musixmatch. ¿Te gustaría intentar importarla?",
+        "mxmImportButton": "Importar",
     },
 
     "fr": {
@@ -510,6 +518,7 @@ const translations = {
         "openLyricsLabel": "Voir les paroles",
         "openStudioLabel": "Ouvrir dans Studio",
 
-        "mxmNotAvailable": "Malheureusement, cette piste n'est pas encore disponible sur Musixmatch",
+        "mxmNotAvailable": "Malheureusement, cette piste n'est pas encore disponible sur Musixmatch. Voulez-vous essayer de l'importer?",
+        "mxmImportButton": "Importer",
     }
 };

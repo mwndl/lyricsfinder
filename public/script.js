@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         location.reload(); 
     });
 
+    showSpContainer()
+
 });
 
 
@@ -837,6 +839,100 @@ function searchByAbstrack(abstrack) {
         });
 }
 
+
+function importRelease() {
+
+    let durationInSeconds = (lastDuration / 1000).toFixed(2);
+    let encodedTrackName = encodeURIComponent(lastTrackName);
+    let encodedAlbumName = encodeURIComponent(lastAlbumName);
+    let encodedArtistName = encodeURIComponent(lastArtistName);
+
+
+    document.getElementById('search_bar_content').value = ''
+    console.log('Importar faixa:');
+    console.log(' - Duração: ', durationInSeconds);
+    console.log(' - ID: ', trackId);
+    console.log(' - Nome: ', encodedTrackName);
+    console.log(' - Artista: ', encodedArtistName);
+    console.log(' - Album:', encodedAlbumName);
+
+    if (checkLocalhostDomain()) {
+        window.serverPath = 'http://localhost:3001'; 
+    } else {
+        window.serverPath = 'https://datamatch-backend.onrender.com';
+    }
+
+    if (lastSource === 'spotify') {
+        const url = `${window.serverPath}/songmatch/sp_import?token=${publicToken}&track_id=${lastTrackId}&duration=${durationInSeconds}&track_name=${encodedTrackName}&artist_name=${encodedArtistName}&album_name=${encodedAlbumName}`;
+    } else if (lastSource === 'apple') {
+        const url = `${window.serverPath}/songmatch/ap_import?token=${publicToken}&track_id=${lastTrackId}&duration=${durationInSeconds}&track_name=${encodedTrackName}&artist_name=${encodedArtistName}&album_name=${encodedAlbumName}`;
+    } else {
+        return;
+    }
+
+    // Fazendo a requisição para a API
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                // Verifica o status da resposta e lança um erro personalizado
+                if (response.status === 429) {
+                    throw new Error('Erro 429: Muitas requisições. Tente novamente mais tarde.');
+                }
+                if (response.status === 404) {
+                    throw new Error('Erro 404: Não encontrado.');
+                }
+                if (response.status === 401) {
+                    throw new Error('Erro 401: Não autorizado.');
+                }
+                if (response.status === 400) {
+                    throw new Error('Erro 400: Requisição inválida.');
+                }
+                if (response.status === 500) {
+                    throw new Error('Erro 500: Erro interno do servidor.');
+                }
+                throw new Error('Erro desconhecido ao fazer a requisição.');
+            }
+            return response.json(); // Converte a resposta em JSON se estiver tudo ok
+        })
+        .then(data => {
+
+            musixmatchData = data.message.body.musixmatch;
+            setMusixmatchData(musixmatchData)
+
+        })
+        .catch(error => {
+            console.error('Erro ao fazer a requisição:', error);
+            hideLoader()
+
+            // Notificação de erro específica para cada código de status
+            let errorMessage;
+            console.log("Error message: " + error.message)
+            switch (error.message) {
+                case 'Erro 429: Muitas requisições. Tente novamente mais tarde.':
+                    errorMessage = translations[selectedLanguage]['error429'];
+                    break;
+                case 'Erro 404: Não encontrado.':
+                    errorMessage = translations[selectedLanguage]['error404'];
+                    break;
+                case 'Erro 401: Não autorizado.':
+                    errorMessage = translations[selectedLanguage]['error401'];
+                    break;
+                case 'Erro 400: Requisição inválida.':
+                    errorMessage = translations[selectedLanguage]['error400'];
+                    break;
+                case 'Erro 500: Erro interno do servidor.':
+                    errorMessage = translations[selectedLanguage]['error500'];
+                    break;
+                default:
+                    errorMessage = translations[selectedLanguage]['somethingWentWrong1'];
+                    break;
+            }
+
+            // Exibir notificação de erro
+            notification(errorMessage);
+        });
+}
+
 function searchByTextSpotify(text) {
     document.getElementById('search_bar_content').value = '';
     console.log('Pesquisar por texto:', text);
@@ -916,6 +1012,19 @@ function searchByTextSpotify(text) {
             notification(errorMessage);
         });
 }
+
+let lastSource;
+let lastTrackId;
+let lastTrackName;
+let lastArtistName;
+let lastAlbumName;
+let lastDuration;
+
+document.getElementById('mxmImportButton').addEventListener('click', function() {
+    importRelease(source, lastDuration, lastTrackId, lastTrackName, lastAlbumName, lastArtistName);
+});
+
+
 
 async function setSpotifyData(spotifyData, musixmatchData) {
     hideLoader()
@@ -1004,6 +1113,7 @@ async function setSpotifyData(spotifyData, musixmatchData) {
         const trackLink = document.createElement('a');
         trackLink.href = `https://open.spotify.com/track/${track.track_id}`;
         spotifyIcon.href = `https://open.spotify.com/track/${track.track_id}`;
+        trackId = track.track_id;
         trackLink.textContent = track.track_name;
         trackLink.target = "_blank";
 
@@ -1048,6 +1158,14 @@ async function setSpotifyData(spotifyData, musixmatchData) {
         trackDurationSeconds.textContent = `(${durationSeconds})`;
         trackDurationSeconds2.textContent = durationSeconds;
     /* *********** */
+
+    lastTrackId = spotifyData.track_data.track_id;
+    lastTrackName = spotifyData.track_data.track_name;
+    lastArtistName = spotifyData.artist_data.artists[0].name;
+    lastAlbumName = spotifyData.album_data.album_name;
+    lastDuration = spotifyData.track_data.duration_ms;
+    lastSource = 'spotify';
+
 
     let releasedDate = spotifyData.album_data.release_date;
     trackReleased.textContent = formatDate(releasedDate, selectedLanguage)
@@ -1137,8 +1255,6 @@ async function setSpotifyData(spotifyData, musixmatchData) {
 
 }
 
-
-
 async function setAppleData(appleData, musixmatchData) {
     hideLoader()
     
@@ -1224,6 +1340,8 @@ async function setAppleData(appleData, musixmatchData) {
         trackLink.textContent = track.track_name;
         trackLink.target = "_blank";
 
+        lastTrackId = track.track_id;
+
         trackName.appendChild(trackLink);
 
     /* Artist name */
@@ -1256,6 +1374,14 @@ async function setAppleData(appleData, musixmatchData) {
         let durationSeconds = Math.floor(durationMs / 1000);
         trackDurationSeconds2.textContent = durationSeconds;
     /* *********** */
+
+    lastTrackId = appleData.track_data.track_id;
+    lastTrackName = appleData.track_data.track_name;
+    lastArtistName = appleData.artist_data.artists[0].name;
+    lastAlbumName = appleData.album_data.album_name;
+    lastDuration = appleData.track_data.duration_ms;
+    lastSource = 'apple';
+
 
     let releasedDate = appleData.track_data.release_date;
     trackReleased.textContent = formatDate(releasedDate, selectedLanguage)
@@ -1320,8 +1446,68 @@ async function setAppleData(appleData, musixmatchData) {
         openLyrics.setAttribute('data-link', `http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`);
         openStudio.setAttribute('data-link', `https://curators.musixmatch.com/tool?commontrack_id=${musixmatchData.track_data.commontrack_id}&mode=edit`);
     }
-
 }
+
+
+async function setMusixmatchData(musixmatchData) {
+    
+    const trackAbstrack = document.getElementById('track_abstrack')
+    
+    const trackMxmLyrics = document.getElementById('track_mxm_lyrics')
+    const trackMxmArtist = document.getElementById('track_mxm_artist')
+    const trackMxmAlbum = document.getElementById('track_mxm_album')
+    
+    const trackLyricsStat = document.getElementById('track_lyrics_stat')
+    const trackLinesyncStat = document.getElementById('track_linesync_stat')
+    const trackWordsyncStat = document.getElementById('track_wordsync_stat')
+    
+    const openLyrics = document.getElementById('openLyricsLabel')
+    const openStudio = document.getElementById('openStudioLabel')
+    
+    const trackAbstrackDiv = document.getElementById('track_abstrack_div')
+    const mxmNotFoundDiv = document.getElementById('mxm_not_found_div')
+    const mxmDataContainer = document.getElementById('mxm_data_container')
+
+
+    trackAbstrackDiv.style.display = 'flex'
+    mxmDataContainer.style.display = 'flex'
+    mxmNotFoundDiv.style.display = 'none'
+
+
+    trackAbstrack.textContent = musixmatchData.track_data.commontrack_id;
+
+    trackMxmLyrics.textContent = `mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`;
+    trackMxmArtist.textContent = `mxmt.ch/a/${musixmatchData.artist_data.artist_id}`;
+    trackMxmAlbum.textContent = `mxmt.ch/r/${musixmatchData.album_data.album_id}`;
+
+    trackMxmLyrics.title = musixmatchData.track_data.track_name;
+    trackMxmArtist.title = musixmatchData.artist_data.artist_name;
+    trackMxmAlbum.title = musixmatchData.album_data.album_name;
+
+    if (musixmatchData.track_data.stats.has_lyrics === 1) {
+        trackLyricsStat.className = 'status-1 status-blue'
+    } else {
+        trackLyricsStat.className = 'status-1 status-gray'
+    }
+    
+    if (musixmatchData.track_data.stats.has_line_sync === 1) {
+        trackLinesyncStat.className = 'status-1 status-blue'
+    } else {
+        trackLinesyncStat.className = 'status-1 status-gray'
+    }
+    
+    if (musixmatchData.track_data.stats.has_word_sync === 1) {
+        trackWordsyncStat.className = 'status-1 status-blue'
+    } else {
+        trackWordsyncStat.className = 'status-1 status-gray'
+    }
+
+    openLyrics.setAttribute('data-link', `http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`);
+    openStudio.setAttribute('data-link', `https://curators.musixmatch.com/tool?commontrack_id=${musixmatchData.track_data.commontrack_id}&mode=edit`);
+}
+
+
+
 
 function formatDate(dateString, language) {
     if (!dateString) {

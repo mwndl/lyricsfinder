@@ -256,6 +256,19 @@
     background-color: #ededed;
 }
 
+#mxmImportButton {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 0;
+    border-radius: 12px;
+    display: inline-block;
+    width: 120px;
+}
+
+#mxmImportButton:hover {
+    background-color: #ededed;
+}
+
 @media (max-width: 700px) {
 
     .cont_top {
