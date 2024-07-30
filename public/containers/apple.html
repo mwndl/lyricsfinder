@@ -81,9 +81,11 @@
         </div>
     </div>
     <div class="cont_main" id="mxm_not_found_div" style="display:block">
-        <div class="internal_div" style="width: 100%;">
-            <div id="mxmNotAvailable" style="margin: 0 0 10px 0;"></div>
-            <div id="mxmImportButton">Importar</div>
+        <div class="internal_div import_release" style="width: 100%; justify-content: space-between; display: flex;">
+            <div id="mxmNotAvailable" style="margin: 0 10px 0 0; max-width: 65%;"></div>
+            <div id="mxmImportButton" style="position: relative;">
+                <span id="loader" style="display:none;  right: 42%;top: 20%; border: 2px solid #000;" class="loader"></span>
+            </div>
         </div>
     </div>
 </div>

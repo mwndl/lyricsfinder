@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         location.reload(); 
     });
 
+    showApContainer()
+
 });
 
 
@@ -352,6 +354,16 @@ function handleSearch(content) {
         return;
     }
 
+    // Verificar se é um link geral da Apple Music
+    const appleMusicDomainRegex = /^(?:https:\/\/)?music\.apple\.com(?:\/[a-z]{2})?(?:\/(?:album|playlist|track|artist|video)\/([a-zA-Z0-9]+))?(?:\?[\w-]+=[\w-]+)*$/;
+
+    if (appleMusicDomainRegex.test(content)) {
+        document.getElementById('search_bar_content').value = '';
+        notification('')
+        return;
+    }
+
+
     // Verificar se é um ID do Spotify
     const spotifyIdRegex = /^(?:https:\/\/open\.spotify\.com\/(?:intl-[a-z]{2}\/)?track\/)?([a-zA-Z0-9]{22})(?:\?[^\/]+)?$/;
 
@@ -361,6 +373,15 @@ function handleSearch(content) {
         searchSpotifyId(spotifyId)
         setQueryParameter('query', spotifyId);
         setQueryParameter('source', 'spotify');
+        return;
+    }
+
+    // Verificar se é um link geral do Spotify
+    const spotifyGeneralIdRegex = /^(?:https:\/\/open\.spotify\.com\/(?:intl-[a-z]{2}\/)?(?:track|album|playlist|artist|show|episode)\/([a-zA-Z0-9]{22}))(?:\?[^\/]+)?$/;
+
+    if (spotifyGeneralIdRegex.test(content)) {
+        document.getElementById('search_bar_content').value = '';
+        notification('')
         return;
     }
 
@@ -910,7 +931,7 @@ function importRelease() {
                     errorMessage = translations[selectedLanguage]['error429'];
                     break;
                 case 'Erro 404: Não encontrado.':
-                    errorMessage = translations[selectedLanguage]['error404'];
+                    errorMessage = translations[selectedLanguage]['mxmError404'];
                     break;
                 case 'Erro 401: Não autorizado.':
                     errorMessage = translations[selectedLanguage]['error401'];
