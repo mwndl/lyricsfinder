@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         location.reload(); 
     });
 
+    showApContainer()
+
 });
 
 
@@ -856,8 +858,26 @@ function searchByAbstrack(abstrack) {
         });
 }
 
+function importShowLoader() {
+    loader = document.getElementById('loader')
+    mxmImportText = document.getElementById('mxmImportButton')
+
+    loader.style.display = 'flex'
+    mxmImportText.textContent = ''
+}
+
+function importHideLoader() {
+    loader = document.getElementById('loader')
+    mxmImportText = document.getElementById('mxmImportButton')
+
+    loader.style.display = 'none'
+    mxmImportText.textContent = translations[selectedLanguage]['mxmImportButton'];
+}
+
 
 function importRelease() {
+
+    importShowLoader()
 
     let durationInSeconds = (lastDuration / 1000).toFixed(2);
     let encodedTrackName = encodeURIComponent(lastTrackName);
@@ -866,12 +886,11 @@ function importRelease() {
 
 
     document.getElementById('search_bar_content').value = ''
-    console.log('Importar faixa:');
-    console.log(' - Duração: ', durationInSeconds);
-    console.log(' - ID: ', lastTrackId);
-    console.log(' - Nome: ', encodedTrackName);
-    console.log(' - Artista: ', encodedArtistName);
-    console.log(' - Album:', encodedAlbumName);
+    console.log('Importar faixa:', encodedTrackName);
+
+    if (!publicToken || !lastTrackId || !durationInSeconds || !encodedTrackName || !encodedArtistName || !encodedAlbumName) {
+        return;
+    }
 
     if (checkLocalhostDomain()) {
         window.serverPath = 'http://localhost:3001'; 
@@ -919,7 +938,7 @@ function importRelease() {
         })
         .catch(error => {
             console.error('Erro ao fazer a requisição:', error);
-            hideLoader()
+            importHideLoader()
 
             // Notificação de erro específica para cada código de status
             let errorMessage;
@@ -1467,6 +1486,8 @@ async function setAppleData(appleData, musixmatchData) {
 
 
 async function setMusixmatchData(musixmatchData) {
+
+    importHideLoader()
     
     const trackAbstrack = document.getElementById('track_abstrack')
     
