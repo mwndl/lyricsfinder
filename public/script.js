@@ -1110,7 +1110,6 @@ async function setSpotifyData(spotifyData, musixmatchData) {
         const trackLink = document.createElement('a');
         trackLink.href = `https://open.spotify.com/track/${track.track_id}`;
         spotifyIcon.href = `https://open.spotify.com/track/${track.track_id}`;
-        trackId = track.track_id;
         trackLink.textContent = track.track_name;
         trackLink.target = "_blank";
 
@@ -1340,8 +1339,6 @@ async function setAppleData(appleData, musixmatchData) {
         appleMusicIcon.href = `https://geo.music.apple.com/album/${album.album_id}?i=${track.track_id}&amp;itsct=music_box_appicon&amp;itscg=30200&amp;app=music&amp;ls=1`;
         trackLink.textContent = track.track_name;
         trackLink.target = "_blank";
-
-        lastTrackId = track.track_id;
 
         trackName.appendChild(trackLink);
 
