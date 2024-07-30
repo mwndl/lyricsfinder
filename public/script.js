@@ -861,9 +861,9 @@ function importRelease() {
     }
 
     if (lastSource === 'spotify') {
-        const url = `${window.serverPath}/songmatch/sp_import?token=${publicToken}&track_id=${lastTrackId}&duration=${durationInSeconds}&track_name=${encodedTrackName}&artist_name=${encodedArtistName}&album_name=${encodedAlbumName}`;
+        url = `${window.serverPath}/songmatch/sp_import?token=${publicToken}&track_id=${lastTrackId}&duration=${durationInSeconds}&track_name=${encodedTrackName}&artist_name=${encodedArtistName}&album_name=${encodedAlbumName}`;
     } else if (lastSource === 'apple') {
-        const url = `${window.serverPath}/songmatch/ap_import?token=${publicToken}&track_id=${lastTrackId}&duration=${durationInSeconds}&track_name=${encodedTrackName}&artist_name=${encodedArtistName}&album_name=${encodedAlbumName}`;
+        url = `${window.serverPath}/songmatch/ap_import?token=${publicToken}&track_id=${lastTrackId}&duration=${durationInSeconds}&track_name=${encodedTrackName}&artist_name=${encodedArtistName}&album_name=${encodedAlbumName}`;
     } else {
         return;
     }
