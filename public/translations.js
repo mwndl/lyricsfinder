@@ -84,7 +84,8 @@ const translations = {
         "openStudioLabel": "Abrir no Studio",
 
         "mxmNotAvailable": "Infelizmente essa faixa ainda não está disponível na Musixmatch, gostaria de tentar importa-lá?",
-        "mxmImportButton": "Importar",
+        "mxmImportInfo": "Importações podem não ser instantâneas. Às vezes, os dados das letras podem levar alguns minutos para ficarem disponíveis. Nesse caso, por favor, aguarde entre 10 e 15 minutos e atualize a página para verificar se a importação foi concluída com sucesso.",
+        "mxmImportButton": "Solicitar",
 
     },
 
@@ -172,7 +173,8 @@ const translations = {
         "openStudioLabel": "Open in Studio",
 
         "mxmNotAvailable": "Unfortunately, this track is not available on Musixmatch yet. Would you like to try importing it?",
-        "mxmImportButton": "Import",
+        "mxmImportInfo": "Imports may not be immediate. Sometimes, lyric data can take a few minutes to become available. In such cases, please wait between 10 and 15 minutes and refresh the page to check if the import was successful.",
+        "mxmImportButton": "Request",
 
     },
 
@@ -260,7 +262,8 @@ const translations = {
         "openStudioLabel": "Apri in Studio",
 
         "mxmNotAvailable": "Sfortunatamente, questa traccia non è ancora disponibile su Musixmatch. Vuoi provare a importarla?",
-        "mxmImportButton": "Importa",
+        "mxmImportInfo": "Le importazioni potrebbero non essere immediate. A volte, i dati delle canzoni potrebbero richiedere alcuni minuti per essere disponibili. In tal caso, ti preghiamo di attendere tra i 10 e i 15 minuti e aggiornare la pagina per verificare se l'importazione è avvenuta con successo.",
+        "mxmImportButton": "Richiedi",
 
     },
 
@@ -348,8 +351,8 @@ const translations = {
         "openStudioLabel": "Im Studio öffnen",
 
         "mxmNotAvailable": "Leider ist dieser Track noch nicht auf Musixmatch verfügbar. Möchten Sie versuchen, ihn zu importieren?",
-
-        "mxmImportButton": "Importieren",
+        "mxmImportInfo": "Importe können nicht sofort verfügbar sein. Manchmal kann es einige Minuten dauern, bis die Lieddaten verfügbar sind. In solchen Fällen warten Sie bitte zwischen 10 und 15 Minuten und aktualisieren Sie die Seite, um zu überprüfen, ob der Import erfolgreich war.",
+        "mxmImportButton": "Anfordern",
 
     },
 
@@ -438,7 +441,9 @@ const translations = {
         "openStudioLabel": "Abrir en Studio",
 
         "mxmNotAvailable": "Lamentablemente, esta pista aún no está disponible en Musixmatch. ¿Te gustaría intentar importarla?",
-        "mxmImportButton": "Importar",
+        "mxmImportInfo": "Las importaciones pueden no ser inmediatas. A veces, los datos de las letras pueden tardar unos minutos en estar disponibles. En estos casos, por favor, espere entre 10 y 15 minutos y actualice la página para verificar si la importación se completó con éxito.",
+        "mxmImportButton": "Solicitar",
+
     },
 
     "fr": {
@@ -525,6 +530,7 @@ const translations = {
         "openStudioLabel": "Ouvrir dans Studio",
 
         "mxmNotAvailable": "Malheureusement, cette piste n'est pas encore disponible sur Musixmatch. Voulez-vous essayer de l'importer?",
-        "mxmImportButton": "Importer",
+        "mxmImportInfo": "Les importations peuvent ne pas être immédiates. Parfois, les données des paroles peuvent prendre quelques minutes pour être disponibles. Dans ce cas, veuillez attendre entre 10 et 15 minutes et rafraîchir la page pour vérifier si l'importation a été réussie.",
+        "mxmImportButton": "Demander",
     }
 };

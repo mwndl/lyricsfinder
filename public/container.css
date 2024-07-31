@@ -257,8 +257,8 @@
 }
 
 #mxmImportDiv {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #333333;
+    color: #ffffff;
     border-radius: 12px;
     display: inline-block;
     width: 120px;
@@ -271,8 +271,51 @@
 }
 
 #mxmImportDiv:hover {
-    background-color: #ededed;
+    background-color: #5c5c5c;
 }
+
+
+/* importe info icon */
+
+  
+  .info-icon {
+    cursor: pointer;
+    margin: auto;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  .icon {
+    fill: rgb(0, 0, 0); /* Default color */
+    width: 24px;
+    height: 24px;
+  }
+
+  .tooltip {
+    display: none;
+    position: absolute;
+    background-color: #333333f0;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    width: 200px;
+    max-width: 300px;
+    top: 50%; /* Center the tooltip vertically relative to the icon */
+    left: 45%; /* Position to the right of the icon */
+    transform: translateY(-50%); /* Center the tooltip vertically */
+    white-space: pre-wrap;
+  }
+  
+  .info-icon:hover + .tooltip {
+    display: block;
+  }
+
+
+  /* ******** */
 
 @media (max-width: 700px) {
 
@@ -330,6 +373,10 @@
     .shortcuts {
         width: 160px;
         flex-direction: column;
+    }
+
+    .tooltip {
+        top: -75%;
     }
 
 }
@@ -427,6 +474,10 @@
     .studio_shortcut, .internal_div {
         border-radius: 8px;
     }
+
+    .tooltip {
+        top: -85%;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -462,5 +513,32 @@
     
     #pause_icon {
         background-image: url('./images/icons/pause_icon_dark.svg');
+    }
+
+    .icon {
+        fill: white; 
+    }
+
+    .tooltip {
+        background-color: #f9f9f9;
+        color: #333;
+    }
+
+    #mxmImportDiv {
+        background-color: #333333;
+        color: #ffffff;
+        border-radius: 12px;
+        display: inline-block;
+        width: 120px;
+        height: 38px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto 0;
+        cursor: pointer;
+    }
+    
+    #mxmImportDiv:hover {
+        background-color: #5c5c5c;
     }
 }
