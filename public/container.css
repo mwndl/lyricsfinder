@@ -504,7 +504,7 @@
     }
     
     .player:hover {
-        background-color: #ededed;
+        background-color: #dfdfdf;
     }
 
     #play_icon {
@@ -525,8 +525,8 @@
     }
 
     #mxmImportDiv {
-        background-color: #333333;
-        color: #ffffff;
+        background-color: #ffffff;
+        color: #000000;
         border-radius: 12px;
         display: inline-block;
         width: 120px;
@@ -539,6 +539,6 @@
     }
     
     #mxmImportDiv:hover {
-        background-color: #5c5c5c;
+        background-color: #dfdfdf;
     }
 }
