@@ -49,8 +49,8 @@ const translations = {
         "error429": "Muitas solicitações! Por favor, aguarde alguns instantes e tente novamente mais tarde.",
         "error500": "Nossos sistemas estão temporariamente ocupados. Tente novamente mais tarde.",
         "error502": "Oops! Houve um problema de conexão. Por favor, tente novamente mais tarde.",
-        "abstrackDevelopment": "Buscas por abstrack ainda não estão disponíveis",
-        "mxmError404": "Enviamos a solicitação com sucesso, tente atualizar essa página em alguns minutos para verificar se deu tudo certo",
+        "abstrackDevelopment": "Buscas por abstrack ainda não estão disponíveis.",
+        "mxmError404": "A solicitação foi enviada com sucesso! Atualize esta página novamente em alguns minutos para verificar se a faixa foi corretamente importada.",
 
         "contentCopiedSuccess": "Conteúdo copiado para a área de transferência",
 
@@ -139,7 +139,7 @@ const translations = {
         "error500": "Our systems are temporarily busy. Please try again later.",
         "error502": "Oops! There was a connection problem. Please try again later.",
         "abstrackDevelopment": "Searches for abstrack are not yet available",
-        "mxmError404": "We successfully sent the request, try refreshing this page in a few minutes to check if everything went well",
+        "mxmError404": "The request was successfully sent! Please refresh this page again in a few minutes to check if the track was correctly imported.",
 
         "contentCopiedSuccess": "Content copied to clipboard",
 
@@ -228,7 +228,7 @@ const translations = {
         "error500": "I nostri sistemi sono temporaneamente occupati. Riprova più tardi.",
         "error502": "Oops! C'è stato un problema di connessione. Riprova più tardi.",
         "abstrackDevelopment": "Le ricerche per abstrack non sono ancora disponibili",
-        "mxmError404": "Abbiamo inviato la richiesta con successo, prova ad aggiornare questa pagina tra qualche minuto per verificare se è andato tutto bene",
+        "mxmError404": "La richiesta è stata inviata con successo! Per favore, aggiorna questa pagina tra qualche minuto per verificare se la traccia è stata importata correttamente.",
 
         "contentCopiedSuccess": "Contenuto copiato negli appunti",
 
@@ -317,7 +317,7 @@ const translations = {
         "error500": "Unsere Systeme sind vorübergehend ausgelastet. Bitte versuche es später erneut.",
         "error502": "Oops! Es gab ein Verbindungsproblem. Bitte versuche es später erneut.",
         "abstrackDevelopment": "Suchen nach abstrack sind noch nicht verfügbar",
-        "mxmError404": "Wir haben die Anfrage erfolgreich gesendet, versuchen Sie, diese Seite in ein paar Minuten neu zu laden, um zu überprüfen, ob alles gut gelaufen ist",
+        "mxmError404": "Die Anfrage wurde erfolgreich gesendet! Bitte aktualisieren Sie diese Seite in ein paar Minuten erneut, um zu überprüfen, ob der Track korrekt importiert wurde.",
 
         "contentCopiedSuccess": "Inhalt in die Zwischenablage kopiert",
 
@@ -407,7 +407,7 @@ const translations = {
         "error500": "Nuestros sistemas están temporalmente ocupados. Por favor, inténtalo de nuevo más tarde.",
         "error502": "¡Ups! Hubo un problema de conexión. Por favor, inténtalo de nuevo más tarde.",
         "abstrackDevelopment": "Las búsquedas de abstrack aún no están disponibles",
-        "mxmError404": "Hemos enviado la solicitud con éxito, intenta actualizar esta página en unos minutos para verificar si todo ha salido bien",
+        "mxmError404": "¡La solicitud se envió con éxito! Por favor, actualiza esta página nuevamente en unos minutos para verificar si la pista fue importada correctamente.",
 
         "contentCopiedSuccess": "Contenido copiado al portapapeles",
 
@@ -496,7 +496,7 @@ const translations = {
         "error500": "Nos systèmes sont temporairement occupés. Veuillez réessayer plus tard.",
         "error502": "Oups ! Il y a eu un problème de connexion. Veuillez réessayer plus tard.",
         "abstrackDevelopment": "Les recherches pour abstrack ne sont pas encore disponibles",
-        "mxmError404": "Nous avons envoyé la demande avec succès, essayez de rafraîchir cette page dans quelques minutes pour vérifier si tout s'est bien passé",
+        "mxmError404": "La demande a été envoyée avec succès ! Veuillez rafraîchir cette page dans quelques minutes pour vérifier si le morceau a été correctement importé.",
         
         "contentCopiedSuccess": "Contenu copié dans le presse-papiers",
 
