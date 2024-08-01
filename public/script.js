@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         location.reload(); 
     });
 
-    // showApContainer();
+    showSpContainer();
+
 });
 
 
@@ -66,6 +67,7 @@ function changeLanguage(language) {
     setElementContent(language);
     setQueryParameter('language', language);
     refreshDate(language)
+    refreshMarketsTranslations()
 
     var selectedFlag = document.getElementById('selectedFlag')
 
@@ -1230,6 +1232,8 @@ async function setSpotifyData(spotifyData, musixmatchData) {
     const numCountries = availableMarkets.length;
     trackMarkets.textContent = numCountries;
 
+    initializePopup(availableMarkets)
+
     trackSpId.textContent = trackId;
     trackIsrc.textContent = spotifyData.track_data.isrc;
 
@@ -1678,6 +1682,65 @@ function hideContainers() {
 }
 
 
+
+function openPopup() {
+    document.querySelector('.popup-container').style.display = 'block';
+}
+
+function closePopup() {
+    document.querySelector('.popup-container').style.display = 'none';
+}
+
+function filterCountries() {
+    const search = document.getElementById('search').value.toLowerCase();
+    const countryList = document.getElementById('country-list');
+    const availableMarkets = Array.from(countryList.children).map(li => li.textContent);
+
+    countryList.innerHTML = '';
+    const filteredCountries = availableMarkets.filter(name => name.toLowerCase().includes(search));
+    filteredCountries.forEach(name => {
+        const li = document.createElement('li');
+        li.textContent = name;
+        countryList.appendChild(li);
+    });
+}
+
+function getCountryName(code) {
+    const market = markets.markets.find(m => m.code === code);
+    return market ? market.translations[selectedLanguage] || market.translations['en'] : code;
+}
+
+function initializePopup(availableMarkets) {
+    const countryList = document.getElementById('country-list');
+    countryList.innerHTML = ''; // Limpa a lista existente
+    availableMarkets.forEach(code => {
+        const li = document.createElement('li');
+        li.textContent = getCountryName(code);
+        li.setAttribute('data-lang', code); // Define o atributo data-lang com o código do país
+        countryList.appendChild(li);
+    });
+}
+
+function refreshMarketsTranslations() {
+    const countryList = document.getElementById('country-list');
+    
+    // Verifica se countryList existe e se há itens na lista
+    if (!countryList || countryList.children.length === 0) {
+        return null;
+    }
+    
+    const items = countryList.querySelectorAll('li');
+
+    // Verifica se há itens na lista antes de tentar atualizar
+    if (items.length === 0) {
+        return null;
+    }
+
+    items.forEach(item => {
+        const code = item.getAttribute('data-lang');
+        item.textContent = getCountryName(code);
+    });
+}
 
 
 

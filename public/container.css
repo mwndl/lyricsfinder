@@ -317,6 +317,73 @@
 
   /* ******** */
 
+/* AVAILABLE MARKETS POPUP */
+
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0f0f0f;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 300px;
+    max-width: 90%;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.close-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #999;
+}
+
+.markets-search-bar {
+    margin: 10px 0;
+    display: flex;
+}
+
+.markets-search-bar input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.country-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0 10px;
+    list-style: none;
+    text-align: start;
+}
+
+.country-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #3c3c3c;
+}
+
+.country-list li:last-child {
+    border-bottom: none;
+}
+
+/* ******** */
+
 @media (max-width: 700px) {
 
     .cont_top {

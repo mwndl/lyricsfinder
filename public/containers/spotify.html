@@ -46,7 +46,7 @@
                 <span id="singleLabel" style="display:none"></span>
                 <span id="compilationLabel" style="display:none"></span>
             </div>
-            <div id="track_markets">
+            <div id="track_markets" onclick="openPopup()">
                 <span id="trackMarkets1"></span>
                 <span id="track_markets_total"></span>
                 <span id="trackMarkets2"></span>
@@ -121,5 +121,15 @@
                 <span id="import_loader" style="display:none;  right: 42%;top: 21%; border: 2px solid #000;border-bottom-color: transparent;" class="loader"></span>
             </div>
         </div>
+    </div>
+    <div class="popup-container" style="display: none;">
+        <div class="popup-header">
+            <h2>Available Markets</h2>
+            <button class="close-btn" onclick="closePopup()">×</button>
+        </div>
+        <div class="markets-search-bar">
+            <input type="text" id="search" oninput="filterCountries()" placeholder="Search for a country...">
+        </div>
+        <ul class="country-list" id="country-list"></ul>
     </div>
 </div>
