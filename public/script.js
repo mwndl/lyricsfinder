@@ -1730,6 +1730,17 @@ function getCountryName(code) {
 function initializePopup(lastAvailableMarkets) {
     const countryList = document.getElementById('country-list');
     countryList.innerHTML = ''; // Limpa a lista existente
+
+    // Ordena os códigos de países pelo nome correspondente
+    lastAvailableMarkets.sort((a, b) => {
+        const nameA = getCountryName(a).toLowerCase();
+        const nameB = getCountryName(b).toLowerCase();
+        if (nameA < nameB) return -1;
+        if (nameA > nameB) return 1;
+        return 0;
+    });
+
+    // Adiciona os países ordenados à lista
     lastAvailableMarkets.forEach(code => {
         const li = document.createElement('li');
         li.textContent = getCountryName(code);
@@ -1746,16 +1757,32 @@ function refreshMarketsTranslations() {
         return null;
     }
     
-    const items = countryList.querySelectorAll('li');
+    const items = Array.from(countryList.querySelectorAll('li'));
 
     // Verifica se há itens na lista antes de tentar atualizar
     if (items.length === 0) {
         return null;
     }
 
+    // Atualiza o texto dos itens com base na tradução atual
     items.forEach(item => {
         const code = item.getAttribute('data-lang');
         item.textContent = getCountryName(code);
+    });
+
+    // Reordena a lista com base na nova tradução
+    items.sort((a, b) => {
+        const nameA = a.textContent.toLowerCase();
+        const nameB = b.textContent.toLowerCase();
+        if (nameA < nameB) return -1;
+        if (nameA > nameB) return 1;
+        return 0;
+    });
+
+    // Re-adiciona os itens na lista de forma ordenada
+    countryList.innerHTML = '';
+    items.forEach(item => {
+        countryList.appendChild(item);
     });
 }
 
