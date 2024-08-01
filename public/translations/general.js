@@ -67,6 +67,8 @@ const translations = {
         "trackMarkets1": "Disponível em", // disponível em X países
         "trackMarkets2": "países", // disponível em X países
 
+        "popupMarketsTitle": "Países Disponíveis",
+
         "spotifyIdLabel": "Spotify ID:",
         "appleIdLabel": "Apple ID:",
         "isrcLabel": "ISRC:",
@@ -155,6 +157,8 @@ const translations = {
 
         "trackMarkets1": "Available in", // available in X countries
         "trackMarkets2": "countries", // available in X countries
+
+        "popupMarketsTitle": "Available Countries",
     
         "spotifyIdLabel": "Spotify ID:",
         "appleIdLabel": "Apple ID:",
@@ -245,6 +249,8 @@ const translations = {
         "trackMarkets1": "Disponibile in", // disponibile in X paesi
         "trackMarkets2": "paesi", // disponibile in X paesi
 
+        "popupMarketsTitle": "Paesi Disponibili",
+
         "spotifyIdLabel": "ID Spotify:",
         "appleIdLabel": "ID Apple:",
         "isrcLabel": "ISRC:",
@@ -333,6 +339,8 @@ const translations = {
 
         "trackMarkets1": "Verfügbar in", // verfügbar in X Ländern
         "trackMarkets2": "Ländern", // verfügbar in X Ländern
+
+        "popupMarketsTitle": "Verfügbare Länder",
 
         "spotifyIdLabel": "Spotify-ID:",
         "appleIdLabel": "Apple-ID:",
@@ -423,6 +431,8 @@ const translations = {
 
         "trackMarkets1": "Disponible en", // disponible en X países
         "trackMarkets2": "países", // disponible en X países
+
+        "popupMarketsTitle": "Países Disponibles",
     
         "spotifyIdLabel": "Spotify ID:",
         "appleIdLabel": "Apple ID:",
@@ -512,6 +522,8 @@ const translations = {
 
         "trackMarkets1": "Disponible dans", // disponible dans X pays
         "trackMarkets2": "pays", // disponible dans X pays
+
+        "popupMarketsTitle": "Pays Disponibles",
     
         "spotifyIdLabel": "Spotify ID :",
         "appleIdLabel": "Apple ID :",

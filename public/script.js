@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         location.reload(); 
     });
 
-    // showSpContainer();
+    showSpContainer();
 
 });
 
@@ -219,6 +219,11 @@ function setLanguageBasedOnBrowser() {
 function setElementContent(selectedLanguage) {
     document.getElementById('flagDiv').title = translations[selectedLanguage]['flagDivTitle'];
     document.getElementById('search_bar_content').placeholder = translations[selectedLanguage]['searchPlaceholder'];
+
+    const marketsSearchBar = document.getElementById('search_bar_markets')
+    if (marketsSearchBar) {
+        marketsSearchBar.placeholder = translations[selectedLanguage]['searchPlaceholder'];
+    }
 }
 
 function copyUrl() {
@@ -1056,6 +1061,7 @@ let lastTrackName;
 let lastArtistName;
 let lastAlbumName;
 let lastDuration;
+let lastAvailableMarkets;
 
 
 async function setSpotifyData(spotifyData, musixmatchData) {
@@ -1228,11 +1234,9 @@ async function setSpotifyData(spotifyData, musixmatchData) {
 
     }
     
-    const availableMarkets = spotifyData.track_data.available_markets;
-    const numCountries = availableMarkets.length;
+    lastAvailableMarkets = spotifyData.track_data.available_markets;
+    const numCountries = lastAvailableMarkets.length;
     trackMarkets.textContent = numCountries;
-
-    initializePopup(availableMarkets)
 
     trackSpId.textContent = trackId;
     trackIsrc.textContent = spotifyData.track_data.isrc;
@@ -1692,26 +1696,26 @@ function closePopup() {
     document.getElementById('overlay').style.display = 'none';
 }
 
-// Close popup when clicking outside of it
-document.getElementById('overlay').addEventListener('click', function(event) {
-    if (event.target === this) {
-        closePopup();
-    }
-});
-
-// Close popup when clicking the close button
-document.getElementById('closeBtn').addEventListener('click', closePopup);
-
 function filterCountries() {
-    const search = document.getElementById('search').value.toLowerCase();
+    const search = document.getElementById('search_bar_markets').value.toLowerCase();
     const countryList = document.getElementById('country-list');
-    const availableMarkets = Array.from(countryList.children).map(li => li.textContent);
+    
+    if (!lastAvailableMarkets.length) {
+        console.warn('No available markets to filter.');
+        return;
+    }
+    
+    countryList.innerHTML = ''; // Limpa a lista existente
+    
+    const filteredCountries = lastAvailableMarkets.filter(code => {
+        const name = getCountryName(code).toLowerCase();
+        return name.includes(search);
+    });
 
-    countryList.innerHTML = '';
-    const filteredCountries = availableMarkets.filter(name => name.toLowerCase().includes(search));
-    filteredCountries.forEach(name => {
+    filteredCountries.forEach(code => {
         const li = document.createElement('li');
-        li.textContent = name;
+        li.textContent = getCountryName(code);
+        li.setAttribute('data-lang', code); // Define o atributo data-lang com o código do país
         countryList.appendChild(li);
     });
 }
@@ -1721,10 +1725,10 @@ function getCountryName(code) {
     return market ? market.translations[selectedLanguage] || market.translations['en'] : code;
 }
 
-function initializePopup(availableMarkets) {
+function initializePopup(lastAvailableMarkets) {
     const countryList = document.getElementById('country-list');
     countryList.innerHTML = ''; // Limpa a lista existente
-    availableMarkets.forEach(code => {
+    lastAvailableMarkets.forEach(code => {
         const li = document.createElement('li');
         li.textContent = getCountryName(code);
         li.setAttribute('data-lang', code); // Define o atributo data-lang com o código do país
