@@ -365,6 +365,17 @@ const markets = {
             }
         },
         {
+            "code": "CW",
+            "translations": {
+                "pt": "Curaçau",
+                "en": "Curaçao",
+                "it": "Curaçao",
+                "de": "Curaçao",
+                "es": "Curaçao",
+                "fr": "Curaçao"
+            }
+        },
+        {
             "code": "KH",
             "translations": {
                 "pt": "Camboja",
@@ -684,6 +695,17 @@ const markets = {
             }
         },
         {
+            "code": "XK",
+            "translations": {
+                "pt": "Kosovo",
+                "en": "Kosovo",
+                "it": "Kosovo",
+                "de": "Kosovo",
+                "es": "Kosovo",
+                "fr": "Kosovo"
+            }
+        },
+        {
             "code": "FK",
             "translations": {
                 "pt": "Ilhas Malvinas",
@@ -758,6 +780,17 @@ const markets = {
                 "de": "Französisch-Polynesien",
                 "es": "Polinesia Francesa",
                 "fr": "Polynésie française"
+            }
+        },
+        {
+            "code": "SZ",
+            "translations": {
+                "pt": "Essuatíni",
+                "en": "Eswatini",
+                "it": "Eswatini",
+                "de": "Eswatini",
+                "es": "Eswatini",
+                "fr": "Eswatini"
             }
         },
         {
@@ -937,6 +970,17 @@ const markets = {
             }
         },
         {
+            "code": "JM",
+            "translations": {
+                "pt": "Jamaica",
+                "en": "Jamaica",
+                "it": "Giamaica",
+                "de": "Jamaika",
+                "es": "Jamaica",
+                "fr": "Jamaïque"
+            }
+        },
+        {
             "code": "HN",
             "translations": {
                 "pt": "Honduras",
@@ -945,6 +989,17 @@ const markets = {
                 "de": "Honduras",
                 "es": "Honduras",
                 "fr": "Honduras"
+            }
+        },
+        {
+            "code": "HK",
+            "translations": {
+                "pt": "Hong Kong",
+                "en": "Hong Kong",
+                "it": "Hong Kong",
+                "de": "Hongkong",
+                "es": "Hong Kong",
+                "fr": "Hong Kong"
             }
         },
         {
@@ -989,6 +1044,17 @@ const markets = {
                 "de": "Indonesien",
                 "es": "Indonesia",
                 "fr": "Indonésie"
+            }
+        },
+        {
+            "code": "JP",
+            "translations": {
+                "pt": "Japão",
+                "en": "Japan",
+                "it": "Giappone",
+                "de": "Japan",
+                "es": "Japón",
+                "fr": "Japon"
             }
         },
         {
