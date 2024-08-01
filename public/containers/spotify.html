@@ -122,14 +122,16 @@
             </div>
         </div>
     </div>
-    <div class="popup-container" style="display: none;">
+    <div class="overlay" id="overlay" onclick="closePopup()"></div>
+    <div class="popup-container" id="popup" style="display:none">
         <div class="popup-header">
-            <h2>Available Markets</h2>
-            <button class="close-btn" onclick="closePopup()">×</button>
+            <h2>Popup Title</h2>
+            <button class="close-btn" id="closeBtn" onclick="closePopup()">&times;</button>
         </div>
         <div class="markets-search-bar">
-            <input type="text" id="search" oninput="filterCountries()" placeholder="Search for a country...">
+            <input type="text" id="search" placeholder="Search...">
         </div>
-        <ul class="country-list" id="country-list"></ul>
+        <ul class="country-list" id="country-list">
+        </ul>
     </div>
 </div>

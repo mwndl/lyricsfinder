@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         location.reload(); 
     });
 
-    showSpContainer();
+    // showSpContainer();
 
 });
 
@@ -1682,14 +1682,25 @@ function hideContainers() {
 }
 
 
-
 function openPopup() {
-    document.querySelector('.popup-container').style.display = 'block';
+    document.getElementById('popup').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
 }
 
 function closePopup() {
-    document.querySelector('.popup-container').style.display = 'none';
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
 }
+
+// Close popup when clicking outside of it
+document.getElementById('overlay').addEventListener('click', function(event) {
+    if (event.target === this) {
+        closePopup();
+    }
+});
+
+// Close popup when clicking the close button
+document.getElementById('closeBtn').addEventListener('click', closePopup);
 
 function filterCountries() {
     const search = document.getElementById('search').value.toLowerCase();

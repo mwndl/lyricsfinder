@@ -147,6 +147,32 @@
     user-select: text;
 }
 
+#track_markets {
+    position: relative;
+    cursor: pointer;
+}
+
+#track_markets::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(0, 0, 0);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+}
+
+#track_markets:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+
+
 .track_ids {
     width: calc(60% - 10px);
 }
@@ -319,12 +345,24 @@
 
 /* AVAILABLE MARKETS POPUP */
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #00000059;
+    backdrop-filter: blur(1px);
+    z-index: 999;
+    display: none; /* Hidden by default */
+}
+
 .popup-container {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #0f0f0f;
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     width: 300px;
@@ -375,7 +413,7 @@
 
 .country-list li {
     padding: 8px 0;
-    border-bottom: 1px solid #3c3c3c;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .country-list li:last-child {
@@ -607,5 +645,17 @@
     
     #mxmImportDiv:hover {
         background-color: #dfdfdf;
+    }
+
+    #track_markets::after {
+        background-color: rgb(255, 255, 255);
+    }
+
+    .popup-container {
+        background-color: #0f0f0f;
+    }
+
+    .country-list li {
+        border-bottom: 1px solid #3c3c3c;
     }
 }
