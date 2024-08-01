@@ -500,7 +500,7 @@ const markets = {
             "code": "CD",
             "translations": {
                 "pt": "República Democrática do Congo",
-                "en": "Congo, the Democratic Republic of the",
+                "en": "Democratic Republic of the Congo",
                 "it": "Repubblica Democratica del Congo",
                 "de": "Kongo, Demokratische Republik",
                 "es": "República Democrática del Congo",
