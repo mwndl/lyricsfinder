@@ -1238,6 +1238,8 @@ async function setSpotifyData(spotifyData, musixmatchData) {
     const numCountries = lastAvailableMarkets.length;
     trackMarkets.textContent = numCountries;
 
+    initializePopup(lastAvailableMarkets)
+
     trackSpId.textContent = trackId;
     trackIsrc.textContent = spotifyData.track_data.isrc;
 
