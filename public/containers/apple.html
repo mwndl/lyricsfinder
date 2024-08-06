@@ -1,0 +1,100 @@
+<div class="track_container">
+    <div class="cont_top">
+        <div class="internal_div track_data">
+            <div class="track_image_div">
+                <img id="track_image" width="100%">
+            </div>
+            <div class="track_data_div">
+                <div id="track_name"></div>
+                <div id="artist_list"></div>
+                <div id="album_name"></div>
+                <div id="track_duration_div" style="width: 85%;">
+                    <span id="track_duration" onclick="copyContent('track_duration_seconds_hidden')"></span>
+                    <span id="track_duration_seconds_hidden" style="display:none"></span>
+                    <span> • </span>
+                    <span id="track_release_date"></span>
+                    <span> • </span>
+                    <span id="track_genre_list"></span>
+                </div>
+            </div>
+            <div class="dsp_icon_div" id="dsp_icon_div" style="position: absolute; top: 10px; right: 10px;">
+                <a id="apple_icon" href="#" target="_blank"  style="display: inline-block; overflow: hidden;"><img src="https://tools.applemediaservices.com/api/badges/app-icon-music/standard/en-us?size=83x83&amp;releaseDate=1712880000" alt="App Icon Apple Music" style="width: 25px; height: 25px;"></a>
+            </div>
+            <div class="player" id="player" style="display:flex">
+                <div id="play_icon" class="icon" alt="Play"></div>
+                <div id="pause_icon" class="icon" alt="Pause" style="display:none"></div>
+            </div>
+        </div>
+    </div>
+    <div class="cont_main">
+        <div class="internal_div track_ids" style="width: 100%">
+            <div class="cont_id">
+                <div id="appleIdLabel" class="cont_id_label"></div>
+                <div id="track_ap_id" onclick="copyContent('track_ap_id')" class="cont_id_value">-</div>
+            </div>
+            <div class="cont_id">
+                <div id="isrcLabel" class="cont_id_label"></div>
+                <div id="track_isrc_code" onclick="copyContent('track_isrc_code')" class="cont_id_value">-</div>
+            </div>
+            <div class="cont_id" id='track_abstrack_div' style="display:none">
+                <div id="abstrackLabel" class="cont_id_label"></div>
+                <div id="track_abstrack" onclick="copyContent('track_abstrack')" class="cont_id_value">-</div>
+            </div>
+        </div>
+    </div>
+    <div class="cont_main" id="mxm_data_container" style="display:none">
+        <div class="internal_div mxm_links">
+            <div class="cont_id">
+                <div id="lyricsLabel" class="cont_id_label"></div>
+                <div id="track_mxm_lyrics" onclick="copyContent('track_mxm_lyrics')" class="cont_id_value">-</div>
+            </div>
+            <div class="cont_id">
+                <div id="artistLabel" class="cont_id_label"></div>
+                <div id="track_mxm_artist" onclick="copyContent('track_mxm_artist')" class="cont_id_value">-</div>
+            </div>
+            <div class="cont_id">
+                <div id="albumLabel" class="cont_id_label"></div>
+                <div id="track_mxm_album" onclick="copyContent('track_mxm_album')" class="cont_id_value">-</div>
+            </div>
+        </div>
+        <div class="lyrics_stats_div">
+            <div class="internal_div stats_div">
+                <div class="stat">
+                    <div id="lyricsStatLabel"></div>
+                    <div id="track_lyrics_stat" class="status-1 status-gray"></div>
+                </div>
+                <div class="stat">
+                    <div id="syncStatLabel"></div>
+                    <div id="track_linesync_stat" class="status-1 status-gray"></div>
+                </div>
+                <div class="stat">
+                    <div id="wordSyncStatLabel"></div>
+                    <div id="track_wordsync_stat" class="status-1 status-gray"></div>
+                </div>
+            </div>
+            <div class="shortcuts">
+                <div id="openLyricsLabel" class="studio_shortcut" data-link="#" onclick="openLyrics()">
+                </div>
+                <div id="openStudioLabel" class="studio_shortcut" data-link="#" onclick="openStudio()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cont_main" id="mxm_not_found_div" style="display:block">
+        <div class="internal_div import_release" style="width: 100%; justify-content: space-between; display: flex;">
+            <div style="margin: 0 10px 0 0; max-width: 65%; position: relative; display: flex">
+                <div id="mxmNotAvailable"></div>
+                <span class="info-icon">
+                    <svg class="icon" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM11 10H13V17H11V10ZM11 7H13V9H11V7Z"/>
+                    </svg>
+                </span>
+                <div class="tooltip" id="mxmImportInfo"></div>
+            </div>
+            <div id="mxmImportDiv" style="position: relative;">
+                <div id="mxmImportButton"></div>
+                <span id="import_loader" style="display:none;  right: 42%;top: 21%; border: 2px solid #000;border-bottom-color: transparent;" class="loader"></span>
+            </div>
+        </div>
+    </div>
+</div>

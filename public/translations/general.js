@@ -13,7 +13,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Pesquisar...",
-        "textRocketLabel": "Pesquise pelo nome da música, link do Spotify ou ISRC",
+        "textRocketLabel": "Pesquise pelo nome da música, link do Spotify, Apple Music ou ISRC",
 
         "developedByLabel": "Desenvolvido por ",
         "developerNameLabel": "Marcos Wiendl",
@@ -49,7 +49,8 @@ const translations = {
         "error429": "Muitas solicitações! Por favor, aguarde alguns instantes e tente novamente mais tarde.",
         "error500": "Nossos sistemas estão temporariamente ocupados. Tente novamente mais tarde.",
         "error502": "Oops! Houve um problema de conexão. Por favor, tente novamente mais tarde.",
-        "abstrackDevelopment": "Buscas por abstrack ainda não estão disponíveis",
+        "abstrackDevelopment": "Buscas por abstrack ainda não estão disponíveis.",
+        "mxmError404": "A solicitação foi enviada com sucesso! Atualize esta página novamente em alguns minutos para verificar se a faixa foi corretamente importada.",
 
         "contentCopiedSuccess": "Conteúdo copiado para a área de transferência",
 
@@ -66,7 +67,10 @@ const translations = {
         "trackMarkets1": "Disponível em", // disponível em X países
         "trackMarkets2": "países", // disponível em X países
 
+        "popupMarketsTitle": "Países Disponíveis",
+
         "spotifyIdLabel": "Spotify ID:",
+        "appleIdLabel": "Apple ID:",
         "isrcLabel": "ISRC:",
         "abstrackLabel": "Abstrack:",
 
@@ -80,6 +84,10 @@ const translations = {
 
         "openLyricsLabel": "Ver as letras",
         "openStudioLabel": "Abrir no Studio",
+
+        "mxmNotAvailable": "Infelizmente essa faixa ainda não está disponível na Musixmatch, gostaria de tentar importa-lá?",
+        "mxmImportInfo": "Importações podem não ser instantâneas. Às vezes, os dados das letras podem levar alguns minutos para ficarem disponíveis. Nesse caso, por favor, aguarde entre 10 e 15 minutos e atualize a página para verificar se a importação foi concluída com sucesso.",
+        "mxmImportButton": "Solicitar",
 
     },
 
@@ -96,7 +104,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Search...",
-        "textRocketLabel": "Search by song name, Spotify link or ISRC code",
+        "textRocketLabel": "Search by the song name, Spotify link, Apple Music link, or ISRC",
 
         "developedByLabel": "Developed by ",
         "developerNameLabel": "Marcos Wiendl",
@@ -133,6 +141,7 @@ const translations = {
         "error500": "Our systems are temporarily busy. Please try again later.",
         "error502": "Oops! There was a connection problem. Please try again later.",
         "abstrackDevelopment": "Searches for abstrack are not yet available",
+        "mxmError404": "The request was successfully sent! Please refresh this page again in a few minutes to check if the track was correctly imported.",
 
         "contentCopiedSuccess": "Content copied to clipboard",
 
@@ -148,8 +157,11 @@ const translations = {
 
         "trackMarkets1": "Available in", // available in X countries
         "trackMarkets2": "countries", // available in X countries
+
+        "popupMarketsTitle": "Available Countries",
     
         "spotifyIdLabel": "Spotify ID:",
+        "appleIdLabel": "Apple ID:",
         "isrcLabel": "ISRC:",
         "abstrackLabel": "Abstrack:",
     
@@ -163,6 +175,10 @@ const translations = {
     
         "openLyricsLabel": "View lyrics",
         "openStudioLabel": "Open in Studio",
+
+        "mxmNotAvailable": "Unfortunately, this track is not available on Musixmatch yet. Would you like to try importing it?",
+        "mxmImportInfo": "Imports may not be immediate. Sometimes, lyric data can take a few minutes to become available. In such cases, please wait between 10 and 15 minutes and refresh the page to check if the import was successful.",
+        "mxmImportButton": "Request",
 
     },
 
@@ -179,7 +195,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Cerca...",
-        "textRocketLabel": "Cerca per nome della canzone, link Spotify o codice ISRC",
+        "textRocketLabel": "Cerca per nome della canzone, link Spotify, link Apple Music o ISRC",
 
         "developedByLabel": "Sviluppato da ",
         "developerNameLabel": "Marcos Wiendl",
@@ -216,6 +232,7 @@ const translations = {
         "error500": "I nostri sistemi sono temporaneamente occupati. Riprova più tardi.",
         "error502": "Oops! C'è stato un problema di connessione. Riprova più tardi.",
         "abstrackDevelopment": "Le ricerche per abstrack non sono ancora disponibili",
+        "mxmError404": "La richiesta è stata inviata con successo! Per favore, aggiorna questa pagina tra qualche minuto per verificare se la traccia è stata importata correttamente.",
 
         "contentCopiedSuccess": "Contenuto copiato negli appunti",
 
@@ -232,7 +249,10 @@ const translations = {
         "trackMarkets1": "Disponibile in", // disponibile in X paesi
         "trackMarkets2": "paesi", // disponibile in X paesi
 
+        "popupMarketsTitle": "Paesi Disponibili",
+
         "spotifyIdLabel": "ID Spotify:",
+        "appleIdLabel": "ID Apple:",
         "isrcLabel": "ISRC:",
         "abstrackLabel": "Abstrack:",
 
@@ -245,7 +265,12 @@ const translations = {
         "wordSyncStatLabel": "Sincronizzazione parole:",
 
         "openLyricsLabel": "Visualizza testo",
-        "openStudioLabel": "Apri in Studio"
+        "openStudioLabel": "Apri in Studio",
+
+        "mxmNotAvailable": "Sfortunatamente, questa traccia non è ancora disponibile su Musixmatch. Vuoi provare a importarla?",
+        "mxmImportInfo": "Le importazioni potrebbero non essere immediate. A volte, i dati delle canzoni potrebbero richiedere alcuni minuti per essere disponibili. In tal caso, ti preghiamo di attendere tra i 10 e i 15 minuti e aggiornare la pagina per verificare se l'importazione è avvenuta con successo.",
+        "mxmImportButton": "Richiedi",
+
     },
 
     "de": {
@@ -261,7 +286,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Suche...",
-        "textRocketLabel": "Suche nach Songname, Spotify-Link oder ISRC-Code",
+        "textRocketLabel": "Suchen Sie nach dem Namen des Liedes, Spotify-Link, Apple Music-Link oder ISRC",
 
         "developedByLabel": "Entwickelt von ",
         "developerNameLabel": "Marcos Wiendl",
@@ -298,6 +323,7 @@ const translations = {
         "error500": "Unsere Systeme sind vorübergehend ausgelastet. Bitte versuche es später erneut.",
         "error502": "Oops! Es gab ein Verbindungsproblem. Bitte versuche es später erneut.",
         "abstrackDevelopment": "Suchen nach abstrack sind noch nicht verfügbar",
+        "mxmError404": "Die Anfrage wurde erfolgreich gesendet! Bitte aktualisieren Sie diese Seite in ein paar Minuten erneut, um zu überprüfen, ob der Track korrekt importiert wurde.",
 
         "contentCopiedSuccess": "Inhalt in die Zwischenablage kopiert",
 
@@ -314,7 +340,10 @@ const translations = {
         "trackMarkets1": "Verfügbar in", // verfügbar in X Ländern
         "trackMarkets2": "Ländern", // verfügbar in X Ländern
 
+        "popupMarketsTitle": "Verfügbare Länder",
+
         "spotifyIdLabel": "Spotify-ID:",
+        "appleIdLabel": "Apple-ID:",
         "isrcLabel": "ISRC:",
         "abstrackLabel": "Abstrack:",
 
@@ -327,7 +356,12 @@ const translations = {
         "wordSyncStatLabel": "Wortsynchronisation:",
 
         "openLyricsLabel": "Text anzeigen",
-        "openStudioLabel": "Im Studio öffnen"
+        "openStudioLabel": "Im Studio öffnen",
+
+        "mxmNotAvailable": "Leider ist dieser Track noch nicht auf Musixmatch verfügbar. Möchten Sie versuchen, ihn zu importieren?",
+        "mxmImportInfo": "Importe können nicht sofort verfügbar sein. Manchmal kann es einige Minuten dauern, bis die Lieddaten verfügbar sind. In solchen Fällen warten Sie bitte zwischen 10 und 15 Minuten und aktualisieren Sie die Seite, um zu überprüfen, ob der Import erfolgreich war.",
+        "mxmImportButton": "Anfordern",
+
     },
 
 
@@ -344,7 +378,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Buscar...",
-        "textRocketLabel": "Buscar por nombre de canción, enlace de Spotify o ISRC",
+        "textRocketLabel": "Busca por el nombre de la canción, enlace de Spotify, enlace de Apple Music o ISRC",
 
         "developedByLabel": "Desarrollado por ",
         "developerNameLabel": "Marcos Wiendl",
@@ -381,6 +415,7 @@ const translations = {
         "error500": "Nuestros sistemas están temporalmente ocupados. Por favor, inténtalo de nuevo más tarde.",
         "error502": "¡Ups! Hubo un problema de conexión. Por favor, inténtalo de nuevo más tarde.",
         "abstrackDevelopment": "Las búsquedas de abstrack aún no están disponibles",
+        "mxmError404": "¡La solicitud se envió con éxito! Por favor, actualiza esta página nuevamente en unos minutos para verificar si la pista fue importada correctamente.",
 
         "contentCopiedSuccess": "Contenido copiado al portapapeles",
 
@@ -396,8 +431,11 @@ const translations = {
 
         "trackMarkets1": "Disponible en", // disponible en X países
         "trackMarkets2": "países", // disponible en X países
+
+        "popupMarketsTitle": "Países Disponibles",
     
         "spotifyIdLabel": "Spotify ID:",
+        "appleIdLabel": "Apple ID:",
         "isrcLabel": "ISRC:",
         "abstrackLabel": "Abstrack:",
     
@@ -411,6 +449,11 @@ const translations = {
     
         "openLyricsLabel": "Ver las letras",
         "openStudioLabel": "Abrir en Studio",
+
+        "mxmNotAvailable": "Lamentablemente, esta pista aún no está disponible en Musixmatch. ¿Te gustaría intentar importarla?",
+        "mxmImportInfo": "Las importaciones pueden no ser inmediatas. A veces, los datos de las letras pueden tardar unos minutos en estar disponibles. En estos casos, por favor, espere entre 10 y 15 minutos y actualice la página para verificar si la importación se completó con éxito.",
+        "mxmImportButton": "Solicitar",
+
     },
 
     "fr": {
@@ -426,7 +469,7 @@ const translations = {
         "topTitle": "Songmatch",
 
         "searchPlaceholder": "Rechercher...",
-        "textRocketLabel": "Recherche par nom de chanson, lien Spotify ou ISRC",
+        "textRocketLabel": "Recherchez par nom de chanson, lien Spotify, lien Apple Music ou ISRC",
 
         "developedByLabel": "Développé par ",
         "developerNameLabel": "Marcos Wiendl",
@@ -463,6 +506,7 @@ const translations = {
         "error500": "Nos systèmes sont temporairement occupés. Veuillez réessayer plus tard.",
         "error502": "Oups ! Il y a eu un problème de connexion. Veuillez réessayer plus tard.",
         "abstrackDevelopment": "Les recherches pour abstrack ne sont pas encore disponibles",
+        "mxmError404": "La demande a été envoyée avec succès ! Veuillez rafraîchir cette page dans quelques minutes pour vérifier si le morceau a été correctement importé.",
         
         "contentCopiedSuccess": "Contenu copié dans le presse-papiers",
 
@@ -478,8 +522,11 @@ const translations = {
 
         "trackMarkets1": "Disponible dans", // disponible dans X pays
         "trackMarkets2": "pays", // disponible dans X pays
+
+        "popupMarketsTitle": "Pays Disponibles",
     
         "spotifyIdLabel": "Spotify ID :",
+        "appleIdLabel": "Apple ID :",
         "isrcLabel": "ISRC :",
         "abstrackLabel": "Abstrack :",
     
@@ -493,5 +540,9 @@ const translations = {
     
         "openLyricsLabel": "Voir les paroles",
         "openStudioLabel": "Ouvrir dans Studio",
+
+        "mxmNotAvailable": "Malheureusement, cette piste n'est pas encore disponible sur Musixmatch. Voulez-vous essayer de l'importer?",
+        "mxmImportInfo": "Les importations peuvent ne pas être immédiates. Parfois, les données des paroles peuvent prendre quelques minutes pour être disponibles. Dans ce cas, veuillez attendre entre 10 et 15 minutes et rafraîchir la page pour vérifier si l'importation a été réussie.",
+        "mxmImportButton": "Demander",
     }
 };

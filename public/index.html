@@ -12,6 +12,7 @@
     <meta name="theme-color" content="#181818">
     <link rel="icon" href="/images/favicon_round/favicon.ico" type="image/x-icon">
 
+
     <!-- Main -->
     <meta charset="UTF-8" />
     <meta name="viewport"
@@ -100,111 +101,8 @@
                 </div>
             </div>
 
-            <div class="simulator sp_data_container" id="sp_container" style="user-select: none; display: none;">
-                <div class="track_container">
-                    <div class="cont_top">
-                        <div class="internal_div track_data">
-                            <div class="track_image_div">
-                                <img id="track_image" width="100%">
-                            </div>
-                            <div class="track_data_div">
-                                <div id="track_name"></div>
-                                <div id="artist_list"></div>
-                                <div id="album_name"></div>
-                                <div id="track_duration_div">
-                                    <span id="track_duration"></span>
-                                    <span id="track_duration_seconds" onclick="copyContent('track_duration_seconds_hidden')">(226)</span>
-                                    <span id="track_duration_seconds_hidden" style="display:none">(226)</span>
-                                </div>
-                            </div>
-                            <div class="player" id="player" style="display:none">
-                                <div id="play_icon" class="icon" alt="Play"></div>
-                                <div id="pause_icon" class="icon" alt="Pause" style="display:none"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cont_main">
+            <div class="simulator sp_data_container" id="results_container" style="user-select: none; display: none;"></div>
 
-                        <div class="internal_div track_info">
-                            <div id="track_released">
-                                <span id="releasedDateLabel"></span>
-                                <span id="track_released_date"></span>
-                            </div>
-                            <div id="track_position">
-                                <span id="trackPositionLabel1"></span>
-                                <span id="track_position_content"></span>
-                                <span id="trackPositionLabel2"></span>
-                                <span id="album_total_content"></span>
-                            </div>
-                            <div id="track_popularity">
-                                <span id="trackPopularityLabel"></span>
-                                <span id="track_popularity_number"></span>
-                            </div>
-                            <div id="track_album_type" style="display: inline;">
-                                <span id="albumTypeLabel"></span>
-                                <span id="albumLabel1" style="display:none"></span>
-                                <span id="singleLabel" style="display:none"></span>
-                                <span id="compilationLabel" style="display:none"></span>
-                            </div>
-                            <div id="track_markets">
-                                <span id="trackMarkets1"></span>
-                                <span id="track_markets_total"></span>
-                                <span id="trackMarkets2"></span>
-                            </div>
-                        </div>
-                        <div class="internal_div track_ids">
-                            <div class="cont_id">
-                                <div id="spotifyIdLabel" class="cont_id_label"></div>
-                                <div id="track_sp_id" onclick="copyContent('track_sp_id')" class="cont_id_value">-</div>
-                            </div>
-                            <div class="cont_id">
-                                <div id="isrcLabel" class="cont_id_label"></div>
-                                <div id="track_isrc_code" onclick="copyContent('track_isrc_code')" class="cont_id_value">-</div>
-                            </div>
-                            <div class="cont_id">
-                                <div id="abstrackLabel" class="cont_id_label"></div>
-                                <div id="track_abstrack" onclick="copyContent('track_abstrack')" class="cont_id_value">-</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cont_main">
-                        <div class="internal_div mxm_links">
-                            <div class="cont_id">
-                                <div id="lyricsLabel" class="cont_id_label"></div>
-                                <div id="track_mxm_lyrics" onclick="copyContent('track_mxm_lyrics')" class="cont_id_value">-</div>
-                            </div>
-                            <div class="cont_id">
-                                <div id="artistLabel" class="cont_id_label"></div>
-                                <div id="track_mxm_artist" onclick="copyContent('track_mxm_artist')" class="cont_id_value">-</div>
-                            </div>
-                            <div class="cont_id">
-                                <div id="albumLabel" class="cont_id_label"></div>
-                                <div id="track_mxm_album" onclick="copyContent('track_mxm_album')" class="cont_id_value">-</div>
-                            </div>
-                        </div>
-                        <div class="lyrics_stats_div">  
-                            <div class="internal_div stats_div">
-                                <div class="stat">
-                                    <div id="lyricsStatLabel" ></div>
-                                    <div id="track_lyrics_stat" class="status-1 status-gray"></div>
-                                </div>
-                                <div class="stat">
-                                    <div id="syncStatLabel"></div>
-                                    <div id="track_linesync_stat" class="status-1 status-gray"></div>
-                                </div>
-                                <div class="stat">
-                                    <div id="wordSyncStatLabel"></div>
-                                    <div id="track_wordsync_stat" class="status-1 status-gray"></div>
-                                </div>
-                            </div>
-                            <div class="shortcuts">
-                                <div id="openLyricsLabel" class="studio_shortcut" data-link="#" onclick="openLyrics()">See the lyrics</div>
-                                <div id="openStudioLabel" class="studio_shortcut" data-link="#" onclick="openStudio()">Open on Studio</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="search_examples_div">
                 <div class="search_examples" id="search_examples" style="display: block">
                     <p class="text_rocket" id="textRocketLabel" style="font-size: larger;"></p>
@@ -269,7 +167,8 @@
         <div style="display:none" class="footer">
         </div>
     </div>
-    <script src="translations.js"></script>
+    <script src="./translations/general.js"></script>
+    <script src="./translations/markets.js"></script>
     <script src="script.js"></script>
     <script>
 
