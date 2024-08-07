@@ -1709,7 +1709,7 @@ function filterCountries() {
     
     countryList.innerHTML = ''; // Limpa a lista existente
     
-    const filteredCountries = providedMarkets.map(code => {
+    const filteredCountries = spotifyMarkets.map(code => {
         const name = getCountryName(code).toLowerCase();
         return {
             code,
