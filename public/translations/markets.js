@@ -2,17 +2,6 @@
 const markets = {
     "markets": [
         {
-            "code": "AF",
-            "translations": {
-                "pt": "Afeganistão",
-                "en": "Afghanistan",
-                "it": "Afghanistan",
-                "de": "Afghanistan",
-                "es": "Afganistán",
-                "fr": "Afghanistan"
-            }
-        },
-        {
             "code": "AL",
             "translations": {
                 "pt": "Albânia",
@@ -35,17 +24,6 @@ const markets = {
             }
         },
         {
-            "code": "AS",
-            "translations": {
-                "pt": "Samoa Americana",
-                "en": "American Samoa",
-                "it": "Samoa Americane",
-                "de": "Amerikanisch-Samoa",
-                "es": "Samoa Americana",
-                "fr": "Samoa américaines"
-            }
-        },
-        {
             "code": "AD",
             "translations": {
                 "pt": "Andorra",
@@ -65,17 +43,6 @@ const markets = {
                 "de": "Angola",
                 "es": "Angola",
                 "fr": "Angola"
-            }
-        },
-        {
-            "code": "AI",
-            "translations": {
-                "pt": "Anguilla",
-                "en": "Anguilla",
-                "it": "Anguilla",
-                "de": "Anguilla",
-                "es": "Anguila",
-                "fr": "Anguilla"
             }
         },
         {
@@ -109,17 +76,6 @@ const markets = {
                 "de": "Armenien",
                 "es": "Armenia",
                 "fr": "Arménie"
-            }
-        },
-        {
-            "code": "AW",
-            "translations": {
-                "pt": "Aruba",
-                "en": "Aruba",
-                "it": "Aruba",
-                "de": "Aruba",
-                "es": "Aruba",
-                "fr": "Aruba"
             }
         },
         {
@@ -241,17 +197,6 @@ const markets = {
                 "de": "Benin",
                 "es": "Benín",
                 "fr": "Bénin"
-            }
-        },
-        {
-            "code": "BM",
-            "translations": {
-                "pt": "Bermudas",
-                "en": "Bermuda",
-                "it": "Bermuda",
-                "de": "Bermuda",
-                "es": "Bermudas",
-                "fr": "Bermudes"
             }
         },
         {
@@ -409,28 +354,6 @@ const markets = {
             }
         },
         {
-            "code": "KY",
-            "translations": {
-                "pt": "Ilhas Cayman",
-                "en": "Cayman Islands",
-                "it": "Isole Cayman",
-                "de": "Kaimaninseln",
-                "es": "Islas Caimán",
-                "fr": "Îles Caïmans"
-            }
-        },
-        {
-            "code": "CF",
-            "translations": {
-                "pt": "República Centro-Africana",
-                "en": "Central African Republic",
-                "it": "Repubblica Centrafricana",
-                "de": "Zentralafrikanische Republik",
-                "es": "República Centroafricana",
-                "fr": "République centrafricaine"
-            }
-        },
-        {
             "code": "TD",
             "translations": {
                 "pt": "Chade",
@@ -450,17 +373,6 @@ const markets = {
                 "de": "Chile",
                 "es": "Chile",
                 "fr": "Chili"
-            }
-        },
-        {
-            "code": "CN",
-            "translations": {
-                "pt": "China",
-                "en": "China",
-                "it": "Cina",
-                "de": "China",
-                "es": "China",
-                "fr": "Chine"
             }
         },
         {
@@ -538,17 +450,6 @@ const markets = {
                 "de": "Kroatien",
                 "es": "Croacia",
                 "fr": "Croatie"
-            }
-        },
-        {
-            "code": "CU",
-            "translations": {
-                "pt": "Cuba",
-                "en": "Cuba",
-                "it": "Cuba",
-                "de": "Kuba",
-                "es": "Cuba",
-                "fr": "Cuba"
             }
         },
         {
@@ -662,17 +563,6 @@ const markets = {
             }
         },
         {
-            "code": "ER",
-            "translations": {
-                "pt": "Eritreia",
-                "en": "Eritrea",
-                "it": "Eritrea",
-                "de": "Eritrea",
-                "es": "Eritrea",
-                "fr": "Érythrée"
-            }
-        },
-        {
             "code": "EE",
             "translations": {
                 "pt": "Estônia",
@@ -706,28 +596,6 @@ const markets = {
             }
         },
         {
-            "code": "FK",
-            "translations": {
-                "pt": "Ilhas Malvinas",
-                "en": "Falkland Islands",
-                "it": "Isole Falkland",
-                "de": "Falklandinseln",
-                "es": "Islas Malvinas",
-                "fr": "Îles Malouines"
-            }
-        },
-        {
-            "code": "FO",
-            "translations": {
-                "pt": "Ilhas Faroe",
-                "en": "Faroe Islands",
-                "it": "Isole Færøe",
-                "de": "Färöer",
-                "es": "Islas Feroe",
-                "fr": "Îles Féroé"
-            }
-        },
-        {
             "code": "FJ",
             "translations": {
                 "pt": "Fiji",
@@ -758,28 +626,6 @@ const markets = {
                 "de": "Frankreich",
                 "es": "Francia",
                 "fr": "France"
-            }
-        },
-        {
-            "code": "GF",
-            "translations": {
-                "pt": "Guiana Francesa",
-                "en": "French Guiana",
-                "it": "Guyane Francese",
-                "de": "Französisch-Guayana",
-                "es": "Guayana Francesa",
-                "fr": "Guyane"
-            }
-        },
-        {
-            "code": "PF",
-            "translations": {
-                "pt": "Polinésia Francesa",
-                "en": "French Polynesia",
-                "it": "Polinesia Francese",
-                "de": "Französisch-Polynesien",
-                "es": "Polinesia Francesa",
-                "fr": "Polynésie française"
             }
         },
         {
@@ -849,17 +695,6 @@ const markets = {
             }
         },
         {
-            "code": "GI",
-            "translations": {
-                "pt": "Gibraltar",
-                "en": "Gibraltar",
-                "it": "Gibilterra",
-                "de": "Gibraltar",
-                "es": "Gibraltar",
-                "fr": "Gibraltar"
-            }
-        },
-        {
             "code": "GR",
             "translations": {
                 "pt": "Grécia",
@@ -871,17 +706,6 @@ const markets = {
             }
         },
         {
-            "code": "GL",
-            "translations": {
-                "pt": "Groenlândia",
-                "en": "Greenland",
-                "it": "Groenlandia",
-                "de": "Grönland",
-                "es": "Groenlandia",
-                "fr": "Groenland"
-            }
-        },
-        {
             "code": "GD",
             "translations": {
                 "pt": "Granada",
@@ -890,28 +714,6 @@ const markets = {
                 "de": "Grenada",
                 "es": "Granada",
                 "fr": "Grenade"
-            }
-        },
-        {
-            "code": "GP",
-            "translations": {
-                "pt": "Guadalupe",
-                "en": "Guadeloupe",
-                "it": "Guadalupa",
-                "de": "Guadeloupe",
-                "es": "Guadalupe",
-                "fr": "Guadeloupe"
-            }
-        },
-        {
-            "code": "GU",
-            "translations": {
-                "pt": "Guam",
-                "en": "Guam",
-                "it": "Guam",
-                "de": "Guam",
-                "es": "Guam",
-                "fr": "Guam"
             }
         },
         {
@@ -1058,17 +860,6 @@ const markets = {
             }
         },
         {
-            "code": "IR",
-            "translations": {
-                "pt": "Irã",
-                "en": "Iran",
-                "it": "Iran",
-                "de": "Iran",
-                "es": "Irán",
-                "fr": "Iran"
-            }
-        },
-        {
             "code": "IQ",
             "translations": {
                 "pt": "Iraque",
@@ -1091,17 +882,6 @@ const markets = {
             }
         },
         {
-            "code": "IM",
-            "translations": {
-                "pt": "Isle of Man",
-                "en": "Isle of Man",
-                "it": "Isola di Man",
-                "de": "Insel Man",
-                "es": "Isla de Man",
-                "fr": "Île de Man"
-            }
-        },
-        {
             "code": "IL",
             "translations": {
                 "pt": "Israel",
@@ -1121,17 +901,6 @@ const markets = {
                 "de": "Italien",
                 "es": "Italia",
                 "fr": "Italie"
-            }
-        },
-        {
-            "code": "JE",
-            "translations": {
-                "pt": "Jersey",
-                "en": "Jersey",
-                "it": "Jersey",
-                "de": "Jersey",
-                "es": "Jersey",
-                "fr": "Jersey"
             }
         },
         {
@@ -1176,17 +945,6 @@ const markets = {
                 "de": "Kiribati",
                 "es": "Kiribati",
                 "fr": "Kiribati"
-            }
-        },
-        {
-            "code": "KP",
-            "translations": {
-                "pt": "Coreia do Norte",
-                "en": "North Korea",
-                "it": "Corea del Nord",
-                "de": "Nordkorea",
-                "es": "Corea del Norte",
-                "fr": "Corée du Nord"
             }
         },
         {
@@ -1421,17 +1179,6 @@ const markets = {
             }
         },
         {
-            "code": "MQ",
-            "translations": {
-                "pt": "Martinica",
-                "en": "Martinique",
-                "it": "Martinica",
-                "de": "Martinique",
-                "es": "Martinica",
-                "fr": "Martinique"
-            }
-        },
-        {
             "code": "MR",
             "translations": {
                 "pt": "Mauritânia",
@@ -1451,17 +1198,6 @@ const markets = {
                 "de": "Mauritius",
                 "es": "Mauricio",
                 "fr": "Île Maurice"
-            }
-        },
-        {
-            "code": "YT",
-            "translations": {
-                "pt": "Mayotte",
-                "en": "Mayotte",
-                "it": "Mayotte",
-                "de": "Mayotte",
-                "es": "Mayotte",
-                "fr": "Mayotte"
             }
         },
         {
@@ -1531,17 +1267,6 @@ const markets = {
             }
         },
         {
-            "code": "MS",
-            "translations": {
-                "pt": "Montserrat",
-                "en": "Montserrat",
-                "it": "Montserrat",
-                "de": "Montserrat",
-                "es": "Montserrat",
-                "fr": "Montserrat"
-            }
-        },
-        {
             "code": "MA",
             "translations": {
                 "pt": "Marrocos",
@@ -1561,17 +1286,6 @@ const markets = {
                 "de": "Mosambik",
                 "es": "Mozambique",
                 "fr": "Mozambique"
-            }
-        },
-        {
-            "code": "MM",
-            "translations": {
-                "pt": "Mianmar",
-                "en": "Myanmar",
-                "it": "Birmania",
-                "de": "Myanmar",
-                "es": "Birmania",
-                "fr": "Birmanie"
             }
         },
         {
@@ -1619,17 +1333,6 @@ const markets = {
             }
         },
         {
-            "code": "NC",
-            "translations": {
-                "pt": "Nova Caledônia",
-                "en": "New Caledonia",
-                "it": "Nuova Caledonia",
-                "de": "Neukaledonien",
-                "es": "Nueva Caledonia",
-                "fr": "Nouvelle-Calédonie"
-            }
-        },
-        {
             "code": "NZ",
             "translations": {
                 "pt": "Nova Zelândia",
@@ -1671,39 +1374,6 @@ const markets = {
                 "de": "Nigeria",
                 "es": "Nigeria",
                 "fr": "Nigéria"
-            }
-        },
-        {
-            "code": "NU",
-            "translations": {
-                "pt": "Niue",
-                "en": "Niue",
-                "it": "Niue",
-                "de": "Niue",
-                "es": "Niue",
-                "fr": "Niue"
-            }
-        },
-        {
-            "code": "NF",
-            "translations": {
-                "pt": "Ilha Norfolk",
-                "en": "Norfolk Island",
-                "it": "Isola Norfolk",
-                "de": "Norfolkinsel",
-                "es": "Isla Norfolk",
-                "fr": "Île Norfolk"
-            }
-        },
-        {
-            "code": "MP",
-            "translations": {
-                "pt": "Ilhas Marianas do Norte",
-                "en": "Northern Mariana Islands",
-                "it": "Isole Marianne Settentrionali",
-                "de": "Nördliche Marianen",
-                "es": "Islas Marianas del Norte",
-                "fr": "Îles Mariannes du Nord"
             }
         },
         {
@@ -1817,17 +1487,6 @@ const markets = {
             }
         },
         {
-            "code": "PN",
-            "translations": {
-                "pt": "Ilhas Pitcairn",
-                "en": "Pitcairn Islands",
-                "it": "Isole Pitcairn",
-                "de": "Pitcairninseln",
-                "es": "Islas Pitcairn",
-                "fr": "Îles Pitcairn"
-            }
-        },
-        {
             "code": "PL",
             "translations": {
                 "pt": "Polônia",
@@ -1872,17 +1531,6 @@ const markets = {
             }
         },
         {
-            "code": "RE",
-            "translations": {
-                "pt": "Reunião",
-                "en": "Réunion",
-                "it": "Riunione",
-                "de": "Réunion",
-                "es": "Reunión",
-                "fr": "Réunion"
-            }
-        },
-        {
             "code": "RO",
             "translations": {
                 "pt": "Romênia",
@@ -1894,17 +1542,6 @@ const markets = {
             }
         },
         {
-            "code": "RU",
-            "translations": {
-                "pt": "Rússia",
-                "en": "Russia",
-                "it": "Russia",
-                "de": "Russland",
-                "es": "Rusia",
-                "fr": "Russie"
-            }
-        },
-        {
             "code": "RW",
             "translations": {
                 "pt": "Ruanda",
@@ -1913,17 +1550,6 @@ const markets = {
                 "de": "Ruanda",
                 "es": "Ruanda",
                 "fr": "Rwanda"
-            }
-        },
-        {
-            "code": "SH",
-            "translations": {
-                "pt": "Santa Helena",
-                "en": "Saint Helena",
-                "it": "Sant'Elena",
-                "de": "St. Helena",
-                "es": "Santa Elena",
-                "fr": "Sainte-Hélène"
             }
         },
         {
@@ -1946,17 +1572,6 @@ const markets = {
                 "de": "Saint Lucia",
                 "es": "Santa Lucía",
                 "fr": "Sainte-Lucie"
-            }
-        },
-        {
-            "code": "PM",
-            "translations": {
-                "pt": "São Pedro e Miquelon",
-                "en": "Saint Pierre and Miquelon",
-                "it": "Saint Pierre e Miquelon",
-                "de": "Saint-Pierre und Miquelon",
-                "es": "San Pedro y Miquelón",
-                "fr": "Saint-Pierre-et-Miquelon"
             }
         },
         {
@@ -2070,17 +1685,6 @@ const markets = {
             }
         },
         {
-            "code": "SX",
-            "translations": {
-                "pt": "Sint Maarten",
-                "en": "Sint Maarten",
-                "it": "Sint Maarten",
-                "de": "Sint Maarten",
-                "es": "Sint Maarten",
-                "fr": "Saint-Martin"
-            }
-        },
-        {
             "code": "SK",
             "translations": {
                 "pt": "Eslováquia",
@@ -2114,17 +1718,6 @@ const markets = {
             }
         },
         {
-            "code": "SO",
-            "translations": {
-                "pt": "Somália",
-                "en": "Somalia",
-                "it": "Somalia",
-                "de": "Somalia",
-                "es": "Somalia",
-                "fr": "Somalie"
-            }
-        },
-        {
             "code": "ZA",
             "translations": {
                 "pt": "África do Sul",
@@ -2133,28 +1726,6 @@ const markets = {
                 "de": "Südafrika",
                 "es": "Sudáfrica",
                 "fr": "Afrique du Sud"
-            }
-        },
-        {
-            "code": "GS",
-            "translations": {
-                "pt": "Geórgia do Sul e Ilhas Sandwich do Sul",
-                "en": "South Georgia and the South Sandwich Islands",
-                "it": "Georgia del Sud e Isole Sandwich del Sud",
-                "de": "Südgeorgien und die Südlichen Sandwichinseln",
-                "es": "Georgia del Sur y las Islas Sandwich del Sur",
-                "fr": "Géorgie du Sud et Îles Sandwich du Sud"
-            }
-        },
-        {
-            "code": "SS",
-            "translations": {
-                "pt": "Sudão do Sul",
-                "en": "South Sudan",
-                "it": "Sudan del Sud",
-                "de": "Südsudan",
-                "es": "Sudán del Sur",
-                "fr": "Soudan du Sud"
             }
         },
         {
@@ -2180,17 +1751,6 @@ const markets = {
             }
         },
         {
-            "code": "SD",
-            "translations": {
-                "pt": "Sudão",
-                "en": "Sudan",
-                "it": "Sudan",
-                "de": "Sudan",
-                "es": "Sudán",
-                "fr": "Soudan"
-            }
-        },
-        {
             "code": "SR",
             "translations": {
                 "pt": "Suriname",
@@ -2199,17 +1759,6 @@ const markets = {
                 "de": "Surinam",
                 "es": "Surinam",
                 "fr": "Suriname"
-            }
-        },
-        {
-            "code": "SJ",
-            "translations": {
-                "pt": "Svalbard e Jan Mayen",
-                "en": "Svalbard and Jan Mayen",
-                "it": "Svalbard e Jan Mayen",
-                "de": "Svalbard und Jan Mayen",
-                "es": "Svalbard y Jan Mayen",
-                "fr": "Svalbard et Jan Mayen"
             }
         },
         {
@@ -2232,17 +1781,6 @@ const markets = {
                 "de": "Schweiz",
                 "es": "Suiza",
                 "fr": "Suisse"
-            }
-        },
-        {
-            "code": "SY",
-            "translations": {
-                "pt": "Síria",
-                "en": "Syria",
-                "it": "Siria",
-                "de": "Syrien",
-                "es": "Siria",
-                "fr": "Syrie"
             }
         },
         {
@@ -2312,17 +1850,6 @@ const markets = {
             }
         },
         {
-            "code": "TK",
-            "translations": {
-                "pt": "Tokelau",
-                "en": "Tokelau",
-                "it": "Tokelau",
-                "de": "Tokelau",
-                "es": "Tokelau",
-                "fr": "Tokelau"
-            }
-        },
-        {
             "code": "TO",
             "translations": {
                 "pt": "Tonga",
@@ -2364,17 +1891,6 @@ const markets = {
                 "de": "Türkei",
                 "es": "Turquía",
                 "fr": "Turquie"
-            }
-        },
-        {
-            "code": "TM",
-            "translations": {
-                "pt": "Turcomenistão",
-                "en": "Turkmenistan",
-                "it": "Turkmenistan",
-                "de": "Turkmenistan",
-                "es": "Turkmenistán",
-                "fr": "Turkménistan"
             }
         },
         {
@@ -2444,17 +1960,6 @@ const markets = {
             }
         },
         {
-            "code": "UM",
-            "translations": {
-                "pt": "Estados Unidos, Ilhas Menores Distantes",
-                "en": "United States Minor Outlying Islands",
-                "it": "Stati Uniti Isole Minori Esterne",
-                "de": "Vereinigte Staaten von Amerika, Außengebiete",
-                "es": "Estados Unidos, Islas Menores Alejadas",
-                "fr": "États-Unis, Îles mineures éloignées"
-            }
-        },
-        {
             "code": "UY",
             "translations": {
                 "pt": "Uruguai",
@@ -2507,28 +2012,6 @@ const markets = {
                 "de": "Vietnam",
                 "es": "Vietnam",
                 "fr": "Vietnam"
-            }
-        },
-        {
-            "code": "WF",
-            "translations": {
-                "pt": "Wallis e Futuna",
-                "en": "Wallis and Futuna",
-                "it": "Wallis e Futuna",
-                "de": "Wallis und Futuna",
-                "es": "Wallis y Futuna",
-                "fr": "Wallis-et-Futuna"
-            }
-        },
-        {
-            "code": "YE",
-            "translations": {
-                "pt": "Iémen",
-                "en": "Yemen",
-                "it": "Yemen",
-                "de": "Jemen",
-                "es": "Yemen",
-                "fr": "Yémen"
             }
         },
         {

@@ -1709,15 +1709,32 @@ function filterCountries() {
     
     countryList.innerHTML = ''; // Limpa a lista existente
     
-    const filteredCountries = lastAvailableMarkets.filter(code => {
+    const filteredCountries = providedMarkets.map(code => {
         const name = getCountryName(code).toLowerCase();
-        return name.includes(search);
+        return {
+            code,
+            name,
+            available: lastAvailableMarkets.includes(code)
+        };
+    }).filter(country => country.name.includes(search));
+
+    // Ordena os países filtrados, colocando os indisponíveis no final
+    filteredCountries.sort((a, b) => {
+        if (a.available && !b.available) return -1;
+        if (!a.available && b.available) return 1;
+        return a.name.localeCompare(b.name);
     });
 
-    filteredCountries.forEach(code => {
+    filteredCountries.forEach(country => {
         const li = document.createElement('li');
-        li.textContent = getCountryName(code);
-        li.setAttribute('data-lang', code); // Define o atributo data-lang com o código do país
+        li.textContent = country.name;
+        li.setAttribute('data-lang', country.code); // Define o atributo data-lang com o código do país
+        
+        // Adiciona uma classe para indicar que a faixa está indisponível
+        if (!country.available) {
+            li.classList.add('unavailable');
+        }
+        
         countryList.appendChild(li);
     });
 }
