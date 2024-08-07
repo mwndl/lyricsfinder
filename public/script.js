@@ -1698,7 +1698,7 @@ function closePopup() {
     document.getElementById('overlay').style.display = 'none';
 }
 
-const spotifyMarkets = [
+const providedMarkets = [
     // Lista de todos os países
     "AR", "AU", "AT", "BE", "BO", "BR", "BG", "CA", "CL", "CO", "CR", "CY", "CZ", "DK", 
     "DO", "DE", "EC", "EE", "SV", "FI", "FR", "GR", "GT", "HN", "HK", "HU", "IS", "IE", 
