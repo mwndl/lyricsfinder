@@ -1727,7 +1727,7 @@ function filterCountries() {
     
     countryList.innerHTML = ''; // Limpa a lista existente
     
-    const filteredCountries = spotifyMarkets.map(code => {
+    const filteredCountries = providedMarkets.map(code => {
         const name = getCountryName(code).toLowerCase();
         return {
             code,
@@ -1736,7 +1736,7 @@ function filterCountries() {
         };
     }).filter(country => country.name.includes(search));
 
-    // Ordena os países filtrados, colocando os indisponíveis no final
+    // Ordena os países filtrados, colocando os disponíveis primeiro e os indisponíveis por último
     filteredCountries.sort((a, b) => {
         if (a.available && !b.available) return -1;
         if (!a.available && b.available) return 1;
@@ -1766,20 +1766,29 @@ function initializePopup(lastAvailableMarkets) {
     const countryList = document.getElementById('country-list');
     countryList.innerHTML = ''; // Limpa a lista existente
 
-    // Ordena os códigos de países pelo nome correspondente
-    lastAvailableMarkets.sort((a, b) => {
+    // Ordena os códigos de países pelo nome correspondente, disponíveis primeiro
+    providedMarkets.sort((a, b) => {
         const nameA = getCountryName(a).toLowerCase();
         const nameB = getCountryName(b).toLowerCase();
-        if (nameA < nameB) return -1;
-        if (nameA > nameB) return 1;
-        return 0;
+        const availableA = lastAvailableMarkets.includes(a);
+        const availableB = lastAvailableMarkets.includes(b);
+
+        if (availableA && !availableB) return -1;
+        if (!availableA && availableB) return 1;
+        return nameA.localeCompare(nameB);
     });
 
     // Adiciona os países ordenados à lista
-    lastAvailableMarkets.forEach(code => {
+    providedMarkets.forEach(code => {
         const li = document.createElement('li');
         li.textContent = getCountryName(code);
         li.setAttribute('data-lang', code); // Define o atributo data-lang com o código do país
+
+        // Adiciona uma classe para indicar que a faixa está indisponível
+        if (!lastAvailableMarkets.includes(code)) {
+            li.classList.add('unavailable');
+        }
+        
         countryList.appendChild(li);
     });
 }
@@ -1794,24 +1803,22 @@ function refreshMarketsTranslations() {
     
     const items = Array.from(countryList.querySelectorAll('li'));
 
-    // Verifica se há itens na lista antes de tentar atualizar
-    if (items.length === 0) {
-        return null;
-    }
-
     // Atualiza o texto dos itens com base na tradução atual
     items.forEach(item => {
         const code = item.getAttribute('data-lang');
         item.textContent = getCountryName(code);
     });
 
-    // Reordena a lista com base na nova tradução
+    // Reordena a lista com base na nova tradução, colocando os disponíveis primeiro
     items.sort((a, b) => {
         const nameA = a.textContent.toLowerCase();
         const nameB = b.textContent.toLowerCase();
-        if (nameA < nameB) return -1;
-        if (nameA > nameB) return 1;
-        return 0;
+        const availableA = lastAvailableMarkets.includes(a.getAttribute('data-lang'));
+        const availableB = lastAvailableMarkets.includes(b.getAttribute('data-lang'));
+
+        if (availableA && !availableB) return -1;
+        if (!availableA && availableB) return 1;
+        return nameA.localeCompare(nameB);
     });
 
     // Re-adiciona os itens na lista de forma ordenada
