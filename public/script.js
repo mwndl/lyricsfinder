@@ -1728,13 +1728,13 @@ function filterCountries() {
     countryList.innerHTML = ''; // Limpa a lista existente
     
     const filteredCountries = providedMarkets.map(code => {
-        const name = getCountryName(code).toLowerCase();
+        const name = getCountryName(code);
         return {
             code,
             name,
             available: lastAvailableMarkets.includes(code)
         };
-    }).filter(country => country.name.includes(search));
+    }).filter(country => country.name.toLowerCase().includes(search));
 
     // Ordena os países filtrados, colocando os disponíveis primeiro e os indisponíveis por último
     filteredCountries.sort((a, b) => {
