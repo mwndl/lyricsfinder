@@ -830,12 +830,9 @@ function searchByAbstrack(abstrack, autoRedirect) {
         })
         .then(data => {
 
-            lyricsId = data.message.body.musixmatch.track_data.lyrics_id;
+            musixmatchData = data.message.body.musixmatch;
 
-            const url = `http://mxmt.ch/t/${lyricsId}`;
-            window.open(url, '_blank');
-
-            // setMusixmatchData(musixmatchData)
+            setMusixmatchData(musixmatchData)
             
         })
         .catch(error => {
@@ -1504,6 +1501,13 @@ async function setAppleData(appleData, musixmatchData) {
 async function setMusixmatchData(musixmatchData) {
 
     importHideLoader()
+
+    lyricsId = musixmatchData.track_data.lyrics_id;
+
+    const url = `http://mxmt.ch/t/${lyricsId}`;
+    window.open(url, '_blank');
+
+    /*
     
     const trackAbstrack = document.getElementById('track_abstrack')
     
@@ -1558,6 +1562,8 @@ async function setMusixmatchData(musixmatchData) {
 
     openLyrics.setAttribute('data-link', `http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`);
     openStudio.setAttribute('data-link', `https://curators.musixmatch.com/tool?commontrack_id=${musixmatchData.track_data.commontrack_id}&mode=edit`);
+
+    */
 }
 
 
