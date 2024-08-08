@@ -345,6 +345,7 @@ function handleSearch(content) {
     showLoader();
 
     source = getQueryParameter('source')
+    autoRedirect = getQueryParameter('auto_redirect')
 
     content = content.trim().replace(/\s+/g, ' ');
 
@@ -444,10 +445,14 @@ function handleSearch(content) {
             searchAppleId(content)
             setQueryParameter('query', content);
             setQueryParameter('source', 'apple');
-        } else if (source === 'musixmatch' || source === 'mxm') {
-            searchByAbstrack(content)
+        } else if ((source === 'musixmatch' || source === 'mxm') && !autoRedirect) {
+            searchByAbstrack(content, '0')
             setQueryParameter('query', content);
-            setQueryParameter('source', 'musixmatch');
+            setQueryParameter('source', 'mxm');
+        } else if ((source === 'musixmatch' || source === 'mxm') && autoRedirect === '1') {
+            searchByAbstrack(content, '1')
+            setQueryParameter('query', content);
+            setQueryParameter('source', 'mxm');
         }
         return;
     }
@@ -786,7 +791,7 @@ function searchByIsrcApple(isrc) {
         });
 }
 
-function searchByAbstrack(abstrack) {
+function searchByAbstrack(abstrack, autoRedirect) {
     document.getElementById('search_bar_content').value = ''
     console.log('Pesquisar Abstrack:', abstrack);
 
@@ -797,7 +802,7 @@ function searchByAbstrack(abstrack) {
     }
 
     // URL da API com o ID dinâmico
-    const url = `${window.serverPath}/songmatch/abstrack?content=${abstrack}&token=${publicToken}&mxm_data=1`;
+    const url = `${window.serverPath}/songmatch/abstrack?content=${abstrack}&token=${publicToken}`;
 
     // Fazendo a requisição para a API
     fetch(url)
@@ -825,10 +830,12 @@ function searchByAbstrack(abstrack) {
         })
         .then(data => {
 
-            spotifyData = data.message.body.spotify;
-            musixmatchData = data.message.body.musixmatch;
+            lyricsId = data.message.body.musixmatch.track_data.lyrics_id;
 
-            setSpotifyData(spotifyData, musixmatchData)
+            const url = `http://mxmt.ch/t/${lyricsId}`;
+            window.open(url, '_blank');
+
+            // setMusixmatchData(musixmatchData)
             
         })
         .catch(error => {
