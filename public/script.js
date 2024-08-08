@@ -445,12 +445,8 @@ function handleSearch(content) {
             searchAppleId(content)
             setQueryParameter('query', content);
             setQueryParameter('source', 'apple');
-        } else if ((source === 'musixmatch' || source === 'mxm') && !autoRedirect) {
-            searchByAbstrack(content, '0')
-            setQueryParameter('query', content);
-            setQueryParameter('source', 'mxm');
-        } else if ((source === 'musixmatch' || source === 'mxm') && autoRedirect === '1') {
-            searchByAbstrack(content, '1')
+        } else if (source === 'musixmatch' || source === 'mxm') {
+            searchByAbstrack(content, autoRedirect)
             setQueryParameter('query', content);
             setQueryParameter('source', 'mxm');
         }
@@ -832,7 +828,11 @@ function searchByAbstrack(abstrack, autoRedirect) {
 
             musixmatchData = data.message.body.musixmatch;
 
-            setMusixmatchData(musixmatchData)
+            if (autoRedirect === null) {
+                autoRedirect === '0'
+            }
+
+            setMusixmatchData(musixmatchData, autoRedirect)
             
         })
         .catch(error => {
@@ -1498,14 +1498,30 @@ async function setAppleData(appleData, musixmatchData) {
 }
 
 
-async function setMusixmatchData(musixmatchData) {
+async function setMusixmatchData(musixmatchData, autoRedirect) {
 
     importHideLoader()
 
-    lyricsId = musixmatchData.track_data.lyrics_id;
+    if (autoRedirect === '1') {
+        lyricsId = musixmatchData.track_data.lyrics_id;
 
-    const url = `http://mxmt.ch/t/${lyricsId}`;
-    window.open(url, '_blank');
+        const url = `http://mxmt.ch/t/${lyricsId}`;
+        window.open(url, '_blank');
+
+    } else if (autoRedirect === '2') {
+        lyricsId = musixmatchData.track_data.lyrics_id;
+    
+        const url = `http://mxmt.ch/t/${lyricsId}`;
+        window.location.href = url;
+
+    } else {
+        lyricsId = musixmatchData.track_data.lyrics_id;
+
+        const url = `http://mxmt.ch/t/${lyricsId}`;
+        window.open(url, '_blank');
+        
+    }
+
 
     /*
     
