@@ -1500,7 +1500,7 @@ async function setAppleData(appleData, musixmatchData) {
 
 async function setMusixmatchData(musixmatchData, autoRedirect) {
 
-    importHideLoader()
+    hideLoader()
 
     if (autoRedirect === '1') {
         lyricsId = musixmatchData.track_data.lyrics_id;
@@ -1519,7 +1519,7 @@ async function setMusixmatchData(musixmatchData, autoRedirect) {
 
         const url = `http://mxmt.ch/t/${lyricsId}`;
         window.open(url, '_blank');
-        
+
     }
 
 
