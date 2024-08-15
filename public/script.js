@@ -7,11 +7,23 @@ document.addEventListener('DOMContentLoaded', async function () {
     } else {
         setLanguageBasedOnBrowser()
     }
+
+    if (getQueryParameter('theme')) {
+        theme = getQueryParameter('theme')
+
+        if (theme === 'light') {
+            setLightTheme()
+        } else {
+            setDarkTheme()
+        }
+    }
     
     applyColorScheme(); // service worker
     applyStoredTheme() // aplicar tema de background
     resetBackImage()
     hideThemeSelectors()
+    setInitialTheme()
+    listenForThemeChanges()
 
     const flagDiv = document.getElementById('flagDiv');
     const flagMenu = document.getElementById('flagMenu');
@@ -1874,6 +1886,7 @@ function setTheme0() {
     document.getElementById('theme0toggle').className = 'theme-selector defaut selected'
     document.getElementById('background-image').style.display = 'none'
     localStorage.setItem('theme', '0');
+    toggleTheme()
 }
 
 function setTheme1() {
@@ -1881,6 +1894,7 @@ function setTheme1() {
     document.getElementById('theme0toggle').className = 'theme-selector defaut'
     document.getElementById('background-image').style.display = 'flex'
     localStorage.setItem('theme', '1');
+    body.setAttribute('data-theme', 'dark');
 }
 
 function applyStoredTheme() {
@@ -1912,6 +1926,55 @@ function hideThemeSelectors() {
     resetBackImage()
 }
 
+
+
+function toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.getAttribute('data-theme');
+
+    if (currentTheme === 'dark') {
+        setLightTheme()
+    } else {
+        setDarkTheme()
+    }
+}
+
+function setLightTheme() {
+    body.setAttribute('data-theme', 'light');
+}
+
+function setDarkTheme() {
+    body.setAttribute('data-theme', 'dark');
+    console.log('tema escuto ativado')
+}
+
+function setInitialTheme() {
+    const body = document.body;
+    const userPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const currentTheme = body.getAttribute('data-theme');
+
+    if (!currentTheme) { // Se nenhum tema estiver definido
+        if (userPrefersDark) {
+            setDarkTheme()
+        } else {
+            setLightTheme()
+        }
+    }
+}
+
+function listenForThemeChanges() {
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Adiciona um ouvinte para mudanças nas preferências do navegador
+    darkModeMediaQuery.addEventListener('change', (event) => {
+        const body = document.body;
+        if (event.matches) {
+            setDarkTheme()
+        } else {
+            setLightTheme()
+        }
+    });
+}
 
 
 
