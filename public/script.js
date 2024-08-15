@@ -1387,7 +1387,6 @@ async function setAppleData(appleData, musixmatchData) {
 
     trackImage.src = albumImage;
     setTheme1Image(albumImage)
-
     showThemeSelectors()
 
     /* Track name */
@@ -1887,11 +1886,10 @@ function setTheme1() {
 function applyStoredTheme() {
     const theme = localStorage.getItem('theme');
 
-    if (theme === '1') {
-        setTheme1();
-    }
     if (theme === '0') {
         setTheme0();
+    } else {
+        setTheme1();
     }
 }
 
