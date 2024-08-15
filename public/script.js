@@ -1887,7 +1887,6 @@ function setTheme0() {
     document.getElementById('theme1toggle').className = 'theme-selector dark'
     document.getElementById('theme0toggle').className = 'theme-selector light selected'
     document.getElementById('background-image').style.display = 'none'
-    localStorage.setItem('theme', '0');
     setLightTheme() 
 }
 
@@ -1896,7 +1895,6 @@ function setTheme1() {
     document.getElementById('theme1toggle').className = 'theme-selector dark selected'
     document.getElementById('theme0toggle').className = 'theme-selector light'
     document.getElementById('background-image').style.display = 'none'
-    localStorage.setItem('theme', '1');
     setDarkTheme()
 }
 
@@ -1955,11 +1953,12 @@ function toggleTheme() {
 
 function setLightTheme() {
     body.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', '0');
 }
 
 function setDarkTheme() {
     body.setAttribute('data-theme', 'dark');
-    console.log('tema escuto ativado')
+    localStorage.setItem('theme', '1');
 }
 
 function setInitialTheme() {
@@ -1969,8 +1968,10 @@ function setInitialTheme() {
 
     if (!currentTheme) { // Se nenhum tema estiver definido
         if (userPrefersDark) {
+            setTheme1()
             setDarkTheme()
         } else {
+            setTheme0()
             setLightTheme()
         }
     }
@@ -1983,8 +1984,10 @@ function listenForThemeChanges() {
     darkModeMediaQuery.addEventListener('change', (event) => {
         const body = document.body;
         if (event.matches) {
+            setTheme1()
             setDarkTheme()
         } else {
+            setTheme0()
             setLightTheme()
         }
     });
