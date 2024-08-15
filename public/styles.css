@@ -1,7 +1,6 @@
-/* Estilos padrão (modo claro e escuro) */
 html {
     touch-action: manipulation;
-  }
+}
 
 body {
     background-color: #fafafa;
@@ -15,6 +14,47 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+#background-image {
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    filter: blur(150px);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: scale(1.5);
+    z-index: -10;
+}
+
+.background-image-effect2 {
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    filter: blur(50px);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: scale(1.5);
+    z-index: -10;
+}
+
+#toggle_image {
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    filter: blur(1px);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    transform: scale(1.2);
+    z-index: -10;
 }
 
 body::before {
@@ -62,7 +102,8 @@ a:hover {
 }
 .flag-container {
     position: relative;
-    display: inline-block;
+    display: grid;
+    place-items: center;
     cursor: pointer;
     user-select: none;
 }
@@ -116,6 +157,8 @@ hr {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    z-index: 1;
+    position: relative;
 }
 
 .top {
@@ -642,9 +685,10 @@ hr {
 /* TEMA DARK */
 
 @media (prefers-color-scheme: dark) {
+
     body {
+        color: #ffffff;
         background-color: #181818;
-        color: rgb(255, 255, 255);
     }
 
     h1, p, label {

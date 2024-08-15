@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
     
     applyColorScheme(); // service worker
+    applyStoredTheme() // aplicar tema de background
+    resetBackImage()
+    hideThemeSelectors()
 
     const flagDiv = document.getElementById('flagDiv');
     const flagMenu = document.getElementById('flagMenu');
@@ -1150,8 +1153,12 @@ async function setSpotifyData(spotifyData, musixmatchData) {
 
     const trackId = spotifyData.track_data.track_id;
     const albumImage = spotifyData.album_data.images[0].url;
+    const albumImageBack = spotifyData.album_data.images[2].url;
 
     trackImage.src = albumImage;
+
+    showThemeSelectors()
+    setTheme1Image(albumImageBack)
 
     /* Track name */
         const track = spotifyData.track_data;
@@ -1379,6 +1386,9 @@ async function setAppleData(appleData, musixmatchData) {
     const albumImage = appleData.album_data.album_artwork;
 
     trackImage.src = albumImage;
+    setTheme1Image(albumImage)
+
+    showThemeSelectors()
 
     /* Track name */
         const track = appleData.track_data;
@@ -1857,10 +1867,65 @@ function refreshMarketsTranslations() {
     });
 }
 
+document.getElementById('theme1toggle').addEventListener('click', setTheme1);
+document.getElementById('theme0toggle').addEventListener('click', setTheme0);
+
+function setTheme0() {
+    document.getElementById('theme1toggle').className = 'theme-selector image'
+    document.getElementById('theme0toggle').className = 'theme-selector defaut selected'
+    document.getElementById('background-image').style.display = 'none'
+    localStorage.setItem('theme', '0');
+}
+
+function setTheme1() {
+    document.getElementById('theme1toggle').className = 'theme-selector image selected'
+    document.getElementById('theme0toggle').className = 'theme-selector defaut'
+    document.getElementById('background-image').style.display = 'flex'
+    localStorage.setItem('theme', '1');
+}
+
+function applyStoredTheme() {
+    const theme = localStorage.getItem('theme');
+
+    if (theme === '1') {
+        setTheme1();
+    }
+    if (theme === '0') {
+        setTheme0();
+    }
+}
+
+function setTheme1Image(imageUrl) {
+    document.getElementById('backimage_intern').style = `background-image: url('${imageUrl}');`
+    document.getElementById('toggle_image').style = `background: url('${imageUrl}') no-repeat center/cover;`
+}
+
+function resetBackImage() {
+    document.getElementById('backimage_intern').style = ''
+    document.getElementById('toggle_image').style = ''
+}
+
+function showThemeSelectors() {
+    document.getElementById("theme-selectors").style.display = 'flex'
+}
+
+function hideThemeSelectors() {
+    document.getElementById("theme-selectors").style.display = 'none'
+    resetBackImage()
+}
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
   
 
 

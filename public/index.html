@@ -74,9 +74,17 @@
     <div class="container">
         <div class="top">
             <h1 id="topTitle"></h1>
-            <div id="flagDiv" class="flag-container">
-                <img id="selectedFlag" class="flag">
-                <div id="flagMenu" class="flag-menu">
+            <div id="top_right" style="display:flex">
+                <div id="theme-selectors" class="theme-selectors" style="display:none">
+                    <div id="theme1toggle" class="theme-selector image selected">
+                        <div id="toggle_image"></div>
+                    </div>
+                    <div id="theme0toggle" class="theme-selector defaut"></div>
+                </div>
+                <div id="flagDiv" class="flag-container">
+                    <img id="selectedFlag" class="flag">
+                    <div id="flagMenu" class="flag-menu">
+                    </div>
                 </div>
             </div>
         </div>
@@ -161,6 +169,9 @@
                 <div class="notification-content">
                     <p id="notification-message"></p>
                 </div>
+            </div>
+            <div id="background-image" style="display:none">
+                <div id="backimage_intern" class="background-image-effect2" style=""></div>
             </div>
             <audio id="audio" src="#"></audio>
         </div>
