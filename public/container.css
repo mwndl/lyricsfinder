@@ -462,15 +462,20 @@
     z-index: -1;
 }
 
-.theme-selector.defaut {
+.theme-selector.dark {
+    background-color: var(--background-color21);
+}
+
+.theme-selector.light {
     background-color: var(--background-color20);
 }
 
 .theme-selector.selected {
     transform: scale(1.25);
-    border: 2px solid var(--alt-color16);
+    border: 2px solid var(--color1);
     box-shadow: var(--alt-color15) 0px 0px 10px;
 }
+
 
 /* *********** */
 

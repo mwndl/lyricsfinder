@@ -1878,32 +1878,46 @@ function refreshMarketsTranslations() {
     });
 }
 
+document.getElementById('theme2toggle').addEventListener('click', setTheme2);
 document.getElementById('theme1toggle').addEventListener('click', setTheme1);
 document.getElementById('theme0toggle').addEventListener('click', setTheme0);
 
 function setTheme0() {
-    document.getElementById('theme1toggle').className = 'theme-selector image'
-    document.getElementById('theme0toggle').className = 'theme-selector defaut selected'
+    document.getElementById('theme2toggle').className = 'theme-selector image'
+    document.getElementById('theme1toggle').className = 'theme-selector dark'
+    document.getElementById('theme0toggle').className = 'theme-selector light selected'
     document.getElementById('background-image').style.display = 'none'
     localStorage.setItem('theme', '0');
-    toggleTheme()
+    setLightTheme() 
 }
 
 function setTheme1() {
-    document.getElementById('theme1toggle').className = 'theme-selector image selected'
-    document.getElementById('theme0toggle').className = 'theme-selector defaut'
-    document.getElementById('background-image').style.display = 'flex'
+    document.getElementById('theme2toggle').className = 'theme-selector image'
+    document.getElementById('theme1toggle').className = 'theme-selector dark selected'
+    document.getElementById('theme0toggle').className = 'theme-selector light'
+    document.getElementById('background-image').style.display = 'none'
     localStorage.setItem('theme', '1');
-    body.setAttribute('data-theme', 'dark');
+    setDarkTheme()
+}
+
+function setTheme2() {
+    document.getElementById('theme2toggle').className = 'theme-selector image selected'
+    document.getElementById('theme1toggle').className = 'theme-selector dark'
+    document.getElementById('theme0toggle').className = 'theme-selector light'
+    document.getElementById('background-image').style.display = 'flex'
+    localStorage.setItem('theme', '2');
+    setDarkTheme()
 }
 
 function applyStoredTheme() {
     const theme = localStorage.getItem('theme');
 
-    if (theme === '0') {
-        setTheme0();
-    } else {
+    if (theme === '2') {
+        setTheme2();
+    } else if (theme === '1') {
         setTheme1();
+    } else {
+        setTheme0()
     }
 }
 
