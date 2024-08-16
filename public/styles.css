@@ -1,5 +1,4 @@
-/* global.css */
-[data-theme="light"] {
+:root {
     --background-color1: #fafafa;
     --background-color2: #AAAAAA;
     --background-color3: #fbfbfb;
