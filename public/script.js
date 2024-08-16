@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', async function () {
     applyStoredTheme() // aplicar tema de background
     resetBackImage()
     hideThemeSelectors()
-    setInitialTheme()
     listenForThemeChanges()
 
     const flagDiv = document.getElementById('flagDiv');
@@ -1887,6 +1886,7 @@ function setTheme0() {
     document.getElementById('theme1toggle').className = 'theme-selector dark'
     document.getElementById('theme0toggle').className = 'theme-selector light selected'
     document.getElementById('background-image').style.display = 'none'
+    localStorage.setItem('theme', '0');
     setLightTheme() 
 }
 
@@ -1895,6 +1895,7 @@ function setTheme1() {
     document.getElementById('theme1toggle').className = 'theme-selector dark selected'
     document.getElementById('theme0toggle').className = 'theme-selector light'
     document.getElementById('background-image').style.display = 'none'
+    localStorage.setItem('theme', '1');
     setDarkTheme()
 }
 
@@ -1914,8 +1915,10 @@ function applyStoredTheme() {
         setTheme2();
     } else if (theme === '1') {
         setTheme1();
+    } else if (theme === '0') {
+        setTheme0();
     } else {
-        setTheme0()
+        setInitialTheme()
     }
 }
 
@@ -1953,23 +1956,31 @@ function toggleTheme() {
 
 function setLightTheme() {
     body.setAttribute('data-theme', 'light');
-    localStorage.setItem('theme', '0');
 }
 
 function setDarkTheme() {
     body.setAttribute('data-theme', 'dark');
-    localStorage.setItem('theme', '1');
 }
 
 function setInitialTheme() {
     const userPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = localStorage.getItem('theme');
 
-    if (userPrefersDark) {
-        setTheme1()
-        setDarkTheme()
+    if (theme) {
+        if (theme === '0') {
+            setTheme0()
+        } else if (theme === '1') {
+            setTheme1()
+        } else if (theme === '2') {
+            setTheme2()
+        }
     } else {
-        setTheme0()
-        setLightTheme()
+        if (userPrefersDark) {
+            setDarkTheme()
+            setTheme2();
+        } else {
+            setLightTheme()
+        }
     }
 }
 
