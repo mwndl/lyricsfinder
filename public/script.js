@@ -1962,18 +1962,14 @@ function setDarkTheme() {
 }
 
 function setInitialTheme() {
-    const body = document.body;
     const userPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const currentTheme = body.getAttribute('data-theme');
 
-    if (!currentTheme) { // Se nenhum tema estiver definido
-        if (userPrefersDark) {
-            setTheme1()
-            setDarkTheme()
-        } else {
-            setTheme0()
-            setLightTheme()
-        }
+    if (userPrefersDark) {
+        setTheme1()
+        setDarkTheme()
+    } else {
+        setTheme0()
+        setLightTheme()
     }
 }
 
