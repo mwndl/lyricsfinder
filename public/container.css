@@ -101,11 +101,13 @@
     font-size: 24px;
     font-weight: 700;
     user-select: text;
+    width: calc(100% - 25px);
 }
 
 #artist_list {
     font-size: 16px;
     user-select: text;
+    width: calc(100% - 25px);
 }
 
 #album_name {
