@@ -1889,6 +1889,7 @@ function setTheme0() {
     document.getElementById('theme0toggle').className = 'theme-selector light selected'
     document.getElementById('background-image').style.display = 'none'
     localStorage.setItem('theme', '0');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fafafa');
     setLightTheme() 
 }
 
@@ -1898,6 +1899,7 @@ function setTheme1() {
     document.getElementById('theme0toggle').className = 'theme-selector light'
     document.getElementById('background-image').style.display = 'none'
     localStorage.setItem('theme', '1');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#181818');
     setDarkTheme()
 }
 
@@ -1907,6 +1909,7 @@ function setTheme2() {
     document.getElementById('theme0toggle').className = 'theme-selector light'
     document.getElementById('background-image').style.display = 'flex'
     localStorage.setItem('theme', '2');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#181818');
     setDarkTheme()
 }
 
