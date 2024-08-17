@@ -156,10 +156,6 @@ body {
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 #background-image {
