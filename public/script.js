@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         location.reload(); 
     });
 
+
+
     // showSpContainer();
 
 });
@@ -1956,10 +1958,12 @@ function toggleTheme() {
 
 function setLightTheme() {
     body.setAttribute('data-theme', 'light');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fafafa');
 }
 
 function setDarkTheme() {
     body.setAttribute('data-theme', 'dark');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#181818');
 }
 
 function setInitialTheme() {
