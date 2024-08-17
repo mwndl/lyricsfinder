@@ -1173,6 +1173,15 @@ async function setSpotifyData(spotifyData, musixmatchData) {
     showThemeSelectors()
     setTheme1Image(albumImageBack)
 
+    // aplicar cor predominante como tema da página
+    getDominantColorFromImageUrl(albumImageBack, function(hexColor) {
+        if (hexColor) {
+            document.documentElement.style.setProperty('--theme_color', hexColor);
+        } else {
+            console.log('Não foi possível obter a cor predominante.');
+        }
+    });
+
     /* Track name */
         const track = spotifyData.track_data;
         trackName.textContent = ''
@@ -1401,6 +1410,15 @@ async function setAppleData(appleData, musixmatchData) {
     trackImage.src = albumImage;
     setTheme1Image(albumImage)
     showThemeSelectors()
+
+    // aplicar cor predominante como tema da página
+    getDominantColorFromImageUrl(albumImage, function(hexColor) {
+        if (hexColor) {
+            document.documentElement.style.setProperty('--theme_color', hexColor);
+        } else {
+            console.log('Não foi possível obter a cor predominante.');
+        }
+    });
 
     /* Track name */
         const track = appleData.track_data;
@@ -2007,7 +2025,58 @@ function listenForThemeChanges() {
     });
 }
 
+function rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+}
 
+function getDominantColorFromImageUrl(imageUrl, callback) {
+    const image = new Image();
+    image.crossOrigin = "Anonymous"; // Isso é necessário se a imagem estiver hospedada em um domínio diferente
+    image.src = imageUrl;
+
+    image.onload = function() {
+        // Cria um elemento canvas
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Define as dimensões do canvas com base na imagem
+        canvas.width = image.width;
+        canvas.height = image.height;
+
+        // Desenha a imagem no canvas
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+        // Obtém os dados dos pixels da imagem
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+
+        let r = 0, g = 0, b = 0;
+        const pixelCount = data.length / 4;
+
+        // Percorre cada pixel
+        for (let i = 0; i < data.length; i += 4) {
+            r += data[i];       // Valor do Red
+            g += data[i + 1];   // Valor do Green
+            b += data[i + 2];   // Valor do Blue
+        }
+
+        // Calcula a média das cores
+        r = Math.floor(r / pixelCount);
+        g = Math.floor(g / pixelCount);
+        b = Math.floor(b / pixelCount);
+
+        // Converte a cor para o formato HEX
+        const hexColor = rgbToHex(r, g, b);
+
+        // Retorna a cor em formato HEX através do callback
+        callback(hexColor);
+    };
+
+    image.onerror = function() {
+        console.error('Erro ao carregar a imagem.');
+        callback(null);
+    };
+}
 
 
 
