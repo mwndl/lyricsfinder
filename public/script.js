@@ -1082,6 +1082,7 @@ let lastArtistName;
 let lastAlbumName;
 let lastDuration;
 let lastAvailableMarkets;
+let hrexAlbumPredColor;
 
 
 async function setSpotifyData(spotifyData, musixmatchData) {
@@ -1175,6 +1176,8 @@ async function setSpotifyData(spotifyData, musixmatchData) {
 
     // aplicar cor predominante como tema da página
     getDominantColorFromImageUrl(albumImageBack, function(hexColor) {
+
+        hrexAlbumPredColor = hexColor;
         if (hexColor) {
             document.querySelector('meta[name="theme-color"]').setAttribute('content', hexColor);
         } else {
@@ -1413,6 +1416,7 @@ async function setAppleData(appleData, musixmatchData) {
 
     // aplicar cor predominante como tema da página
     getDominantColorFromImageUrl(albumImage, function(hexColor) {
+        hrexAlbumPredColor = hexColor
         if (hexColor) {
             document.querySelector('meta[name="theme-color"]').setAttribute('content', hexColor);
         } else {
@@ -1927,7 +1931,7 @@ function setTheme2() {
     document.getElementById('theme0toggle').className = 'theme-selector light'
     document.getElementById('background-image').style.display = 'flex'
     localStorage.setItem('theme', '2');
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#181818');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', hrexAlbumPredColor);
     setDarkTheme()
 }
 
