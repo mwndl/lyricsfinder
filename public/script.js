@@ -1176,7 +1176,7 @@ async function setSpotifyData(spotifyData, musixmatchData) {
     // aplicar cor predominante como tema da página
     getDominantColorFromImageUrl(albumImageBack, function(hexColor) {
         if (hexColor) {
-            document.documentElement.style.setProperty('--theme_color', hexColor);
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', hexColor);
         } else {
             console.log('Não foi possível obter a cor predominante.');
         }
@@ -1414,7 +1414,7 @@ async function setAppleData(appleData, musixmatchData) {
     // aplicar cor predominante como tema da página
     getDominantColorFromImageUrl(albumImage, function(hexColor) {
         if (hexColor) {
-            document.documentElement.style.setProperty('--theme_color', hexColor);
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', hexColor);
         } else {
             console.log('Não foi possível obter a cor predominante.');
         }
