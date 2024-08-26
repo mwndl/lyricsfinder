@@ -1,3 +1,5 @@
+
+
 .track_container {
     padding: 10px;
 }
@@ -42,7 +44,7 @@
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background-color: #333333;
+    background-color: var(--color11);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,16 +52,16 @@
     position: absolute;
     bottom: 10px;
     right: 10px;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+    box-shadow: var(--alt-color4) 0px 0px 10px;
 }
 
 .player:hover {
-    background-color: #5c5c5c;
+    background-color: var(--background-color7);
 }
 
 .player img {
-    width: 20px; /* Ajuste conforme necessário */
-    height: 20px; /* Ajuste conforme necessário */
+    width: 20px;
+    height: 20px;
 }
 
 #play_icon {
@@ -99,11 +101,13 @@
     font-size: 24px;
     font-weight: 700;
     user-select: text;
+    width: calc(100% - 25px);
 }
 
 #artist_list {
     font-size: 16px;
     user-select: text;
+    width: calc(100% - 25px);
 }
 
 #album_name {
@@ -114,7 +118,7 @@
 #track_duration_div {
     font-size: 14px;
     font-style: italic;
-    color: #818181;
+    color: var(--color12);
 }
 
 #track_duration_seconds {
@@ -128,8 +132,8 @@
 }
 
 .internal_div {
-    background-color: #ffffff;
-    color: #333;
+    background-color: var(--background-color8);
+    color: var(--color3);
     border-radius: 12px;
     padding: 15px 20px;
     box-sizing: border-box;
@@ -159,7 +163,7 @@
     bottom: 0;
     width: 100%;
     height: 2px;
-    background-color: rgb(0, 0, 0);
+    background-color: var(--background-color9);
     transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.3s ease;
@@ -169,9 +173,6 @@
     transform: scaleX(1);
     transform-origin: bottom left;
 }
-
-
-
 
 .track_ids {
     width: calc(60% - 10px);
@@ -201,8 +202,8 @@
 .cont_id_value {
     flex: 1;
     padding: 8px;
-    background-color: #ededed;
-    color: #333;
+    background-color: var(--background-color10);
+    color: var(--color13);
     border-radius: 12px;
     user-select: text;
     cursor: text;
@@ -218,14 +219,14 @@
 }
 
 .lyrics_stats {
-    background-color: #333333;
+    background-color: var(--background-color10);
     border-radius: 12px;
     padding: 15px 20px;
     box-sizing: border-box;
     justify-content: space-between;
     width: 100%;
     margin: 5px 0;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+    box-shadow: var(--alt-color4) 0px 0px 10px;
 }
 
 .stat {
@@ -235,15 +236,15 @@
 }
 
 .status-gray {
-    background-color: #d6d6d6;
+    background-color: var(--background-color12);
 }
 
 .status-blue {
-    background-color: #4A90E2;
+    background-color: var(--background-color13);
 }
 
 .status-red {
-    background-color: #ff351b;
+    background-color: var(--background-color14);
 }
 
 .status-1 {
@@ -266,25 +267,24 @@
 }
 
 .studio_shortcut {
-    background-color: #ffffff;
+    background-color: var(--background-color8);
     border-radius: 12px;
     padding: 20px 8px;
     width: calc(50% - 20px);
     font-size: 14px;
     text-overflow: ellipsis;
-    transition: background-color 0.3s ease;
     text-wrap:nowrap;
     cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+    box-shadow: var(--alt-color4) 0px 0px 10px;
 }
 
 .studio_shortcut:hover {
-    background-color: #ededed;
+    background-color: var(--background-color16);
 }
 
 #mxmImportDiv {
-    background-color: #333333;
-    color: #ffffff;
+    background-color: var(--color11);
+    color: var(--color21);
     border-radius: 12px;
     display: inline-block;
     width: 120px;
@@ -297,7 +297,7 @@
 }
 
 #mxmImportDiv:hover {
-    background-color: #5c5c5c;
+    background-color: var(--background-color17);
 }
 
 
@@ -313,7 +313,7 @@
   }
   
   .icon {
-    fill: rgb(0, 0, 0); /* Default color */
+    fill: var(--color14); /* Default color */
     width: 24px;
     height: 24px;
   }
@@ -321,18 +321,18 @@
   .tooltip {
     display: none;
     position: absolute;
-    background-color: #333333f0;
-    color: #ffffff;
+    background-color: var(--background-color18);
+    color: var(--color16);
     text-align: center;
     border-radius: 5px;
     padding: 5px 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 10px var(--alt-color10);
     z-index: 1;
     width: 200px;
     max-width: 300px;
-    top: 50%; /* Center the tooltip vertically relative to the icon */
-    left: 45%; /* Position to the right of the icon */
-    transform: translateY(-50%); /* Center the tooltip vertically */
+    top: 50%;
+    left: 45%;
+    transform: translateY(-50%);
     white-space: pre-wrap;
   }
   
@@ -351,7 +351,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #00000059;
+    background: var(--color17);
     backdrop-filter: blur(1px);
     z-index: 999;
     display: none; /* Hidden by default */
@@ -362,9 +362,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #ffffff;
+    background-color: var(--background-color19);
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px var(--alt-color11);
     width: 300px;
     max-width: 90%;
     padding: 20px;
@@ -387,7 +387,7 @@
     background: none;
     border: none;
     font-size: 1.2rem;
-    color: #999;
+    color: var(--color18);
 }
 
 .markets-search-bar {
@@ -398,8 +398,13 @@
 .markets-search-bar input {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color19);
     border-radius: 5px;
+}
+
+input {
+    background-color: var(--background-color5);
+    fill: var(--color14);
 }
 
 .country-list {
@@ -413,7 +418,7 @@
 
 .country-list li {
     padding: 8px 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--alt-color12);
 }
 
 .country-list li:last-child {
@@ -421,10 +426,65 @@
 }
 
 .unavailable {
-    color: #ababab;
+    color: var(--color20);
 }
 
 /* ******** */
+
+/* SELETORES DE TEMA */
+
+.theme-selectors {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.theme-selector {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--alt-color13);
+    box-shadow: var(--alt-color13) 0px 0px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.theme-selector.image {
+    position: relative;
+    overflow: hidden;
+    background-size: 180%;
+}
+
+.theme-selector.image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-size: inherit;
+    filter: blur(1px);
+    z-index: -1;
+}
+
+.theme-selector.dark {
+    background-color: var(--background-color21);
+}
+
+.theme-selector.light {
+    background-color: var(--background-color20);
+}
+
+.theme-selector.selected {
+    transform: scale(1.25);
+    border: 2px solid var(--color1);
+    box-shadow: var(--alt-color15) 0px 0px 10px;
+}
+
+
+/* *********** */
 
 @media (max-width: 700px) {
 
@@ -586,84 +646,5 @@
 
     .tooltip {
         top: -85%;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    .internal_div, .studio_shortcut {
-        background-color: #333333;
-        color: #ffffff;
-    }
-
-    .studio_shortcut:hover {
-        background-color: #5c5c5c;
-    }
-
-    .cont_id_value {
-        background-color: #3e3e3e;
-        color: #ffffff;
-    }
-
-    .status-gray {
-        background-color: #626262;
-    }
-
-    .player {
-        background-color: #f9f9f9;
-    }
-    
-    .player:hover {
-        background-color: #dfdfdf;
-    }
-
-    #play_icon {
-        background-image: url('./images/icons/play_icon_dark.svg');
-    }
-    
-    #pause_icon {
-        background-image: url('./images/icons/pause_icon_dark.svg');
-    }
-
-    .icon {
-        fill: white; 
-    }
-
-    .tooltip {
-        background-color: #f9f9f9;
-        color: #333;
-    }
-
-    #mxmImportDiv {
-        background-color: #ffffff;
-        color: #000000;
-        border-radius: 12px;
-        display: inline-block;
-        width: 120px;
-        height: 38px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: auto 0;
-        cursor: pointer;
-    }
-    
-    #mxmImportDiv:hover {
-        background-color: #dfdfdf;
-    }
-
-    #track_markets::after {
-        background-color: rgb(255, 255, 255);
-    }
-
-    .popup-container {
-        background-color: #0f0f0f;
-    }
-
-    .country-list li {
-        border-bottom: 1px solid #3c3c3c;
-    }
-
-    .unavailable {
-        color: #555555;
     }
 }

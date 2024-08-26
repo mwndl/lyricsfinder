@@ -7,8 +7,22 @@ document.addEventListener('DOMContentLoaded', async function () {
     } else {
         setLanguageBasedOnBrowser()
     }
+
+    if (getQueryParameter('theme')) {
+        theme = getQueryParameter('theme')
+
+        if (theme === 'light') {
+            setLightTheme()
+        } else {
+            setDarkTheme()
+        }
+    }
     
     applyColorScheme(); // service worker
+    applyStoredTheme() // aplicar tema de background
+    resetBackImage()
+    hideThemeSelectors()
+    listenForThemeChanges()
 
     const flagDiv = document.getElementById('flagDiv');
     const flagMenu = document.getElementById('flagMenu');
@@ -29,6 +43,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         removeQueryParameter('query')
         location.reload(); 
     });
+
+
 
     // showSpContainer();
 
@@ -345,6 +361,7 @@ function handleSearch(content) {
     showLoader();
 
     source = getQueryParameter('source')
+    autoRedirect = getQueryParameter('auto_redirect')
 
     content = content.trim().replace(/\s+/g, ' ');
 
@@ -445,9 +462,9 @@ function handleSearch(content) {
             setQueryParameter('query', content);
             setQueryParameter('source', 'apple');
         } else if (source === 'musixmatch' || source === 'mxm') {
-            searchByAbstrack(content)
+            searchByAbstrack(content, autoRedirect)
             setQueryParameter('query', content);
-            setQueryParameter('source', 'musixmatch');
+            setQueryParameter('source', 'mxm');
         }
         return;
     }
@@ -786,7 +803,7 @@ function searchByIsrcApple(isrc) {
         });
 }
 
-function searchByAbstrack(abstrack) {
+function searchByAbstrack(abstrack, autoRedirect) {
     document.getElementById('search_bar_content').value = ''
     console.log('Pesquisar Abstrack:', abstrack);
 
@@ -797,7 +814,7 @@ function searchByAbstrack(abstrack) {
     }
 
     // URL da API com o ID dinâmico
-    const url = `${window.serverPath}/songmatch/abstrack?content=${abstrack}&token=${publicToken}&mxm_data=1`;
+    const url = `${window.serverPath}/songmatch/abstrack?content=${abstrack}&token=${publicToken}`;
 
     // Fazendo a requisição para a API
     fetch(url)
@@ -825,10 +842,13 @@ function searchByAbstrack(abstrack) {
         })
         .then(data => {
 
-            spotifyData = data.message.body.spotify;
             musixmatchData = data.message.body.musixmatch;
 
-            setSpotifyData(spotifyData, musixmatchData)
+            if (autoRedirect === null) {
+                autoRedirect === '0'
+            }
+
+            setMusixmatchData(musixmatchData, autoRedirect)
             
         })
         .catch(error => {
@@ -1062,6 +1082,7 @@ let lastArtistName;
 let lastAlbumName;
 let lastDuration;
 let lastAvailableMarkets;
+let hrexAlbumPredColor;
 
 
 async function setSpotifyData(spotifyData, musixmatchData) {
@@ -1146,8 +1167,23 @@ async function setSpotifyData(spotifyData, musixmatchData) {
 
     const trackId = spotifyData.track_data.track_id;
     const albumImage = spotifyData.album_data.images[0].url;
+    const albumImageBack = spotifyData.album_data.images[2].url;
 
     trackImage.src = albumImage;
+
+    showThemeSelectors()
+    setTheme1Image(albumImageBack)
+
+    // aplicar cor predominante como tema da página
+    getDominantColorFromImageUrl(albumImageBack, function(hexColor) {
+
+        hrexAlbumPredColor = hexColor;
+        if (hexColor) {
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', hexColor);
+        } else {
+            console.log('Não foi possível obter a cor predominante.');
+        }
+    });
 
     /* Track name */
         const track = spotifyData.track_data;
@@ -1375,6 +1411,18 @@ async function setAppleData(appleData, musixmatchData) {
     const albumImage = appleData.album_data.album_artwork;
 
     trackImage.src = albumImage;
+    setTheme1Image(albumImage)
+    showThemeSelectors()
+
+    // aplicar cor predominante como tema da página
+    getDominantColorFromImageUrl(albumImage, function(hexColor) {
+        hrexAlbumPredColor = hexColor
+        if (hexColor) {
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', hexColor);
+        } else {
+            console.log('Não foi possível obter a cor predominante.');
+        }
+    });
 
     /* Track name */
         const track = appleData.track_data;
@@ -1494,9 +1542,32 @@ async function setAppleData(appleData, musixmatchData) {
 }
 
 
-async function setMusixmatchData(musixmatchData) {
+async function setMusixmatchData(musixmatchData, autoRedirect) {
 
-    importHideLoader()
+    hideLoader()
+
+    if (autoRedirect === '1') {
+        lyricsId = musixmatchData.track_data.lyrics_id;
+
+        const url = `http://mxmt.ch/t/${lyricsId}`;
+        window.open(url, '_blank');
+
+    } else if (autoRedirect === '2') {
+        lyricsId = musixmatchData.track_data.lyrics_id;
+    
+        const url = `http://mxmt.ch/t/${lyricsId}`;
+        window.location.href = url;
+
+    } else {
+        lyricsId = musixmatchData.track_data.lyrics_id;
+
+        const url = `http://mxmt.ch/t/${lyricsId}`;
+        window.open(url, '_blank');
+
+    }
+
+
+    /*
     
     const trackAbstrack = document.getElementById('track_abstrack')
     
@@ -1551,6 +1622,8 @@ async function setMusixmatchData(musixmatchData) {
 
     openLyrics.setAttribute('data-link', `http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`);
     openStudio.setAttribute('data-link', `https://curators.musixmatch.com/tool?commontrack_id=${musixmatchData.track_data.commontrack_id}&mode=edit`);
+
+    */
 }
 
 
@@ -1828,10 +1901,198 @@ function refreshMarketsTranslations() {
     });
 }
 
+document.getElementById('theme2toggle').addEventListener('click', setTheme2);
+document.getElementById('theme1toggle').addEventListener('click', setTheme1);
+document.getElementById('theme0toggle').addEventListener('click', setTheme0);
+
+function setTheme0() {
+    document.getElementById('theme2toggle').className = 'theme-selector image'
+    document.getElementById('theme1toggle').className = 'theme-selector dark'
+    document.getElementById('theme0toggle').className = 'theme-selector light selected'
+    document.getElementById('background-image').style.display = 'none'
+    localStorage.setItem('theme', '0');
+    setLightTheme() 
+}
+
+function setTheme1() {
+    document.getElementById('theme2toggle').className = 'theme-selector image'
+    document.getElementById('theme1toggle').className = 'theme-selector dark selected'
+    document.getElementById('theme0toggle').className = 'theme-selector light'
+    document.getElementById('background-image').style.display = 'none'
+    localStorage.setItem('theme', '1');
+    setDarkTheme()
+}
+
+function setTheme2() {
+    document.getElementById('theme2toggle').className = 'theme-selector image selected'
+    document.getElementById('theme1toggle').className = 'theme-selector dark'
+    document.getElementById('theme0toggle').className = 'theme-selector light'
+    document.getElementById('background-image').style.display = 'flex'
+    localStorage.setItem('theme', '2');
+    setDarkTheme(hrexAlbumPredColor)
+}
+
+function applyStoredTheme() {
+    const theme = localStorage.getItem('theme');
+
+    if (theme === '2') {
+        setTheme2();
+    } else if (theme === '1') {
+        setTheme1();
+    } else if (theme === '0') {
+        setTheme0();
+    } else {
+        setInitialTheme()
+    }
+}
+
+function setTheme1Image(imageUrl) {
+    document.getElementById('backimage_intern').style = `background-image: url('${imageUrl}');`
+    document.getElementById('toggle_image').style = `background: url('${imageUrl}') no-repeat center/cover;`
+}
+
+function resetBackImage() {
+    document.getElementById('backimage_intern').style = ''
+    document.getElementById('toggle_image').style = ''
+}
+
+function showThemeSelectors() {
+    document.getElementById("theme-selectors").style.display = 'flex'
+}
+
+function hideThemeSelectors() {
+    document.getElementById("theme-selectors").style.display = 'none'
+    resetBackImage()
+}
 
 
 
-  
+function toggleTheme() {
+    const body = document.body;
+    const currentTheme = body.getAttribute('data-theme');
+
+    if (currentTheme === 'dark') {
+        setLightTheme()
+    } else {
+        setDarkTheme()
+    }
+}
+
+function setLightTheme() {
+    body.setAttribute('data-theme', 'light');
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fafafa');
+}
+
+function setDarkTheme(customColor) {
+    if (customColor) {
+        body.setAttribute('data-theme', 'dark');
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', customColor);
+    } else {
+        body.setAttribute('data-theme', 'dark');
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', '#181818');
+    }
+}
+
+function setInitialTheme() {
+    const userPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = localStorage.getItem('theme');
+
+    if (theme) {
+        if (theme === '0') {
+            setTheme0()
+        } else if (theme === '1') {
+            setTheme1()
+        } else if (theme === '2') {
+            setTheme2()
+        }
+    } else {
+        if (userPrefersDark) {
+            setDarkTheme()
+            setTheme2();
+        } else {
+            setLightTheme()
+        }
+    }
+}
+
+function listenForThemeChanges() {
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    // Adiciona um ouvinte para mudanças nas preferências do navegador
+    darkModeMediaQuery.addEventListener('change', (event) => {
+        const body = document.body;
+        if (event.matches) {
+            setTheme1()
+            setDarkTheme()
+        } else {
+            setTheme0()
+            setLightTheme()
+        }
+    });
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+}
+
+function getDominantColorFromImageUrl(imageUrl, callback) {
+    const image = new Image();
+    image.crossOrigin = "Anonymous"; // Isso é necessário se a imagem estiver hospedada em um domínio diferente
+    image.src = imageUrl;
+
+    image.onload = function() {
+        // Cria um elemento canvas
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Define as dimensões do canvas com base na imagem
+        canvas.width = image.width;
+        canvas.height = image.height;
+
+        // Desenha a imagem no canvas
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+
+        // Obtém os dados dos pixels da imagem
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+
+        let r = 0, g = 0, b = 0;
+        const pixelCount = data.length / 4;
+
+        // Percorre cada pixel
+        for (let i = 0; i < data.length; i += 4) {
+            r += data[i];       // Valor do Red
+            g += data[i + 1];   // Valor do Green
+            b += data[i + 2];   // Valor do Blue
+        }
+
+        // Calcula a média das cores
+        r = Math.floor(r / pixelCount);
+        g = Math.floor(g / pixelCount);
+        b = Math.floor(b / pixelCount);
+
+        // Converte a cor para o formato HEX
+        const hexColor = rgbToHex(r, g, b);
+
+        // Retorna a cor em formato HEX através do callback
+        callback(hexColor);
+    };
+
+    image.onerror = function() {
+        console.error('Erro ao carregar a imagem.');
+        callback(null);
+    };
+}
+
+
+
+
+
+
+
+
+
+
   
 
 
