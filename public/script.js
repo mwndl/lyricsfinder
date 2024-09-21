@@ -959,7 +959,7 @@ function importRelease() {
         .then(data => {
 
             musixmatchData = data.message.body.musixmatch;
-            setMusixmatchData(musixmatchData)
+            setMusixmatchData(musixmatchData, "0")
 
         })
         .catch(error => {
@@ -1558,72 +1558,64 @@ async function setMusixmatchData(musixmatchData, autoRedirect) {
         const url = `http://mxmt.ch/t/${lyricsId}`;
         window.location.href = url;
 
-    } else {
-        lyricsId = musixmatchData.track_data.lyrics_id;
+    } else if (autoRedirect === '0') {
 
-        const url = `http://mxmt.ch/t/${lyricsId}`;
-        window.open(url, '_blank');
+        const trackAbstrack = document.getElementById('track_abstrack')
+    
+        const trackMxmLyrics = document.getElementById('track_mxm_lyrics')
+        const trackMxmArtist = document.getElementById('track_mxm_artist')
+        const trackMxmAlbum = document.getElementById('track_mxm_album')
+        
+        const trackLyricsStat = document.getElementById('track_lyrics_stat')
+        const trackLinesyncStat = document.getElementById('track_linesync_stat')
+        const trackWordsyncStat = document.getElementById('track_wordsync_stat')
+        
+        const openLyrics = document.getElementById('openLyricsLabel')
+        const openStudio = document.getElementById('openStudioLabel')
+        
+        const trackAbstrackDiv = document.getElementById('track_abstrack_div')
+        const mxmNotFoundDiv = document.getElementById('mxm_not_found_div')
+        const mxmDataContainer = document.getElementById('mxm_data_container')
+    
+    
+        trackAbstrackDiv.style.display = 'flex'
+        mxmDataContainer.style.display = 'flex'
+        mxmNotFoundDiv.style.display = 'none'
+    
+    
+        trackAbstrack.textContent = musixmatchData.track_data.commontrack_id;
+    
+        trackMxmLyrics.textContent = `mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`;
+        trackMxmArtist.textContent = `mxmt.ch/a/${musixmatchData.artist_data.artist_id}`;
+        trackMxmAlbum.textContent = `mxmt.ch/r/${musixmatchData.album_data.album_id}`;
+    
+        trackMxmLyrics.title = musixmatchData.track_data.track_name;
+        trackMxmArtist.title = musixmatchData.artist_data.artist_name;
+        trackMxmAlbum.title = musixmatchData.album_data.album_name;
+    
+        if (musixmatchData.track_data.stats.has_lyrics === 1) {
+            trackLyricsStat.className = 'status-1 status-blue'
+        } else {
+            trackLyricsStat.className = 'status-1 status-gray'
+        }
+        
+        if (musixmatchData.track_data.stats.has_line_sync === 1) {
+            trackLinesyncStat.className = 'status-1 status-blue'
+        } else {
+            trackLinesyncStat.className = 'status-1 status-gray'
+        }
+        
+        if (musixmatchData.track_data.stats.has_word_sync === 1) {
+            trackWordsyncStat.className = 'status-1 status-blue'
+        } else {
+            trackWordsyncStat.className = 'status-1 status-gray'
+        }
+    
+        openLyrics.setAttribute('data-link', `http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`);
+        openStudio.setAttribute('data-link', `https://curators.musixmatch.com/tool?commontrack_id=${musixmatchData.track_data.commontrack_id}&mode=edit`);
 
     }
 
-
-    /*
-    
-    const trackAbstrack = document.getElementById('track_abstrack')
-    
-    const trackMxmLyrics = document.getElementById('track_mxm_lyrics')
-    const trackMxmArtist = document.getElementById('track_mxm_artist')
-    const trackMxmAlbum = document.getElementById('track_mxm_album')
-    
-    const trackLyricsStat = document.getElementById('track_lyrics_stat')
-    const trackLinesyncStat = document.getElementById('track_linesync_stat')
-    const trackWordsyncStat = document.getElementById('track_wordsync_stat')
-    
-    const openLyrics = document.getElementById('openLyricsLabel')
-    const openStudio = document.getElementById('openStudioLabel')
-    
-    const trackAbstrackDiv = document.getElementById('track_abstrack_div')
-    const mxmNotFoundDiv = document.getElementById('mxm_not_found_div')
-    const mxmDataContainer = document.getElementById('mxm_data_container')
-
-
-    trackAbstrackDiv.style.display = 'flex'
-    mxmDataContainer.style.display = 'flex'
-    mxmNotFoundDiv.style.display = 'none'
-
-
-    trackAbstrack.textContent = musixmatchData.track_data.commontrack_id;
-
-    trackMxmLyrics.textContent = `mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`;
-    trackMxmArtist.textContent = `mxmt.ch/a/${musixmatchData.artist_data.artist_id}`;
-    trackMxmAlbum.textContent = `mxmt.ch/r/${musixmatchData.album_data.album_id}`;
-
-    trackMxmLyrics.title = musixmatchData.track_data.track_name;
-    trackMxmArtist.title = musixmatchData.artist_data.artist_name;
-    trackMxmAlbum.title = musixmatchData.album_data.album_name;
-
-    if (musixmatchData.track_data.stats.has_lyrics === 1) {
-        trackLyricsStat.className = 'status-1 status-blue'
-    } else {
-        trackLyricsStat.className = 'status-1 status-gray'
-    }
-    
-    if (musixmatchData.track_data.stats.has_line_sync === 1) {
-        trackLinesyncStat.className = 'status-1 status-blue'
-    } else {
-        trackLinesyncStat.className = 'status-1 status-gray'
-    }
-    
-    if (musixmatchData.track_data.stats.has_word_sync === 1) {
-        trackWordsyncStat.className = 'status-1 status-blue'
-    } else {
-        trackWordsyncStat.className = 'status-1 status-gray'
-    }
-
-    openLyrics.setAttribute('data-link', `http://mxmt.ch/t/${musixmatchData.track_data.lyrics_id}`);
-    openStudio.setAttribute('data-link', `https://curators.musixmatch.com/tool?commontrack_id=${musixmatchData.track_data.commontrack_id}&mode=edit`);
-
-    */
 }
 
 
