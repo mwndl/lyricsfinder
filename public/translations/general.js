@@ -50,7 +50,7 @@ const translations = {
         "error500": "Nossos sistemas estão temporariamente ocupados. Tente novamente mais tarde.",
         "error502": "Oops! Houve um problema de conexão. Por favor, tente novamente mais tarde.",
         "abstrackDevelopment": "Buscas por abstrack ainda não estão disponíveis.",
-        "mxmError404": "A solicitação foi enviada com sucesso! Atualize esta página novamente em alguns minutos para verificar se a faixa foi corretamente importada.",
+        "mxmError404": "Solicitação enviada com sucesso! Caso a faixa não seja importada automaticamente nos próximos minutos, nós a importaremos em até 1 dia útil.",
 
         "contentCopiedSuccess": "Conteúdo copiado para a área de transferência",
 
@@ -86,9 +86,9 @@ const translations = {
         "openStudioLabel": "Abrir no Studio",
 
         "mxmNotAvailable": "Infelizmente essa faixa ainda não está disponível na Musixmatch, gostaria de tentar importa-lá?",
-        "mxmImportInfo": "Importações podem não ser instantâneas. Às vezes, os dados das letras podem levar alguns minutos para ficarem disponíveis. Nesse caso, por favor, aguarde entre 10 e 15 minutos e atualize a página para verificar se a importação foi concluída com sucesso.",
+        "mxmImportInfo": "Importações podem não ser instantâneas. Às vezes, pode levar alguns minutos para que os dados das letras fiquem disponíveis. Se a importação falhar, nós a importaremos manualmente para você dentro de 1 dia útil.",
         "mxmImportButton": "Solicitar",
-
+        
     },
 
     "en": {
@@ -141,7 +141,7 @@ const translations = {
         "error500": "Our systems are temporarily busy. Please try again later.",
         "error502": "Oops! There was a connection problem. Please try again later.",
         "abstrackDevelopment": "Searches for abstrack are not yet available",
-        "mxmError404": "The request was successfully sent! Please refresh this page again in a few minutes to check if the track was correctly imported.",
+        "mxmError404": "Request successfully submitted! If the track is not imported automatically within the next few minutes, we will import it within 1 business day.",
 
         "contentCopiedSuccess": "Content copied to clipboard",
 
@@ -177,7 +177,7 @@ const translations = {
         "openStudioLabel": "Open in Studio",
 
         "mxmNotAvailable": "Unfortunately, this track is not available on Musixmatch yet. Would you like to try importing it?",
-        "mxmImportInfo": "Imports may not be immediate. Sometimes, lyric data can take a few minutes to become available. In such cases, please wait between 10 and 15 minutes and refresh the page to check if the import was successful.",
+        "mxmImportInfo": "Imports may not be immediate. Sometimes it can take a few minutes for the lyrics data to become available. If the import fails, we will manually import it for you within 1 business day.",
         "mxmImportButton": "Request",
 
     },
@@ -232,7 +232,7 @@ const translations = {
         "error500": "I nostri sistemi sono temporaneamente occupati. Riprova più tardi.",
         "error502": "Oops! C'è stato un problema di connessione. Riprova più tardi.",
         "abstrackDevelopment": "Le ricerche per abstrack non sono ancora disponibili",
-        "mxmError404": "La richiesta è stata inviata con successo! Per favore, aggiorna questa pagina tra qualche minuto per verificare se la traccia è stata importata correttamente.",
+        "mxmError404": "Richiesta inviata con successo! Se la traccia non viene importata automaticamente nei prossimi minuti, la importeremo entro 1 giorno lavorativo.",
 
         "contentCopiedSuccess": "Contenuto copiato negli appunti",
 
@@ -268,7 +268,7 @@ const translations = {
         "openStudioLabel": "Apri in Studio",
 
         "mxmNotAvailable": "Sfortunatamente, questa traccia non è ancora disponibile su Musixmatch. Vuoi provare a importarla?",
-        "mxmImportInfo": "Le importazioni potrebbero non essere immediate. A volte, i dati delle canzoni potrebbero richiedere alcuni minuti per essere disponibili. In tal caso, ti preghiamo di attendere tra i 10 e i 15 minuti e aggiornare la pagina per verificare se l'importazione è avvenuta con successo.",
+        "mxmImportInfo": "Le importazioni potrebbero non essere istantanee. A volte potrebbero volerci alcuni minuti affinché i dati dei testi siano disponibili. Se l'importazione fallisce, la importeremo manualmente per te entro 1 giorno lavorativo.",
         "mxmImportButton": "Richiedi",
 
     },
@@ -323,7 +323,7 @@ const translations = {
         "error500": "Unsere Systeme sind vorübergehend ausgelastet. Bitte versuche es später erneut.",
         "error502": "Oops! Es gab ein Verbindungsproblem. Bitte versuche es später erneut.",
         "abstrackDevelopment": "Suchen nach abstrack sind noch nicht verfügbar",
-        "mxmError404": "Die Anfrage wurde erfolgreich gesendet! Bitte aktualisieren Sie diese Seite in ein paar Minuten erneut, um zu überprüfen, ob der Track korrekt importiert wurde.",
+        "mxmError404": "Anfrage erfolgreich gesendet! Wenn der Titel nicht innerhalb der nächsten Minuten automatisch importiert wird, werden wir ihn innerhalb von 1 Werktag importieren.",
 
         "contentCopiedSuccess": "Inhalt in die Zwischenablage kopiert",
 
@@ -359,7 +359,7 @@ const translations = {
         "openStudioLabel": "Im Studio öffnen",
 
         "mxmNotAvailable": "Leider ist dieser Track noch nicht auf Musixmatch verfügbar. Möchten Sie versuchen, ihn zu importieren?",
-        "mxmImportInfo": "Importe können nicht sofort verfügbar sein. Manchmal kann es einige Minuten dauern, bis die Lieddaten verfügbar sind. In solchen Fällen warten Sie bitte zwischen 10 und 15 Minuten und aktualisieren Sie die Seite, um zu überprüfen, ob der Import erfolgreich war.",
+        "mxmImportInfo": "Importe können nicht sofort erfolgen. Manchmal kann es einige Minuten dauern, bis die Liedtextdaten verfügbar sind. Wenn der Import fehlschlägt, werden wir ihn innerhalb von 1 Arbeitstag manuell für Sie importieren.",
         "mxmImportButton": "Anfordern",
 
     },
@@ -415,7 +415,7 @@ const translations = {
         "error500": "Nuestros sistemas están temporalmente ocupados. Por favor, inténtalo de nuevo más tarde.",
         "error502": "¡Ups! Hubo un problema de conexión. Por favor, inténtalo de nuevo más tarde.",
         "abstrackDevelopment": "Las búsquedas de abstrack aún no están disponibles",
-        "mxmError404": "¡La solicitud se envió con éxito! Por favor, actualiza esta página nuevamente en unos minutos para verificar si la pista fue importada correctamente.",
+        "mxmError404": "¡Solicitud enviada con éxito! Si la pista no se importa automáticamente en los próximos minutos, la importaremos en un plazo de 1 día hábil.",
 
         "contentCopiedSuccess": "Contenido copiado al portapapeles",
 
@@ -451,7 +451,7 @@ const translations = {
         "openStudioLabel": "Abrir en Studio",
 
         "mxmNotAvailable": "Lamentablemente, esta pista aún no está disponible en Musixmatch. ¿Te gustaría intentar importarla?",
-        "mxmImportInfo": "Las importaciones pueden no ser inmediatas. A veces, los datos de las letras pueden tardar unos minutos en estar disponibles. En estos casos, por favor, espere entre 10 y 15 minutos y actualice la página para verificar si la importación se completó con éxito.",
+        "mxmImportInfo": "Las importaciones pueden no ser instantáneas. A veces, puede llevar unos minutos para que los datos de las letras estén disponibles. Si la importación falla, la importaremos manualmente para usted dentro de 1 día hábil.",
         "mxmImportButton": "Solicitar",
 
     },
@@ -506,7 +506,7 @@ const translations = {
         "error500": "Nos systèmes sont temporairement occupés. Veuillez réessayer plus tard.",
         "error502": "Oups ! Il y a eu un problème de connexion. Veuillez réessayer plus tard.",
         "abstrackDevelopment": "Les recherches pour abstrack ne sont pas encore disponibles",
-        "mxmError404": "La demande a été envoyée avec succès ! Veuillez rafraîchir cette page dans quelques minutes pour vérifier si le morceau a été correctement importé.",
+        "mxmError404": "Demande envoyée avec succès ! Si la piste n'est pas importée automatiquement dans les prochaines minutes, nous l'importerons dans un délai de 1 jour ouvrable.",
         
         "contentCopiedSuccess": "Contenu copié dans le presse-papiers",
 
@@ -542,7 +542,7 @@ const translations = {
         "openStudioLabel": "Ouvrir dans Studio",
 
         "mxmNotAvailable": "Malheureusement, cette piste n'est pas encore disponible sur Musixmatch. Voulez-vous essayer de l'importer?",
-        "mxmImportInfo": "Les importations peuvent ne pas être immédiates. Parfois, les données des paroles peuvent prendre quelques minutes pour être disponibles. Dans ce cas, veuillez attendre entre 10 et 15 minutes et rafraîchir la page pour vérifier si l'importation a été réussie.",
+        "mxmImportInfo": "Les importations peuvent ne pas être instantanées. Parfois, cela peut prendre quelques minutes pour que les données des paroles soient disponibles. Si l'importation échoue, nous l'importerons manuellement pour vous dans un délai de 1 jour ouvrable.",
         "mxmImportButton": "Demander",
     }
 };
